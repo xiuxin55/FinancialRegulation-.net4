@@ -21,7 +21,16 @@ namespace Start
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            System.Windows.Forms.Form frmAutoUpdate = (System.Windows.Forms.Form)Assembly.LoadFrom("AutoUpdate.dll").CreateInstance("AutoUpdate.FrmUpdate");
+            try
+            {
+                System.Windows.Forms.Form frmAutoUpdate = (System.Windows.Forms.Form)Assembly.LoadFrom("AutoUpdate.dll").CreateInstance("AutoUpdate.FrmUpdate");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
             MainFrame.LoginWindow lw = new MainFrame.LoginWindow();
 
             if (lw.ShowDialog() == true)
