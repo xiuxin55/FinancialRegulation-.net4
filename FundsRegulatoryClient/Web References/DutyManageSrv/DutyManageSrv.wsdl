@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertDuty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="duty" type="tns:Duty" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Duty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DutyID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DutyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DutyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Describe" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertDutyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertDutyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDuty">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllDutyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDutyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDutyByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DutyID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDutyByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDutyByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDuty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="duty" type="tns:Duty" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDutyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDutyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertDutySoapIn">
+    <wsdl:part name="parameters" element="tns:InsertDuty" />
+  </wsdl:message>
+  <wsdl:message name="InsertDutySoapOut">
+    <wsdl:part name="parameters" element="tns:InsertDutyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDutySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllDuty" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDutySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDutyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDutyByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDutyByID" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDutyByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDutyByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDutySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDuty" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDutySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDutyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DutyManageSrvSoap">
+    <wsdl:operation name="InsertDuty">
+      <wsdl:input message="tns:InsertDutySoapIn" />
+      <wsdl:output message="tns:InsertDutySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDuty">
+      <wsdl:input message="tns:GetAllDutySoapIn" />
+      <wsdl:output message="tns:GetAllDutySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDutyByID">
+      <wsdl:input message="tns:DeleteDutyByIDSoapIn" />
+      <wsdl:output message="tns:DeleteDutyByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDuty">
+      <wsdl:input message="tns:UpdateDutySoapIn" />
+      <wsdl:output message="tns:UpdateDutySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DutyManageSrvSoap" type="tns:DutyManageSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertDuty">
+      <soap:operation soapAction="http://tempuri.org/InsertDuty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDuty">
+      <soap:operation soapAction="http://tempuri.org/GetAllDuty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDutyByID">
+      <soap:operation soapAction="http://tempuri.org/DeleteDutyByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDuty">
+      <soap:operation soapAction="http://tempuri.org/UpdateDuty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DutyManageSrvSoap12" type="tns:DutyManageSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertDuty">
+      <soap12:operation soapAction="http://tempuri.org/InsertDuty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDuty">
+      <soap12:operation soapAction="http://tempuri.org/GetAllDuty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDutyByID">
+      <soap12:operation soapAction="http://tempuri.org/DeleteDutyByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDuty">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDuty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DutyManageSrv">
+    <wsdl:port name="DutyManageSrvSoap" binding="tns:DutyManageSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/DutyManageSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DutyManageSrvSoap12" binding="tns:DutyManageSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/DutyManageSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

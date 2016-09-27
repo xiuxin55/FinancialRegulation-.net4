@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Interest" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="SeasonInterest" type="MODEL.NewModel.BalanceAndInterest.SeasonInterest,MODEL" />
+    <typeAlias alias="DayBalance" type="MODEL.NewModel.BalanceAndInterest.DayBalance,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllSeasonInterest" class="SeasonInterest">
+      <result property="ID" column="ID"/>
+      <result property="SI_ID" column="SI_ID"/>
+      <result property="SI_AccountNum" column="SI_AccountNum"/>
+      <result property="SI_Money" column="SI_Money"/>
+      <result property="SI_Time" column="SI_Time"/>
+      <result property="SI_Memo" column="SI_Memo"/>
+      <result property="SI_CertificateNum" column="SI_CertificateNum"/>
+      <result property="SI_BankTellerID" column="SI_BankTellerID"/>
+      <result property="SI_State" column="SI_State"/>
+      
+    </resultMap>
+    <resultMap id="SelectAllDayBalance" class="DayBalance">
+      <result property="ID" column="ID"/>
+      <result property="DB_ID" column="DB_ID"/>
+      <result property="DB_AccountNum" column="DB_AccountNum"/>
+      <result property="DB_Interest" column="DB_Interest"/>
+      <result property="DB_Balance" column="DB_Balance"/>
+      <result property="DB_Time" column="DB_Time"/>
+      <result property="DB_InterestRate" column="DB_InterestRate"/>
+    </resultMap>
+  </resultMaps>
+  <!--操作-->
+  <statements>
+    <select id="SelectSeasonInterestInfo" resultMap="SelectAllSeasonInterest"  parameterClass="SeasonInterest">
+      SELECT *
+      FROM SeasonInterest
+      WHERE  1=1
+      <isNotEmpty property="SI_ID">
+        AND SI_ID = #SI_ID#
+      </isNotEmpty>
+      <isNotEmpty property="SI_AccountNum">
+        AND SI_AccountNum = #SI_AccountNum#
+      </isNotEmpty>
+      <isNotEmpty property="SI_Money">
+        AND SI_Money = #SI_Money#
+      </isNotEmpty>
+      <isNotEmpty property="SI_Time">
+        AND SI_Time = #SI_Time#
+      </isNotEmpty>
+      <isNotEmpty property="SI_Memo">
+        AND SI_Memo = #SI_Memo#
+      </isNotEmpty>
+      <isNotEmpty property="SI_CertificateNum">
+        AND SI_CertificateNum = #SI_CertificateNum#
+      </isNotEmpty>
+      <isNotEmpty property="SI_BankTellerID">
+        AND SI_BankTellerID = #SI_BankTellerID#
+      </isNotEmpty>
+      Order by SI_Time Asc
+    </select>
+    <select id="SelectDayBalanceInfo" resultMap="SelectAllDayBalance"  parameterClass="DayBalance">
+      SELECT *
+      FROM DayBalance
+      WHERE  1=1
+      <isNotEmpty property="DB_ID">
+        AND DB_ID = #DB_ID#
+      </isNotEmpty>
+      <isNotEmpty property="DB_AccountNum">
+        AND DB_AccountNum = #DB_AccountNum#
+      </isNotEmpty>
+      <isNotEmpty property="DB_Interest">
+        AND DB_Interest = #DB_Interest#
+      </isNotEmpty>
+      <isNotEmpty property="DB_Balance">
+        AND DB_Balance = #DB_Balance#
+      </isNotEmpty>
+      <isNotEmpty property="DB_Time">
+        AND DB_Time >= #DB_Time# 
+   
+        
+      </isNotEmpty>
+      
+      <isNotEmpty property="DB_InterestRate">
+        AND DB_InterestRate = #DB_InterestRate#
+      </isNotEmpty>
+      ORDER BY DB_Time Asc
+    </select>
+    <insert id="AddSeasonInterestInfo" parameterClass="SeasonInterest">
+      INSERT INTO SeasonInterest (
+      ID,
+      SI_ID,
+      SI_AccountNum,
+      SI_Money,
+      SI_Time,
+      SI_Memo,
+      SI_CertificateNum,
+      SI_BankTellerID,
+      SI_State
+      )
+      VALUES (#ID#,#SI_ID#,#SI_AccountNum#,#SI_Money#,#SI_Time#,#SI_Memo#,#SI_CertificateNum#,#SI_BankTellerID#,#SI_State#)
+    </insert>
+    <insert id="AddDayBalanceInfo" parameterClass="DayBalance">
+      INSERT INTO DayBalance (
+      ID,
+      DB_ID,
+      DB_AccountNum,
+      DB_Interest,
+      DB_Balance,
+      DB_Time,
+      DB_InterestRate
+      )
+      VALUES (#ID#,#DB_ID#,#DB_AccountNum#,#DB_Interest#,#DB_Balance#,#DB_Time#,#DB_InterestRate#)
+    </insert>
+    <update id ="UpdateSeasonInterestInfo" parameterClass="SeasonInterest">
+      UPDATE SeasonInterest
+      SET
+      SI_Money = #SI_Money#,
+      SI_Memo = #SI_Memo#,
+      SI_BankSerialNumber=#SI_BankSerialNumber#,
+      SI_State='Y'
+      <isNotEmpty prepend ="," property="SI_CertificateNum">
+        SI_CertificateNum = #SI_CertificateNum#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="SI_BankTellerID">
+         SI_BankTellerID = #SI_BankTellerID#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="SI_Time">
+        SI_Time = #SI_Time#
+      </isNotEmpty>
+      WHERE ID = #ID#
+    </update>
+    <update id ="UpdateDayBalanceInfo" parameterClass="DayBalance">
+      UPDATE DayBalance
+      SET
+      DB_InterestRate = #DB_InterestRate#
+      <isNotEmpty prepend ="," property="DB_Interest">
+      DB_Interest = #DB_Interest#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="DB_Balance">
+      DB_Balance = #DB_Balance#
+      </isNotEmpty>
+      WHERE 1=1
+      <isNotEmpty prepend ="AND" property="ID">
+        ID = #ID#
+      </isNotEmpty>
+    <isNotEmpty prepend ="AND" property="DB_Time">
+        DB_Time = #DB_Time#
+      </isNotEmpty>
+    </update>
+    <delete id="DeleteSeasonInterestInfo" parameterClass="SeasonInterest">
+      DELETE SeasonInterest WHERE SI_ID = #SI_ID#
+    </delete>
+    <delete id="DeleteDayBalanceInfo" parameterClass="DayBalance">
+      DELETE DayBalance WHERE DB_ID = #DB_ID#
+    </delete>
+  </statements>
+</sqlMap>
+

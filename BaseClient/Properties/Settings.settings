@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BaseClient.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BaseClient_BaseManageSrv_BaseManageSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/BaseManageSrv.asmx</Value>
+    </Setting>
+    <Setting Name="BaseClient_LoginSrv_LoginSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/LoginSrv.asmx</Value>
+    </Setting>
+    <Setting Name="BaseClient_SysConfigSrv_SysConfigService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/SysConfigService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

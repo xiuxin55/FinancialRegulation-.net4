@@ -1,0 +1,13 @@
+﻿<Controls:MetroContentControl x:Class="FinancialRegulation.UI.UserMaintenanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:FinancialRegulation"
+        xmlns:uc="clr-namespace:FinancialRegulation.UserCotrol"
+                                 
+                   xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+          >
+   
+    <Grid>
+        <uc:UserMaintenance />
+    </Grid>
+</Controls:MetroContentControl>

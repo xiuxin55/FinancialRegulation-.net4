@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="JG_BranchesInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="JG_BranchesInfo" type="MODEL.JG_BranchesInfo,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllJG_Branches" class="JG_BranchesInfo">
+      <result property="BR_ID" column="BR_ID"/>
+      <result property="BR_BranchCode" column="BR_BranchCode"/>
+      <result property="BR_BranchName" column="BR_BranchName"/>
+      <result property="BR_Fzr" column="BR_Fzr"/>
+      <result property="BR_Address" column="BR_Address"/>
+      <result property="BR_State" column="BR_State"/>
+    </resultMap>
+  </resultMaps>
+  <!--操作-->
+  <statements>
+    <select id="SelectJG_Branches" resultMap="SelectAllJG_Branches">
+      SELECT
+      BR_ID,
+      BR_BranchCode,
+      BR_BranchName,
+      BR_Fzr,
+      BR_Address,
+      BR_State
+      FROM JG_Branches
+      WHERE  1=1
+      <isNotEmpty property="BR_ID">
+        AND BR_ID = #BR_ID#
+      </isNotEmpty>
+      <isNotEmpty property="BR_xybh">
+        AND BR_BranchCode = #BR_BranchCode#
+      </isNotEmpty>
+      <isNotEmpty property="BR_Bwlsh">
+        AND BR_BranchName = #BR_BranchName#
+      </isNotEmpty>
+      <isNotEmpty property="MI_Jydm">
+        AND BR_Fzr = #BR_Fzr#
+      </isNotEmpty>
+      <isNotEmpty property="MI_DzData">
+        AND BR_Address = #BR_Address#
+      </isNotEmpty>
+      <isNotEmpty property="MI_State">
+        AND BR_State = #BR_State#
+      </isNotEmpty>
+    </select>
+    <insert id="AddJG_Branches" parameterClass="JG_BranchesInfo">
+      INSERT INTO JG_Branches (BR_ID,
+      BR_BranchCode,
+      BR_BranchName,
+      BR_Fzr,
+      BR_Address,
+      BR_State)
+      VALUES (#BR_ID#,#BR_BranchCode#,#BR_BranchName#,#BR_Fzr#,#BR_Address#,#BR_State#)
+    </insert>
+    <update id ="UpdateJG_Branches" parameterClass="JG_BranchesInfo">
+      UPDATE JG_Branches
+      SET
+      BR_BranchCode = #BR_BranchCode#,
+      BR_BranchName = #BR_BranchName#,
+      BR_Fzr = #BR_Fzr#,
+      BR_Address = #BR_Address#,
+      BR_State = #BR_State#
+      WHERE BR_ID = #BR_ID#
+    </update>
+    <delete id="DeleteJG_Branches" parameterClass="string">
+      DELETE JG_Branches WHERE BR_ID = #value#
+    </delete>
+  </statements>
+</sqlMap>
+

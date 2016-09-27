@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBBDB0FA-8138-4B95-A4E0-AB88BF5CFE12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FinancialRegulation</RootNamespace>
+    <AssemblyName>FinancialRegulation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AvalonDock">
+      <HintPath>..\Utils\AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Encryption4Net">
+      <HintPath>..\Utils\Encryption4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Users\root\Desktop\microsoft.office.interop.excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\Utils\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="system.windows.interactivity">
+      <HintPath>..\Utils\system.windows.interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Page\Account&amp;Point\AccountSearchVM.cs" />
+    <Compile Include="Page\Account&amp;Point\AccountSearch.xaml.cs">
+      <DependentUpon>AccountSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Accrual\BillCheckWindow.xaml.cs">
+      <DependentUpon>BillCheckWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Accrual\BillCheckWindowVm.cs" />
+    <Compile Include="Page\Accrual\InterestCheckBill.xaml.cs">
+      <DependentUpon>InterestCheckBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Accrual\InterestCheckBillVM.cs" />
+    <Compile Include="Page\Accrual\DateSelectWindow.xaml.cs">
+      <DependentUpon>DateSelectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Accrual\DateSelectWindowVm.cs" />
+    <Compile Include="Page\Fund\FundInfoAddToEdit.xaml.cs">
+      <DependentUpon>FundInfoAddToEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Fund\FundInfoEditVM.cs" />
+    <Compile Include="Page\Fund\ReverseTrade.xaml.cs">
+      <DependentUpon>ReverseTrade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Fund\ReverseTradeVM.cs" />
+    <Compile Include="Page\Other\BillCheckWindow.xaml.cs">
+      <DependentUpon>BillCheckWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Other\BillCheckWindowVm.cs" />
+    <Compile Include="Page\Other\TodayCheckBill.xaml.cs">
+      <DependentUpon>TodayCheckBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Other\TodayCheckBillVM.cs" />
+    <Compile Include="Page\Other\RefundManage.xaml.cs">
+      <DependentUpon>RefundManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Other\RefundInfoManageVM.cs" />
+    <Compile Include="Page\Other\RefundInfoAddToEdit.xaml.cs">
+      <DependentUpon>RefundInfoAddToEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Other\RefundInfoAddToEditVM.cs" />
+    <Compile Include="Page\Pay\PayInfoAddToEdit.xaml.cs">
+      <DependentUpon>PayInfoAddToEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Pay\PayInfoCheck.xaml.cs">
+      <DependentUpon>PayInfoCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Pay\PayInfoCheckVM.cs" />
+    <Compile Include="Page\Pay\PayInfoAddToEditVM.cs" />
+    <Compile Include="Page\Pay\PayManage.xaml.cs">
+      <DependentUpon>PayManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Pay\PayManageVM.cs" />
+    <Compile Include="Page\Pay\ReverseTrade.xaml.cs">
+      <DependentUpon>ReverseTrade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Pay\ReverseTradeVM.cs" />
+    <Compile Include="Page\UnknowBill\FundInfoManage.xaml.cs">
+      <DependentUpon>FundInfoManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UnknowBill\FundInfoManageVM.cs" />
+    <Compile Include="Page\UnknowBill\UnKnownInfoCheck.xaml.cs">
+      <DependentUpon>UnKnownInfoCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UnknowBill\UnKnownInfoCheckVM.cs" />
+    <Compile Include="Tools\SexConvert.cs" />
+    <Compile Include="Tools\ButtonEnableConvert.cs" />
+    <Compile Include="Tools\DateTimeConvert.cs" />
+    <Compile Include="Tools\LinkSateConvert.cs" />
+    <Compile Include="Tools\ZQLBConverter.cs" />
+    <Compile Include="UserCotrol\DataSetToModel.cs" />
+    <Compile Include="UserCotrol\DutySetVM.cs" />
+    <Compile Include="UserCotrol\UserInfoVM.cs" />
+    <Compile Include="UserCotrol\UserMaintenanceVM.cs" />
+    <Compile Include="ViewModel\Check\CheckHelp.cs" />
+    <Compile Include="Page\Account&amp;Point\OpenAccountAddToEdit.xaml.cs">
+      <DependentUpon>OpenAccountAddToEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Account&amp;Point\OpenAccountEditVM.cs" />
+    <Compile Include="Page\Account&amp;Point\OpenAccountManage.xaml.cs">
+      <DependentUpon>OpenAccountManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Account&amp;Point\OpenAccountManageVM.cs" />
+    <Compile Include="Page\Account&amp;Point\PointEdit.xaml.cs">
+      <DependentUpon>PointEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Account&amp;Point\PointEditVM.cs" />
+    <Compile Include="Page\Account&amp;Point\PointManage.xaml.cs">
+      <DependentUpon>PointManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Account&amp;Point\PointManageVM.cs" />
+    <Compile Include="Page\Accrual\PayAccrualManage.xaml.cs">
+      <DependentUpon>PayAccrualManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Accrual\PayAccrualManageVM.cs" />
+    <Compile Include="Page\Fund\FundInfoCheck.xaml.cs">
+      <DependentUpon>FundInfoCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Fund\FundInfoCheckVM.cs" />
+    <Compile Include="Page\Fund\FundInfoManage.xaml.cs">
+      <DependentUpon>FundInfoManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Fund\FundInfoManageVM.cs" />
+    <Compile Include="Page\UnknowBill\UnKnownInfoManage.xaml.cs">
+      <DependentUpon>UnKnownInfoManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UnknowBill\UnKnownInfoManageVM.cs" />
+    <Compile Include="Page\UnknowBill\UnKnownInfoAddToEdit.xaml.cs">
+      <DependentUpon>UnKnownInfoAddToEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UnknowBill\UnKnownInfoAddToEditVM.cs" />
+    <Compile Include="Page\Fund\UnKnownInfoAdd.xaml.cs">
+      <DependentUpon>UnKnownInfoAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Fund\UnKnownInfoAddVM.cs" />
+    <Compile Include="Page\Other\InterestRateManager.xaml.cs">
+      <DependentUpon>InterestRateManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Other\InterestRateVM.cs" />
+    <Compile Include="Page\Other\SysConfigEdit.xaml.cs">
+      <DependentUpon>SysConfigEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Other\SysConfigEditVM.cs" />
+    <Compile Include="Page\Other\InterestRateEditVM.cs" />
+    <Compile Include="Page\Other\InterestRateEdit.xaml.cs">
+      <DependentUpon>InterestRateEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Exception\CheckException.cs" />
+    <Compile Include="Tools\CommonConvert.cs" />
+    <Compile Include="Tools\DataConvert.cs" />
+    <Compile Include="Tools\FundRedChongConvert.cs" />
+    <Compile Include="Tools\HelpClass.cs" />
+    <Compile Include="Tools\JGYHConverter.cs" />
+    <Compile Include="Tools\LCconvert.cs" />
+    <Compile Include="Tools\SessionObj.cs" />
+    <Compile Include="Tools\String2BoolConverter.cs" />
+    <Compile Include="ViewModel\BaseEditVM.cs" />
+    <Compile Include="ViewModel\BaseManageVM.cs" />
+    <Compile Include="ViewModel\BaseVM.cs" />
+    <Compile Include="ViewModel\InterFace\ISearch.cs" />
+    <Compile Include="UserCotrol\DutyInfo.xaml.cs">
+      <DependentUpon>DutyInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol\DutyMaintain.xaml.cs">
+      <DependentUpon>DutyMaintain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol\DutyInfoVM.cs" />
+    <Compile Include="UserCotrol\DutyModel.cs" />
+    <Compile Include="UserCotrol\DutySet.xaml.cs">
+      <DependentUpon>DutySet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol\DutyMaintainVM.cs" />
+    <Compile Include="UserCotrol\FunSetForm.xaml.cs">
+      <DependentUpon>FunSetForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol\UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol\UserMaintenance.xaml.cs">
+      <DependentUpon>UserMaintenance.xaml</DependentUpon>
+    </Compile>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="BaseWindow.cs" />
+    <Compile Include="Tools\GridHelper.cs" />
+    <Compile Include="Tools\PassWordHelper.cs" />
+    <Compile Include="Tools\RowNumberPresenter.cs" />
+    <Compile Include="Tools\ZJXZConverter.cs" />
+    <Compile Include="UI\DutyMaintainWindow.xaml.cs">
+      <DependentUpon>DutyMaintainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserMaintenanceWindow.xaml.cs">
+      <DependentUpon>UserMaintenanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol2\DutyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserCotrol2\DutyInfo.designer.cs">
+      <DependentUpon>DutyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol2\DutyMaintain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCotrol2\DutyMaintain.designer.cs">
+      <DependentUpon>DutyMaintain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol2\DutySet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserCotrol2\DutySet.designer.cs">
+      <DependentUpon>DutySet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol2\FunSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserCotrol2\FunSetForm.designer.cs">
+      <DependentUpon>FunSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol2\MouseWheelTree.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserCotrol2\UserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserCotrol2\UserInfo.designer.cs">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCotrol2\UserMaintenance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCotrol2\UserMaintenance.designer.cs">
+      <DependentUpon>UserMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Page\Account&amp;Point\OpenAccountAddToEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Account&amp;Point\OpenAccountManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Account&amp;Point\PointEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Account&amp;Point\PointManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Account&amp;Point\AccountSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Accrual\BillCheckWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Accrual\PayAccrualManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Accrual\InterestCheckBill.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Accrual\DateSelectWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Fund\FundInfoCheck.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Fund\FundInfoManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Fund\ReverseTrade.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\UnknowBill\FundInfoManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\UnknowBill\UnKnownInfoManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\UnknowBill\UnKnownInfoAddToEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Fund\UnKnownInfoAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Fund\FundInfoAddToEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Other\BillCheckWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Other\TodayCheckBill.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Other\InterestRateManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\Other\SysConfigEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Other\InterestRateEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Other\RefundManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Other\RefundInfoAddToEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Pay\PayInfoAddToEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Pay\PayInfoCheck.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Pay\PayManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\Pay\ReverseTrade.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page\UnknowBill\UnKnownInfoCheck.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Template\ButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Template\ColorStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Template\ControlStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Template\UC_Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UI\DutyMaintainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\UserMaintenanceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserCotrol\DutyInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCotrol\DutyMaintain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCotrol\DutySet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCotrol\FunSetForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCotrol\UserInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCotrol\UserMaintenance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCotrol2\DutyInfo.resx">
+      <DependentUpon>DutyInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCotrol2\DutyMaintain.resx">
+      <DependentUpon>DutyMaintain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCotrol2\DutySet.resx">
+      <DependentUpon>DutySet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCotrol2\FunSetForm.resx">
+      <DependentUpon>FunSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCotrol2\UserInfo.resx">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCotrol2\UserMaintenance.resx">
+      <DependentUpon>UserMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseClient\BaseClient.csproj">
+      <Project>{97976E0B-69D3-4648-89A0-FF792A746BDA}</Project>
+      <Name>BaseClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{1A52CA30-9975-46BD-A9F2-3680B44BCD4E}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FundsRegulatoryClient\FundsRegulatoryClient.csproj">
+      <Project>{602f963a-276d-43a4-80dd-71f0b5a172ce}</Project>
+      <Name>FundsRegulatoryClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
+      <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
+      <Name>MahApps.Metro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Message\Message.csproj">
+      <Project>{f754d6a1-1fbf-42f5-9f70-b0291275f407}</Project>
+      <Name>Message</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportManage\ReportManage.csproj">
+      <Project>{57BA4951-1C84-4EA1-AD37-CF2B078745AE}</Project>
+      <Name>ReportManage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\main-bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

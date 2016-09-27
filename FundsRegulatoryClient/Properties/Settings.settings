@@ -1,0 +1,81 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FundsRegulatoryClient.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="HSIS_Client_ParmItemSrv_ParmItemSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/ParmItemSrv.asmx</Value>
+    </Setting>
+    <Setting Name="HSIS_Client_BaseManagerSrv_BaseManagerSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/BaseManagerSrv.asmx</Value>
+    </Setting>
+    <Setting Name="HSIS_Client_CommonManagerSrv_CommonManagerSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/CommonManagerSrv.asmx</Value>
+    </Setting>
+    <Setting Name="HSIS_Client_UserManageSrv_UserManageSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/UserManageSrv.asmx</Value>
+    </Setting>
+    <Setting Name="HSIS_Client_UserDutyManagerSrv_UserDutyManagerSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/UserDutyManagerSrv.asmx</Value>
+    </Setting>
+    <Setting Name="HSIS_Client_DutyManageSrv_DutyManageSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/DutyManageSrv.asmx</Value>
+    </Setting>
+    <Setting Name="HSIS_Client_FunSrv_FunSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/FunSrv.asmx</Value>
+    </Setting>
+    <Setting Name="Client_JG_AccountManageSrv_JG_AccountManageService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_AccountManageService.asmx</Value>
+    </Setting>
+    <Setting Name="Client_JG_AmountCollectSrv_JG_AmountCollectService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_AmountCollectService.asmx</Value>
+    </Setting>
+    <Setting Name="Client_JG_MessageInfoSrv_JG_MessageInfoService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_MessageInfoService.asmx</Value>
+    </Setting>
+    <Setting Name="Client_JG_BranchesSrv_JG_BranchesService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_BranchesService.asmx</Value>
+    </Setting>
+    <Setting Name="Client_JG_SpvProtocolSrv_JG_SpvProtocolService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_SpvProtocolService.asmx</Value>
+    </Setting>
+    <Setting Name="Client_JG_DepositSrv_JG_DepositService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_DepositService.asmx</Value>
+    </Setting>
+    <Setting Name="Client_BillSrv_BillSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/BillSrv.asmx</Value>
+    </Setting>
+    <Setting Name="Client_HelpSrv_HelpService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/HelpService.asmx</Value>
+    </Setting>
+    <Setting Name="FundsRegulatoryClient_RegulatorySrv_RegulatorySrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/RegulatorySrv.asmx</Value>
+    </Setting>
+    <Setting Name="FundsRegulatoryClient_SysConfigSrv_SysConfigService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/SysConfigService.asmx</Value>
+    </Setting>
+    <Setting Name="FinancialRegulationClient_JG_InterestRateSrv_JG_InterestRateSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_InterestRateSrv.asmx</Value>
+    </Setting>
+    <Setting Name="FinancialRegulationClient_BasicFunctionSrv_BasicFunctionSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSrv/BasicFunctionSrv.asmx</Value>
+    </Setting>
+    <Setting Name="FinancialRegulationClient_BillOperateSrv_BillOperateSrv" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/BillOperateSrv.asmx</Value>
+    </Setting>
+    <Setting Name="FinancialRegulationClient_JG_AdjustSrv_JG_AdjustService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_AdjustService.asmx</Value>
+    </Setting>
+    <Setting Name="FinancialRegulationClient_InterestService_InterestService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/InterestService.asmx</Value>
+    </Setting>
+    <Setting Name="FinancialRegulationClient_RefunTradeSrv_RefunTradeService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/RefunTradeService.asmx</Value>
+    </Setting>
+    <Setting Name="FinancialRegulationClient_SqlTransSvr_SqlTrans" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/SqlTrans.asmx</Value>
+    </Setting>
+    <Setting Name="FinancialRegulationClient_JG_PaymentSrv_JG_PaymentService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/FinancialRegulationSRV/JG_PaymentService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

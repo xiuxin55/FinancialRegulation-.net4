@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetDevelopersBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:Bill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Bill">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProtocolNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContractRecordNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Money" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="FundsNature" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Dtime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SDtime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EDtime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDevelopersBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDevelopersBillResult" type="tns:ArrayOfBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBill">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Bill" nillable="true" type="tns:Bill" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCorpBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:Bill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCorpBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCorpBillResult" type="tns:ArrayOfBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDevelopersBillSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDevelopersBill" />
+  </wsdl:message>
+  <wsdl:message name="GetDevelopersBillSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDevelopersBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCorpBillSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCorpBill" />
+  </wsdl:message>
+  <wsdl:message name="GetCorpBillSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCorpBillResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BillSrvSoap">
+    <wsdl:operation name="GetDevelopersBill">
+      <wsdl:input message="tns:GetDevelopersBillSoapIn" />
+      <wsdl:output message="tns:GetDevelopersBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCorpBill">
+      <wsdl:input message="tns:GetCorpBillSoapIn" />
+      <wsdl:output message="tns:GetCorpBillSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BillSrvSoap" type="tns:BillSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDevelopersBill">
+      <soap:operation soapAction="http://tempuri.org/GetDevelopersBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCorpBill">
+      <soap:operation soapAction="http://tempuri.org/GetCorpBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BillSrvSoap12" type="tns:BillSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDevelopersBill">
+      <soap12:operation soapAction="http://tempuri.org/GetDevelopersBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCorpBill">
+      <soap12:operation soapAction="http://tempuri.org/GetCorpBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BillSrv">
+    <wsdl:port name="BillSrvSoap" binding="tns:BillSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/BillSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BillSrvSoap12" binding="tns:BillSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/BillSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

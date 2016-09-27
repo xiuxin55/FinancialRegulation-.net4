@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_DbAndDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="db" type="tns:DayBalance" />
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:DepositFund" />
+            <s:element minOccurs="0" maxOccurs="1" name="rt" type="tns:RefundTrade" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DayBalance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DB_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DB_AccountNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_Interest" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_Balance" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_Time" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_InterestRate" nillable="true" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DepositFund">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PackageLength" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepositAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSiteID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTellerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepositTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeSerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CheckTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReverseInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReverseTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RefundTrade">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PackageLength" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BussinessCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSerialNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RefundAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefundInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RefundTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bankwebsite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountTeller" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RT_Type" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Update_DbAndDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Update_DbAndDFResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="db" type="tns:DayBalance" />
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:FundPayment" />
+            <s:element minOccurs="0" maxOccurs="1" name="rt" type="tns:RefundTrade" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FundPayment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PackageLength" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmOperatorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmOperatorID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSiteID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTellerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiverAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiverName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiveBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentConfirmTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReverseInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReverseTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="dsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="db" type="tns:DayBalance" />
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:DepositFund" />
+            <s:element minOccurs="1" maxOccurs="1" name="i" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="depositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="depositResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="db" type="tns:DayBalance" />
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:FundPayment" />
+            <s:element minOccurs="1" maxOccurs="1" name="i" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="payResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="payResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pay2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dblist" type="tns:ArrayOfDayBalance" />
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:SeasonInterest" />
+            <s:element minOccurs="1" maxOccurs="1" name="i" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDayBalance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DayBalance" nillable="true" type="tns:DayBalance" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SeasonInterest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_AccountNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SI_Money" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SI_Time" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_Memo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_CertificateNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_BankTellerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_BankSerialNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="pay2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pay2Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAccountSIDB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="acc" type="tns:JG_AccountManageInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="si" type="tns:SeasonInterest" />
+            <s:element minOccurs="0" maxOccurs="1" name="db" type="tns:DayBalance" />
+            <s:element minOccurs="1" maxOccurs="1" name="i" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JG_AccountManageInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AM_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AM_zhmc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AM_CorpName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AM_ItemName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AM_ProjectCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AM_JgAccount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AM_CreateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AM_UseFlag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AM_Person" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AM_BankCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateAccountSIDBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateAccountSIDBResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_DbAndDFSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_DbAndDF" />
+  </wsdl:message>
+  <wsdl:message name="Update_DbAndDFSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_DbAndDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="dsSoapIn">
+    <wsdl:part name="parameters" element="tns:ds" />
+  </wsdl:message>
+  <wsdl:message name="dsSoapOut">
+    <wsdl:part name="parameters" element="tns:dsResponse" />
+  </wsdl:message>
+  <wsdl:message name="depositSoapIn">
+    <wsdl:part name="parameters" element="tns:deposit" />
+  </wsdl:message>
+  <wsdl:message name="depositSoapOut">
+    <wsdl:part name="parameters" element="tns:depositResponse" />
+  </wsdl:message>
+  <wsdl:message name="paySoapIn">
+    <wsdl:part name="parameters" element="tns:pay" />
+  </wsdl:message>
+  <wsdl:message name="paySoapOut">
+    <wsdl:part name="parameters" element="tns:payResponse" />
+  </wsdl:message>
+  <wsdl:message name="pay2SoapIn">
+    <wsdl:part name="parameters" element="tns:pay2" />
+  </wsdl:message>
+  <wsdl:message name="pay2SoapOut">
+    <wsdl:part name="parameters" element="tns:pay2Response" />
+  </wsdl:message>
+  <wsdl:message name="CreateAccountSIDBSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateAccountSIDB" />
+  </wsdl:message>
+  <wsdl:message name="CreateAccountSIDBSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateAccountSIDBResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SqlTransSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndDF">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新每日余额和存款表和退票的数据库事务</wsdl:documentation>
+      <wsdl:input message="tns:Update_DbAndDFSoapIn" />
+      <wsdl:output message="tns:Update_DbAndDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndPF">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新每日余额和支付表和退票的数据库事务</wsdl:documentation>
+      <wsdl:input name="ds" message="tns:dsSoapIn" />
+      <wsdl:output name="ds" message="tns:dsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndDF">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新每日余额和存款表的数据库事务</wsdl:documentation>
+      <wsdl:input name="deposit" message="tns:depositSoapIn" />
+      <wsdl:output name="deposit" message="tns:depositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndPF">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新每日余额和支付表的数据库事务</wsdl:documentation>
+      <wsdl:input name="pay" message="tns:paySoapIn" />
+      <wsdl:output name="pay" message="tns:paySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndSI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新每日余额和季度结息表的数据库事务</wsdl:documentation>
+      <wsdl:input name="pay2" message="tns:pay2SoapIn" />
+      <wsdl:output name="pay2" message="tns:pay2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccountSIDB">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">创建账户时插入季节、每日余额表</wsdl:documentation>
+      <wsdl:input message="tns:CreateAccountSIDBSoapIn" />
+      <wsdl:output message="tns:CreateAccountSIDBSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SqlTransSoap" type="tns:SqlTransSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndDF">
+      <soap:operation soapAction="http://tempuri.org/Update_DbAndDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndPF">
+      <soap:operation soapAction="http://tempuri.org/ds" style="document" />
+      <wsdl:input name="ds">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ds">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndDF">
+      <soap:operation soapAction="http://tempuri.org/deposit" style="document" />
+      <wsdl:input name="deposit">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deposit">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndPF">
+      <soap:operation soapAction="http://tempuri.org/pay" style="document" />
+      <wsdl:input name="pay">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="pay">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndSI">
+      <soap:operation soapAction="http://tempuri.org/pay2" style="document" />
+      <wsdl:input name="pay2">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="pay2">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccountSIDB">
+      <soap:operation soapAction="http://tempuri.org/CreateAccountSIDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SqlTransSoap12" type="tns:SqlTransSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndDF">
+      <soap12:operation soapAction="http://tempuri.org/Update_DbAndDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndPF">
+      <soap12:operation soapAction="http://tempuri.org/ds" style="document" />
+      <wsdl:input name="ds">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ds">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndDF">
+      <soap12:operation soapAction="http://tempuri.org/deposit" style="document" />
+      <wsdl:input name="deposit">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deposit">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndPF">
+      <soap12:operation soapAction="http://tempuri.org/pay" style="document" />
+      <wsdl:input name="pay">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="pay">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_DbAndSI">
+      <soap12:operation soapAction="http://tempuri.org/pay2" style="document" />
+      <wsdl:input name="pay2">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="pay2">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccountSIDB">
+      <soap12:operation soapAction="http://tempuri.org/CreateAccountSIDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SqlTrans">
+    <wsdl:port name="SqlTransSoap" binding="tns:SqlTransSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/SqlTrans.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SqlTransSoap12" binding="tns:SqlTransSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/SqlTrans.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

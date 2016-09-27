@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="Apply" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="MenuItem" type="MODEL.MenuItem,MODEL" />
+  </alias>
+  <resultMaps>
+    <resultMap id="MenuTreeMap" class="MenuItem">
+      <result property="ID" column="MenuID"/>
+      <result property="Code" column="CODE"/>
+      <result property="Name" column="NAME"/>
+      <result property="Icon" column="ICON"/>
+      <result property="Path" column="PATH"/>
+      <result property="Layer" column="LAYER"/>
+      <result property="Parent" column="PARENT"/>
+      <result property="IsDetail" column="ISDETAIL"/>
+      <result property="InvokingConfig" column="INVOKINGCONFIG"/>
+      <result property="Ordinal" column="ORDINAL"/>
+      <result property="AssemblyName" column="ASSEMBLYNAME"/>
+      <result property="WindowName" column="WINDOWNAME"/>
+      <result property="Children" column="MenuID" select="GetChildrenMenu" />
+    </resultMap>
+    <resultMap id="MenuItemMap" class="MenuItem">
+      <result property="ID" column="MenuID"/>
+      <result property="Code" column="CODE"/>
+      <result property="Name" column="NAME"/>
+      <result property="Icon" column="ICON"/>
+      <result property="Path" column="PATH"/>
+      <result property="Layer" column="LAYER"/>
+      <result property="Parent" column="PARENT"/>
+      <result property="IsDetail" column="ISDETAIL"/>
+      <result property="InvokingConfig" column="INVOKINGCONFIG"/>
+      <result property="Ordinal" column="ORDINAL"/>
+      <result property="AssemblyName" column="ASSEMBLYNAME"/>
+      <result property="WindowName" column="WINDOWNAME"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <sql id="MenuItemCoulmns"> MenuID,CODE,NAME,ICON,PATH,LAYER,PARENT,ISDETAIL,INVOKINGCONFIG,ORDINAL,ASSEMBLYNAME,WINDOWNAME </sql>
+
+    <select id="GetDspFuncInfoByUserId" resultMap="MenuItemMap">
+      SELECT
+      <include refid="MenuItemCoulmns"/>
+      FROM DSPFUNC
+      WHERE MenuID in (SELECT FunID AS ID FROM DutyFun WHERE DutyID in (SELECT DutyID FROM UserDuty WHERE UserID=#UserId#))
+      ORDER BY Layer,Ordinal
+    </select>
+    
+    <select id="GetMenu" resultMap="MenuTreeMap" >
+      select
+      <include refid="MenuItemCoulmns" />
+      from DSPFUNC where LAYER=1 order by ORDINAL
+    </select>
+
+    <select id="GetChildrenMenu" resultMap="MenuTreeMap" >
+      select
+      <include refid="MenuItemCoulmns" />
+      from DSPFUNC where PARENT=#ID# order by ORDINAL
+    </select>
+
+    <select id="GetMenuItem" resultMap="MenuItemMap" >
+      select
+      <include refid="MenuItemCoulmns" />
+      from DSPFUNC order by Layer,ORDINAL
+    </select>
+    
+    <insert id="InsertMenuItem" parameterClass="MenuItem">
+      begin
+      delete DSPFUNC where MenuID=#ID#;
+      insert into DSPFUNC(
+      <include refid="MenuItemCoulmns" />
+      )
+      values(
+      #ID#,#Code#,#Name#,#Icon#,#Path#,#Layer#,#Parent#,#IsDetail#,#InvokingConfig#,#Ordinal#,#AssemblyName#,#WindowName#
+      );
+      end;
+    </insert>
+    
+    <update id="UpdateMenuItem" parameterClass="MenuItem">
+      update DSPFUNC
+      <dynamic prepend="set">
+        <isNotEmpty prepend="," property="Code">Code=#Code#</isNotEmpty>
+        <isNotEmpty prepend="," property="Name">Name=#Name#</isNotEmpty>
+        <isNotEmpty prepend="," property="Icon">Icon=#Icon#</isNotEmpty>
+        <isNotEmpty prepend="," property="Path">Path=#Path#</isNotEmpty>
+        <isNotEmpty prepend="," property="Layer">Layer=#Layer#</isNotEmpty>
+        <isNotEmpty prepend="," property="Parent">Parent=#Parent#</isNotEmpty>
+        <isNotEmpty prepend="," property="IsDetail">IsDetail=#IsDetail#</isNotEmpty>
+        <isNotEmpty prepend="," property="InvokingConfig">InvokingConfig=#InvokingConfig#</isNotEmpty>
+        <isNotEmpty prepend="," property="Ordinal">Ordinal=#Ordinal#</isNotEmpty>
+      </dynamic>
+      where MenuID=#ID#
+    </update>
+    <delete id="DeleteMenuItem" parameterClass="MenuItem">
+      delete   DSPFUNC where MenuID=#ID#
+    </delete>
+  </statements>
+</sqlMap>

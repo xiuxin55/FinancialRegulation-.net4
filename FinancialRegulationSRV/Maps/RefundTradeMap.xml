@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="RefundTrade" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="RefundTrade" type="MODEL.NewModel.RefundTrade,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllRefundTrade" class="RefundTrade">
+      <result property="BankCode" column="RT_BankCode"/>
+      <result property="ID" column="RT_ID"/>
+      <result property="BankSerialNum" column="RT_BankSerialNum"/>
+      <result property="PaymentID" column="RT_PaymentID"/>
+      <result property="RefundAmount" column="RT_RefundAmount"/>
+      <result property="RefundInstr" column="RT_RefundInstr"/>
+      <result property="RefundTime" column="RT_RefundTime"/>
+      <result property="Bankwebsite" column="RT_Bankwebsite"/>
+      <result property="AccountTeller" column="RT_AccountTeller"/>
+      <result property="AccountName" column="RT_AccountName"/>
+      <result property="SerialNum" column="RT_SerialNum"/>
+      <result property="BussinessCode" column="RT_BussinessCode"/>
+      <result property="RT_Type" column="RT_Type"/>
+      
+      
+
+    </resultMap>
+    <resultMap id="Selectresult" class="RefundTrade">
+      <!--<result property="BankCode" column="BankCode"/>
+      
+      <result property="BankSerialNum" column="BankSerialNum"/>-->
+      <result property="ID" column="ID"/>
+      <!--<result property="PaymentID" column="PaymentID"/>-->
+      <result property="RefundAmount" column="RefundAmount"/>
+      <!--<result property="RefundInstr" column="RefundInstr"/>
+     
+      
+      <result property="AccountTeller" column="AccountTeller"/>-->
+      <result property="AccountName" column="AccountName"/>
+      <!--<result property="SerialNum" column="SerialNum"/>-->
+      <result property="BussinessCode" column="BussinessCode"/>
+      <result property="RefundTime" column="RefundTime"/>
+      <result property="Bankwebsite" column="Bankwebsite"/>
+    </resultMap>
+  </resultMaps>
+  <!--操作-->
+  <statements>
+    <select id="SelectRefundTrade" resultMap="SelectAllRefundTrade">
+      
+      SELECT * FROM  RefundTrade
+    </select>
+      <select id="SearchRefunding" resultMap="Selectresult" parameterClass="RefundTrade">
+        SELECT * FROM(
+        select
+        DE_ID as ID
+        ,DE_BusinessCode as BussinessCode
+        ,DE_DepositAmount as RefundAmount
+        ,DE_DepositAccount as AccountName
+        ,DE_ProjectCode as ProjectCode
+        ,DE_DepositTime as RefundTime
+        ,DE_BankSiteID as Bankwebsite
+        from JG_Deposit
+        where  DE_DepositNum=#PaymentID#<!--DE_BusinessCode='03' and-->
+        union
+        select
+        PA_ID as ID
+        ,PA_BusinessCode as BussinessCode
+        ,PA_PaymentAmount as RefundAmount
+        ,PA_PayAccount as AccountName
+        ,PA_ProjectCode as ProjectCode
+        ,PA_PaymentTime as RefundTime
+        ,PA_BankSiteID as Bankwebsite
+        from JG_Payment
+        where PA_PaymentID = #PaymentID#<!--PA_BusinessCode='05'and--> 
+        ) a
+      </select>
+    <insert id ="AddRefundTrade" parameterClass="RefundTrade">
+      insert into RefundTrade(
+      RT_ID,
+      RT_BankCode,
+      RT_BankSerialNum,
+      RT_PaymentID,
+      RT_RefundAmount,
+      RT_RefundInstr,
+      RT_RefundTime,
+      RT_Bankwebsite,
+      RT_AccountTeller,
+      RT_AccountName,
+      RT_SerialNum,
+      RT_AccountID,
+      RT_Type,
+      RT_BussinessCode
+      )
+      values(
+      #ID#,
+      #BankCode#,
+      #BankSerialNum#,
+      #PaymentID#,
+      #RefundAmount#,
+      #RefundInstr#,
+      #RefundTime#,
+      #Bankwebsite#,
+      #AccountTeller#,
+      #AccountName#,
+      #SerialNum#,
+      #AccountID#,
+      #RT_Type#,
+      #BussinessCode#
+      )
+    </insert>
+    <!--<update id ="UpdateRefundTrade" parameterClass="RefundTrade">
+      update DayBalance
+      set DB_Interest=(case when #BusinessCode#='03' Then DB_Interest-#RefundAmount# else DB_Interest+#RefundAmount# end)
+      where DB_ID=#ID# and  DB_Time = #RefundTime# ;
+      update 
+    </update>-->
+  </statements>
+</sqlMap>

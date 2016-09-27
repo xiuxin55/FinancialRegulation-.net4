@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="JG_AccountManageInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="JG_AccountManageInfo" type="MODEL.JG_AccountManageInfo,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllJG_AccountManage" class="JG_AccountManageInfo">
+      <result property="AM_ID" column="AM_ID"/>
+      <result property="AM_zhmc" column="AM_zhmc"/>
+     
+      <result property="AM_ItemName" column="AM_ItemName"/>
+      <result property="AM_JgAccount" column="AM_JgAccount"/>
+      <result property="AM_CreateDate" column="AM_CreateDate"/>
+      <result property="AM_UseFlag" column="AM_UseFlag"/>
+      <result property="AM_Person" column="AM_Person"/>
+      <result property="AM_BankCode" column="AM_BankCode"/>
+      <result property="AM_CorpName" column="AM_CorpName"/>
+      <result property="AM_ProjectCode" column="AM_ProjectCode"/>
+      
+    </resultMap>
+  </resultMaps>
+  <!--操作-->
+  <statements>
+   
+    <!--<select id="SelectJG_AccountManage" resultMap="SelectAllJG_AccountManage">
+      SELECT *
+      FROM JG_AccountManage
+     
+    </select>-->
+    <select id="SelectJG_AccountManage" resultMap="SelectAllJG_AccountManage">
+      SELECT
+      AM_ID,
+      AM_zhmc,
+      AM_ItemName,
+      AM_JgAccount,
+      AM_CreateDate,
+      AM_UseFlag,
+      AM_Person,
+      AM_BankCode,
+      AM_CorpName,
+      AM_ProjectCode
+      FROM JG_AccountManage
+      WHERE  1=1
+      <isNotEmpty property="AM_zhmc">
+      AND AM_zhmc =#AM_zhmc#
+    </isNotEmpty>
+    <isNotEmpty property="AM_ItemName">
+      AND AM_ItemName =#AM_ItemName#
+    </isNotEmpty>
+    <isNotEmpty property="AM_JgAccount">
+      AND AM_JgAccount =#AM_JgAccount#
+    </isNotEmpty>
+    <isNotEmpty property="AM_CreateDate">
+      AND AM_CreateDate=#AM_CreateDate#
+    </isNotEmpty>
+      <isNotEmpty property="AM_UseFlag">
+        AND AM_UseFlag =#AM_UseFlag#
+      </isNotEmpty>
+    <isNotEmpty property="AM_Person">
+      AND AM_Person =#AM_Person#
+    </isNotEmpty>
+    <isNotEmpty property="AM_BankCode">
+      AND AM_BankCode =#AM_BankCode#
+    </isNotEmpty>
+    <isNotEmpty property="AM_CorpName">
+      AND AM_CorpName = #AM_CorpName#
+    </isNotEmpty>
+      <isNotEmpty property="AM_ProjectCode">
+        AND AM_ProjectCode = #AM_ProjectCode#
+      </isNotEmpty>
+      
+    </select>
+    
+    <insert id="AddJG_AccountManage" parameterClass="JG_AccountManageInfo">
+      INSERT INTO JG_AccountManage (AM_ID,
+      AM_zhmc,
+      AM_ItemName,
+      AM_JgAccount,
+      AM_CreateDate,
+      AM_UseFlag,
+      AM_Person,
+      AM_BankCode,AM_CorpName,AM_ProjectCode)
+      VALUES (#AM_ID#,#AM_zhmc#,#AM_ItemName#,#AM_JgAccount#,#AM_CreateDate#,#AM_UseFlag#,#AM_Person#,#AM_BankCode#,#AM_CorpName#,#AM_ProjectCode#);
+    </insert>
+    <update id ="UpdateJG_AccountManage" parameterClass="JG_AccountManageInfo">
+      UPDATE JG_AccountManage
+      SET
+      AM_ID = #AM_ID#
+      <isNotEmpty prepend ="," property="AM_zhmc">
+        AM_zhmc = #AM_zhmc# 
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AM_ItemName">
+        AM_ItemName = #AM_ItemName# 
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AM_JgAccount">
+        AM_JgAccount = #AM_JgAccount# 
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AM_CreateDate">
+        AM_CreateDate = #AM_CreateDate# 
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AM_UseFlag">
+        AM_UseFlag = #AM_UseFlag#  
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AM_Person">
+        AM_Person = #AM_Person# 
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AM_BankCode">
+        AM_BankCode = #AM_BankCode# 
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AM_CorpName">
+        AM_CorpName = #AM_CorpName#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AM_ProjectCode">
+        AM_ProjectCode = #AM_ProjectCode#
+      </isNotEmpty>
+      
+      WHERE AM_ID = #AM_ID#
+    </update>
+    <delete id="DeleteJG_AccountManage" parameterClass="JG_AccountManageInfo">
+      DELETE JG_AccountManage WHERE AM_ID = #AM_ID#
+    </delete>
+  </statements>
+</sqlMap>

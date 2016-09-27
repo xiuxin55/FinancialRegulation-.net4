@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getFunData">
+        <s:complexType />
+      </s:element>
+      <s:element name="getFunDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFunDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFunResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddFunResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFunResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteFunResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDutyFun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dutyid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDutyFunResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDutyFunResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetFun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dutyid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="funids" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetFunResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetFunResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getFunDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getFunData" />
+  </wsdl:message>
+  <wsdl:message name="getFunDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getFunDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFunSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFun" />
+  </wsdl:message>
+  <wsdl:message name="AddFunSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFunResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFunSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFun" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFunSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFunResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDutyFunSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDutyFun" />
+  </wsdl:message>
+  <wsdl:message name="GetDutyFunSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDutyFunResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetFunSoapIn">
+    <wsdl:part name="parameters" element="tns:SetFun" />
+  </wsdl:message>
+  <wsdl:message name="SetFunSoapOut">
+    <wsdl:part name="parameters" element="tns:SetFunResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FunSrvSoap">
+    <wsdl:operation name="getFunData">
+      <wsdl:input message="tns:getFunDataSoapIn" />
+      <wsdl:output message="tns:getFunDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFun">
+      <wsdl:input message="tns:AddFunSoapIn" />
+      <wsdl:output message="tns:AddFunSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFun">
+      <wsdl:input message="tns:DeleteFunSoapIn" />
+      <wsdl:output message="tns:DeleteFunSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDutyFun">
+      <wsdl:input message="tns:GetDutyFunSoapIn" />
+      <wsdl:output message="tns:GetDutyFunSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetFun">
+      <wsdl:input message="tns:SetFunSoapIn" />
+      <wsdl:output message="tns:SetFunSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FunSrvSoap" type="tns:FunSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getFunData">
+      <soap:operation soapAction="http://tempuri.org/getFunData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFun">
+      <soap:operation soapAction="http://tempuri.org/AddFun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFun">
+      <soap:operation soapAction="http://tempuri.org/DeleteFun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDutyFun">
+      <soap:operation soapAction="http://tempuri.org/GetDutyFun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFun">
+      <soap:operation soapAction="http://tempuri.org/SetFun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FunSrvSoap12" type="tns:FunSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getFunData">
+      <soap12:operation soapAction="http://tempuri.org/getFunData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFun">
+      <soap12:operation soapAction="http://tempuri.org/AddFun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFun">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDutyFun">
+      <soap12:operation soapAction="http://tempuri.org/GetDutyFun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFun">
+      <soap12:operation soapAction="http://tempuri.org/SetFun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FunSrv">
+    <wsdl:port name="FunSrvSoap" binding="tns:FunSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/FunSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FunSrvSoap12" binding="tns:FunSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/FunSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

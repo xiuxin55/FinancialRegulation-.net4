@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SelectsTodayBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bfc" type="tns:BillFileCheck" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BillFileCheck">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BussinessCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CertificateNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegulatoryAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TradeType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TradeFundAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="TradeObject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TradeMark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectsTodayBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectsTodayBillResult" type="tns:ArrayOfBillFileCheck" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBillFileCheck">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BillFileCheck" nillable="true" type="tns:BillFileCheck" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectsInterestBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bfc" type="tns:InterestBillCheck" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InterestBillCheck">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RegulatoryAccount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TradeFundAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TradeObject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TradeMark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Instruction" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectsInterestBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectsInterestBillResult" type="tns:ArrayOfInterestBillCheck" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInterestBillCheck">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InterestBillCheck" nillable="true" type="tns:InterestBillCheck" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProduceBillFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="filepath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProduceBillFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProduceBillFileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Upload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filepath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ftpPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SelectsTodayBillSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectsTodayBill" />
+  </wsdl:message>
+  <wsdl:message name="SelectsTodayBillSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectsTodayBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectsInterestBillSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectsInterestBill" />
+  </wsdl:message>
+  <wsdl:message name="SelectsInterestBillSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectsInterestBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProduceBillFileSoapIn">
+    <wsdl:part name="parameters" element="tns:ProduceBillFile" />
+  </wsdl:message>
+  <wsdl:message name="ProduceBillFileSoapOut">
+    <wsdl:part name="parameters" element="tns:ProduceBillFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadSoapIn">
+    <wsdl:part name="parameters" element="tns:Upload" />
+  </wsdl:message>
+  <wsdl:message name="UploadSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BillOperateSrvSoap">
+    <wsdl:operation name="SelectsTodayBill">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">返回今日对账信息</wsdl:documentation>
+      <wsdl:input message="tns:SelectsTodayBillSoapIn" />
+      <wsdl:output message="tns:SelectsTodayBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectsInterestBill">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">返回利息对账信息</wsdl:documentation>
+      <wsdl:input message="tns:SelectsInterestBillSoapIn" />
+      <wsdl:output message="tns:SelectsInterestBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProduceBillFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">生成对账单文件</wsdl:documentation>
+      <wsdl:input message="tns:ProduceBillFileSoapIn" />
+      <wsdl:output message="tns:ProduceBillFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Upload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上传文件</wsdl:documentation>
+      <wsdl:input message="tns:UploadSoapIn" />
+      <wsdl:output message="tns:UploadSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BillOperateSrvSoap" type="tns:BillOperateSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectsTodayBill">
+      <soap:operation soapAction="http://tempuri.org/SelectsTodayBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectsInterestBill">
+      <soap:operation soapAction="http://tempuri.org/SelectsInterestBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProduceBillFile">
+      <soap:operation soapAction="http://tempuri.org/ProduceBillFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Upload">
+      <soap:operation soapAction="http://tempuri.org/Upload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BillOperateSrvSoap12" type="tns:BillOperateSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectsTodayBill">
+      <soap12:operation soapAction="http://tempuri.org/SelectsTodayBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectsInterestBill">
+      <soap12:operation soapAction="http://tempuri.org/SelectsInterestBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProduceBillFile">
+      <soap12:operation soapAction="http://tempuri.org/ProduceBillFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Upload">
+      <soap12:operation soapAction="http://tempuri.org/Upload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BillOperateSrv">
+    <wsdl:port name="BillOperateSrvSoap" binding="tns:BillOperateSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/BillOperateSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BillOperateSrvSoap12" binding="tns:BillOperateSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/BillOperateSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

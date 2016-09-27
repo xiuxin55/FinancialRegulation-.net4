@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="UserInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="UserInfo" type="MODEL.UserInfo,MODEL" />
+  </alias>
+  <resultMaps>
+    <resultMap id="UserInfoMap" class="UserInfo">
+      <result property="UserId" column="USERID"/>
+      <result property="UserCode" column="USERCODE"/>
+      <result property="UserPwd" column="USERPWD"/>
+      <result property="UserName" column="USERNAME"/>
+      <result property="UnitID" column="UNITID"/>
+      <result property="Sex" column="SEX"/>
+      <result property="LinkTel" column="LINKTEL"/>
+      <result property="Email" column="EMAIL"/>
+      <result property="State" column="State"/>
+      <result property="Describe" column="DESCRIBE"/>
+      <result property="LoginIP" column="LOGINIP"/>
+      <result property="Ssq" column="SSQ"/>
+      <result property="menuitem" column="UserId" select="GetDspFuncInfoByUserId"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <sql id="ColumnListUserInfo">
+      USERID,
+      USERCODE,
+      USERPWD,
+      USERNAME,
+      UNITID,
+      SEX,
+      LINKTEL,
+      EMAIL,
+      "State",
+      DESCRIBE,
+      LOGINIP,
+      SSQ
+    </sql>
+
+    <select id="CheckUserInfo" resultMap="UserInfoMap" parameterClass="UserInfo">
+      select
+      <include refid="ColumnListUserInfo" />
+      from UserInfo u left join JG_Branches b on b.BR_BranchCode=u.SSQ Where "State"='1' and BR_State='1'
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="UserCode">UserCode=#UserCode#</isNotEmpty>
+          <isNotEmpty prepend="and" property="UserPwd">UserPwd=#UserPwd#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+
+
+    <update id="UpdateLogin" parameterClass="UserInfo">
+      update UserInfo
+      <dynamic prepend="set">
+        <isNotEmpty prepend="," property="UserPwd">UserPwd=#UserPwd#</isNotEmpty>
+      </dynamic>
+      where USERID=#UserId#
+    </update>
+
+  </statements>
+</sqlMap>

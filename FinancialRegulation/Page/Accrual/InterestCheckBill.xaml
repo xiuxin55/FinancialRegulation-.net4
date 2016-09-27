@@ -1,0 +1,64 @@
+﻿<Controls:MetroContentControl x:Class="FinancialRegulation.Page.InterestCheckBill"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:FinancialRegulation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:tool="clr-namespace:FinancialRegulation.Tools"  
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+              
+             mc:Ignorable="d"
+                  x:Name="FundInfoManageWindow"
+             d:DesignHeight="600" d:DesignWidth="815" >
+    <Controls:MetroContentControl.Resources>
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </Controls:MetroContentControl.Resources>
+    <Grid Name="MainLayout" Style="{StaticResource GridLayout}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <tool:FundRedChongConvert x:Key="FRCConvert"/>
+            <tool:ZJXZConverter x:Key="ZJXZConverter"/>
+            <tool:ZQLBConverter x:Key="ZQLBConverter"/>
+            <tool:DateTimeConvert x:Key="DateTimeConvert"/>
+        </Grid.Resources>
+        <Grid  Grid.Row="0" 
+                             >
+            <DockPanel>
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Height="40" Margin="0,20,20,0" >利息对账</TextBlock>
+            </DockPanel>
+        </Grid>
+        <ToolBar  Grid.Row="1">
+            <Button  Margin="-10,0,0,0"  Content="刷新"  Width="60"   BorderBrush="#FFB1B1B1" Command="{Binding BillTableCommand}" />
+            <Button Margin="6,0,0,0"  Content="生成对账单"   BorderBrush="#FFB1B1B1" Command="{Binding ProduceFileCommand}" Width="Auto" />
+            <Button Margin="6,0,0,0"  Content="上传文件"   BorderBrush="#FFB1B1B1" Command="{Binding UpLoadFileCommand}" Width="Auto" />
+            <Button Margin="6,0,0,0"  Content="发起对账"   BorderBrush="#FFB1B1B1" Command="{Binding SendBillCommand}" Width="Auto" />
+        </ToolBar>
+        <DataGrid Background="White"  Name="dataGrid1" ItemsSource="{Binding Path=Models}" SelectedItem="{Binding CurModel}" Style="{StaticResource DataGridStyle}" Grid.Row="2">
+            <DataGrid.Columns>
+               
+                <DataGridTextColumn Header="监管账号"  Binding="{Binding RegulatoryAccount}"  />
+                
+                <DataGridTextColumn Header="交易金额"  Binding="{Binding TradeFundAmount}" />
+                <DataGridTextColumn Header="到账日期"  Binding="{Binding Time,Converter={StaticResource DateTimeConvert}}" />
+                <DataGridTextColumn Header="项目标识码" Binding="{Binding ProjectCode}"/>
+                <DataGridTextColumn Header="交易对象"  Binding="{Binding TradeObject}"  />
+                <DataGridTextColumn Header="交易标识"  Binding="{Binding TradeMark}" />
+                <DataGridTextColumn Header="银行流水号"  Binding="{Binding BankSerialNumber}"  />
+                <DataGridTextColumn Header="补录说明"  Binding="{Binding Instruction}"  />
+                <!--<DataGridTemplateColumn Header="操作">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate >
+                            <Button Margin="10,0" Command="{Binding DataContext.RedChongCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Content="存款红冲" IsEnabled="{Binding _DE_cklb, Converter={StaticResource FRCConvert}}"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</Controls:MetroContentControl>

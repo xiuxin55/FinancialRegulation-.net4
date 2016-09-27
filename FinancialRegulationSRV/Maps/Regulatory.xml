@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Regulatory"  xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="SpvProtocol" type="MODEL.JG_SpvProtocol,MODEL"/>
+    <typeAlias alias="JG_PaymentInfo" type="MODEL.JG_PaymentInfo,MODEL"/>
+    <typeAlias alias="JG_MessageInfo" type="MODEL.JG_MessageInfo,MODEL"/>
+  </alias>
+
+  <resultMaps>
+    <!--<resultMap id="JG_SpvProtocolNoNameMap" class="JG_SpvProtocol">
+      <result property="SP_ID" column="SP_ID"/>
+      <result property="SP_SaleItemID" column="SP_SaleItemID"/>
+      <result property="SP_XYBH" column="SP_XYBH"/>
+      <result property="SP_JGJG" column="SP_JGJG"/>
+      <result property="SP_CorpCode" column="SP_CorpCode"/>
+      <result property="SP_CorpName" column="SP_CorpName"/>
+      <result property="SP_QM" column="SP_QM"/>
+      <result property="SP_ItemSite" column="SP_ItemSite"/>
+      <result property="SP_ItemName" column="SP_ItemName"/>
+      <result property="SP_JZMJ" column="SP_JZMJ"/>
+      <result property="SP_BuildingNo" column="SP_BuildingNo"/>
+      <result property="SP_GCJSF" column="SP_GCJSF"/>
+      <result property="SP_BKYJF" column="SP_BKYJF"/>
+      <result property="SP_ZDJGYSK" column="SP_ZDJGYSK"/>
+      <result property="SP_QYZHMC" column="SP_QYZHMC"/>
+      <result property="SP_QYKHYHBH" column="SP_QYKHYHBH"/>
+      <result property="SP_QYKHYH" column="SP_QYKHYH"/>
+      <result property="SP_QYZH" column="SP_QYZH"/>
+      <result property="SP_JGJGZHMC" column="SP_JGJGZHMC"/>
+      <result property="SP_JGJGKHYHBH" column="SP_JGJGKHYHBH"/>
+      <result property="SP_JGJGKHYH" column="SP_JGJGKHYH"/>
+      <result property="SP_JGJGZH" column="SP_JGJGZH"/>
+      <result property="SP_XYLC" column="SP_XYLC"/>
+      <result property="SP_XYZT" column="SP_XYZT"/>
+      <result property="SP_IsReject" column="SP_IsReject"/>
+      <result property="SP_QYLXDH" column="SP_QYLXDH"/>
+      <result property="SP_LXR" column="SP_LXR"/>
+      <result property="SP_LXRDH" column="SP_LXRDH"/>
+      <result property="SP_JZX" column="SP_JZX"/>
+      <result property="SP_BZ" column="SP_BZ"/>
+      <result property="SP_CreateDate" column="SP_CreateDate"/>
+    </resultMap>-->
+
+    <resultMap id="PaymentMap" class="JG_PaymentInfo">
+      <!--<result property="PA_ID" column="PA_ID"/>
+      <result property="PA_xybh" column="PA_xybh"/>
+      <result property="PA_zflb" column="PA_zflb"/>
+      <result property="PA_zfje" column="PA_zfje"/>
+      <result property="PA_zfjd" column="PA_zfjd"/>
+      <result property="PA_fkfzh" column="PA_fkfzh"/>
+      <result property="PA_fkfmc" column="PA_fkfmc"/>
+      <result property="PA_fkBank" column="PA_fkBank"/>
+      <result property="PA_skfzh" column="PA_skfzh"/>
+      <result property="PA_skfmc" column="PA_skfmc"/>
+      <result property="PA_skBank" column="PA_skBank"/>
+      <result property="PA_zfqqlsh" column="PA_zfqqlsh"/>
+      <result property="PA_zfqrlsh" column="PA_zfqrlsh"/>
+      <result property="PA_zfrq" column="PA_zfrq"/>
+      <result property="PA_yhzfrq" column="PA_yhzfrq"/>
+      <result property="PA_sqr" column="PA_sqr"/>
+      <result property="PA_sqrq" column="PA_sqrq"/>
+      <result property="PA_shr" column="PA_shr"/>
+      <result property="PA_shrq" column="PA_shrq"/>
+      <result property="PA_lc" column="PA_lc"/>
+      <result property="PA_zhye" column="PA_zhye"/>-->
+      <result property="PA_ID" column="PA_ID"/>
+      <result property="PA_xybh" column="PA_xybh"/>
+      <result property="PA_zflb" column="PA_zqlb"/>
+      <result property="PA_zfje" column="PA_zqje"/>
+      <result property="PA_zfjd" column="PA_zqjd"/>
+      <result property="PA_fkfzh" column="PA_fkfzh"/>
+      <result property="PA_fkfmc" column="PA_fkfmc"/>
+      <result property="PA_fkBank" column="PA_fkBank"/>
+      <result property="PA_zhye" column="PA_fkfye"/>
+      <result property="PA_skfzh" column="PA_skfzh"/>
+      <result property="PA_skfmc" column="PA_skfmc"/>
+      <result property="PA_skBank" column="PA_skBank"/>
+      <result property="PA_zfqqlsh" column="PA_zfqqlsh"/>
+      <result property="PA_zfqrlsh" column="PA_zfqrlsh"/>
+      <result property="PA_zfrq" column="PA_zfrq"/>
+      <result property="PA_yhzfrq" column="PA_yhzfrq"/>
+      <result property="PA_sqr" column="PA_sqr"/>
+      <result property="PA_sqrq" column="PA_sqrq"/>
+      <result property="PA_shr" column="PA_shr"/>
+      <result property="PA_shrq" column="PA_shrq"/>
+      <result property="PA_lc" column="PA_lc"/>
+      <result property="PA_Person" column="PA_Person"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertSpvProtocol" parameterClass="SpvProtocol">
+      if not exists (select * from JG_SpvProtocol where sp_xybh=#SP_XYBH#)
+      begin
+      insert into JG_SpvProtocol(
+      [SP_XYBH]
+      ,[SP_JGJG]
+      ,[SP_CorpCode]
+      ,[SP_CorpName]
+      ,[SP_QYKHYH]
+      ,[SP_JGJGZH]
+      ,[SP_QYZH]
+      ,[SP_ItemName]
+      ,[SP_ItemSite]
+      ,[SP_GCJSF]
+      ,[SP_ZDJGYSK]
+      )
+      values(#SP_XYBH#,#SP_JGJG#,#SP_CorpCode#,#SP_CorpName#,#SP_QYKHYH#
+      ,#SP_JGJGZH#,#SP_QYZH#,#SP_ItemName#,#SP_ItemSite#
+      ,#SP_GCJSF#,#SP_ZDJGYSK#);
+      end
+      else
+      begin
+      update JG_SpvProtocol SET SP_JGJG = #SP_JGJG#
+      ,SP_CorpCode = #SP_CorpCode#
+      ,SP_CorpName = #SP_CorpName#
+      ,SP_QYKHYH = #SP_QYKHYH#
+      ,SP_JGJGZH = #SP_JGJGZH#
+      ,SP_QYZH = #SP_QYZH#
+      ,SP_ItemName = #SP_ItemName#
+      ,SP_ItemSite = #SP_ItemSite#
+      ,SP_GCJSF = #SP_GCJSF#
+      ,SP_ZDJGYSK = #SP_ZDJGYSK#
+      WHERE SP_XYBH = #SP_XYBH#
+      end
+    </insert>
+
+    <insert id="insertPaymentInfo" parameterClass="JG_PaymentInfo">
+      <!--insert into JG_Payment
+      (PA_ID,PA_xybh,PA_zqlb,PA_zqje,PA_zqjd,PA_fkfzh,PA_fkfmc,PA_fkBank,PA_skfzh,PA_skfmc,PA_skBank)
+      values
+      (#PA_ID#,#PA_xybh#,#PA_zflb#,#PA_zfje#,#PA_zfjd#,#PA_fkfzh#,#PA_fkfmc#,#PA_fkBank#,#PA_skfzh#,#PA_skfmc#,#PA_skBank#)-->
+      INSERT INTO JG_Payment (
+      PA_ID,
+      PA_xybh,
+      PA_zqlb,
+      PA_zqje,
+      PA_zqjd,
+      PA_fkfzh,
+      PA_fkfmc,
+      PA_fkBank,
+      PA_fkfye,
+      PA_skfzh,
+      PA_skfmc,
+      PA_skBank,
+      PA_zfqqlsh,
+      <!--PA_zfqrlsh,-->
+      PA_zfrq,
+      <!--PA_yhzfrq,-->
+      <!--PA_sqr,-->
+      <!--PA_sqrq,-->
+      PA_shr,
+      <!--PA_shrq,-->
+      PA_lc
+      <!--PA_Person-->
+      )
+      VALUES (#PA_ID#,#PA_xybh#,#PA_zflb#,#PA_zfje#,#PA_zfjd#,#PA_fkfzh#,#PA_fkfmc#,#PA_fkBank#,#PA_zhye#,#PA_skfzh#,#PA_skfmc#,#PA_skBank#,#PA_zfqqlsh#,#PA_zfrq#,#PA_shr#,#PA_lc#)
+    </insert>
+
+    <insert id="AddJG_MessageInfo" parameterClass="JG_MessageInfo">
+      Insert Into JG_MessageInfo(MI_Id,MI_xybh,MI_Bwlsh,MI_Jydm,MI_DzTime,MI_Bwnr,MI_Bwfx)
+      Values(#_MI_Id#,#_MI_xybh#,#_MI_Bwlsh#,#_MI_Jydm#,#_MI_DzTime#,#_MI_Bwnr#,#_MI_Bwfx#)
+    </insert>
+
+    <update id="ChangeProtocol" parameterClass="SpvProtocol">
+      UPDATE JG_SpvProtocol
+      SET
+      SP_JGJG = #SP_JGJG# ,SP_CorpCode = #SP_CorpCode# ,SP_QYKHYH = #SP_QYKHYH#
+      ,SP_JGJGZH = #SP_JGJGZH# ,SP_QYZH = #SP_QYZH# ,SP_ItemName = #SP_ItemName# ,SP_ItemSite = #SP_ItemSite#
+      ,SP_GCJSF = #SP_GCJSF#,SP_ZDJGYSK = #SP_ZDJGYSK#
+      WHERE SP_XYBH = #SP_XYBH#
+    </update>
+
+    <!--执行查询SQL-->
+    <statement id="SelectSql" remapResults="true" resultClass="System.Data.DataTable" parameterClass="string">
+      $sql$
+    </statement>
+
+    <!--<select id="GetSerialNo" resultClass ="int">
+      JG_GetSerialNo
+    </select>-->
+  </statements>
+</sqlMap>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SelectJG_InterestRateInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectJG_InterestRateInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectJG_InterestRateInfoResult" type="tns:ArrayOfJG_InterestRateInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfJG_InterestRateInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JG_InterestRateInfo" nillable="true" type="tns:JG_InterestRateInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JG_InterestRateInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InterestRate" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SetDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Flag" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddJG_InterestRateInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jirInfo" type="tns:JG_InterestRateInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddJG_InterestRateInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddJG_InterestRateInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateJG_InterestRateInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jirInfo" type="tns:JG_InterestRateInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateJG_InterestRateInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateJG_InterestRateInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InterestInquire">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="protocolNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InterestInquireResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InterestInquireResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SelectJG_InterestRateInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectJG_InterestRateInfo" />
+  </wsdl:message>
+  <wsdl:message name="SelectJG_InterestRateInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectJG_InterestRateInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddJG_InterestRateInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddJG_InterestRateInfo" />
+  </wsdl:message>
+  <wsdl:message name="AddJG_InterestRateInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddJG_InterestRateInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateJG_InterestRateInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateJG_InterestRateInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateJG_InterestRateInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateJG_InterestRateInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InterestInquireSoapIn">
+    <wsdl:part name="parameters" element="tns:InterestInquire" />
+  </wsdl:message>
+  <wsdl:message name="InterestInquireSoapOut">
+    <wsdl:part name="parameters" element="tns:InterestInquireResponse" />
+  </wsdl:message>
+  <wsdl:portType name="JG_InterestRateSrvSoap">
+    <wsdl:operation name="SelectJG_InterestRateInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">返回所有利率</wsdl:documentation>
+      <wsdl:input message="tns:SelectJG_InterestRateInfoSoapIn" />
+      <wsdl:output message="tns:SelectJG_InterestRateInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddJG_InterestRateInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增</wsdl:documentation>
+      <wsdl:input message="tns:AddJG_InterestRateInfoSoapIn" />
+      <wsdl:output message="tns:AddJG_InterestRateInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJG_InterestRateInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改</wsdl:documentation>
+      <wsdl:input message="tns:UpdateJG_InterestRateInfoSoapIn" />
+      <wsdl:output message="tns:UpdateJG_InterestRateInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InterestInquire">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取协议利息总额</wsdl:documentation>
+      <wsdl:input message="tns:InterestInquireSoapIn" />
+      <wsdl:output message="tns:InterestInquireSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JG_InterestRateSrvSoap" type="tns:JG_InterestRateSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectJG_InterestRateInfo">
+      <soap:operation soapAction="http://tempuri.org/SelectJG_InterestRateInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddJG_InterestRateInfo">
+      <soap:operation soapAction="http://tempuri.org/AddJG_InterestRateInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJG_InterestRateInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdateJG_InterestRateInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InterestInquire">
+      <soap:operation soapAction="http://tempuri.org/InterestInquire" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JG_InterestRateSrvSoap12" type="tns:JG_InterestRateSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectJG_InterestRateInfo">
+      <soap12:operation soapAction="http://tempuri.org/SelectJG_InterestRateInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddJG_InterestRateInfo">
+      <soap12:operation soapAction="http://tempuri.org/AddJG_InterestRateInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJG_InterestRateInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateJG_InterestRateInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InterestInquire">
+      <soap12:operation soapAction="http://tempuri.org/InterestInquire" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JG_InterestRateSrv">
+    <wsdl:port name="JG_InterestRateSrvSoap" binding="tns:JG_InterestRateSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/JG_InterestRateSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JG_InterestRateSrvSoap12" binding="tns:JG_InterestRateSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/JG_InterestRateSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="JG_PaymentInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="FundPayment" type="MODEL.NewModel.FundPayment,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllJG_Payment" class="FundPayment">
+      <result property="PayID"               column="PA_ID"/>  
+      <result property="PaymentAmount"       column="PA_PaymentAmount"/>     
+      <result property="FirmOperatorName"      column="PA_FirmOperatorName"/>    
+      <result property="FirmOperatorID"     column="PA_FirmOperatorID"/>   
+      <result property="PaymentBank"     column="PA_PaymentBank"/>   
+      <result property="BankSiteID"     column="PA_BankSiteID"/>   
+      <result property="BankTellerID"     column="PA_BankTellerID"/>   
+      <result property="SerialNumber"     column="PA_SerialNumber"/>
+      <result property="BankSerialNumber"     column="PA_BankSerialNumber"/>
+      <result property="PaymentInstr"     column="PA_PaymentInstr"/>   
+      <result property="PaymentTime"     column="PA_PaymentTime"/>   
+      <result property="BankCode"         column="PA_BankCode"/>   
+      <result property="ReceiverAccount"     column="PA_ReceiverAccount"/>   
+      <result property="ReceiverName"     column="PA_ReceiverName"/>   
+      <result property="ReceiveBank"     column="PA_ReceiveBank"/>   
+      <result property="PayAccount"     column="PA_PayAccount"/>   
+      <result property="PayName"          column="PA_PayName"/>   
+      <result property="ProjectCode"     column="PA_ProjectCode"/>   
+      <result property="PaymentConfirmTime"    column="PA_PaymentConfirmTime"/>  
+      <result property="PaymentID"          column="PA_PaymentID"/>
+      <result property="PayState"          column="PA_PayState"/>
+      <result property="BusinessCode"          column="PA_BusinessCode"/>
+      <result property="FirmName"          column="PA_FirmName"/>
+      
+      <!--<result property="PA_Remark" column="PA_Remark"/>-->
+    </resultMap>
+    <!--<resultMap id="SelectYE" class="JG_PaymentInfoX">
+      <result property="PA_xybh" column="SP_xybh"/>
+      <result property="PA_zhye" column="fkfye"/>
+    </resultMap>-->
+  </resultMaps>
+  <!--操作-->
+  <statements>
+    <!--支付完成确认-->
+    <select id="SelectJG_Payment" resultMap="SelectAllJG_Payment">
+      SELECT
+      PA_ID,
+      PA_PaymentAmount,
+      PA_FirmOperatorName,
+      PA_FirmOperatorID,
+      PA_PaymentBank,
+      PA_BankSiteID,
+      PA_BankTellerID,
+      PA_SerialNumber,
+      PA_BankSerialNumber,
+      PA_PaymentInstr,
+      PA_PaymentTime,
+      PA_BankCode,
+      PA_ReceiverAccount,
+      PA_ReceiverName,
+      PA_ReceiveBank,
+      PA_PayAccount,
+      PA_PayName,
+      PA_ProjectCode,
+      PA_PaymentConfirmTime,
+      PA_PaymentID,
+      PA_PayState,
+      PA_BusinessCode,
+      PA_FirmName
+      FROM JG_Payment
+      WHERE  1=1
+      <isNotEmpty property="PA_ID">
+        AND PA_ID = #PayID#
+      </isNotEmpty>
+      <isNotEmpty property="PaymentAmount">
+        AND PaymentAmount = #PaymentAmount#
+      </isNotEmpty>
+      <!--<isNotEmpty property="PA_zflb">
+        AND PA_zqlb = #PA_zflb#
+      </isNotEmpty>-->
+      <isNotEmpty property="FirmOperatorName">
+        AND PA_FirmOperatorName = #FirmOperatorName#
+      </isNotEmpty>
+      <isNotEmpty property="PaymentBank">
+        AND PaymentBank = #PaymentBank#
+      </isNotEmpty>
+      <isNotEmpty property="BankSiteID">
+        AND PA_BankSiteID = #BankSiteID#
+      </isNotEmpty>
+      <isNotEmpty property="BankTellerID">
+        AND PA_BankTellerID = #BankTellerID#
+      </isNotEmpty>
+      <isNotEmpty property="SerialNumber">
+        AND PA_SerialNumber = #SerialNumber#
+      </isNotEmpty>
+      <isNotEmpty property="PaymentInstr">
+        AND PA_PaymentInstr = #PaymentInstr#
+      </isNotEmpty>
+      <isNotEmpty property="PaymentTime">
+        AND PA_PaymentTime = #PaymentTime#
+      </isNotEmpty>
+      <isNotEmpty property="BankCode">
+        AND PA_BankCode = #BankCode#
+      </isNotEmpty>
+      <isNotEmpty property="ReceiverAccount">
+        AND PA_ReceiverAccount = #ReceiverAccount#
+      </isNotEmpty>
+      <isNotEmpty property="ReceiverName">
+        AND PA_ReceiverName = #ReceiverName#
+      </isNotEmpty>
+      <isNotEmpty property="ReceiveBank">
+        AND PA_ReceiveBank = #ReceiveBank#
+      </isNotEmpty>
+      <isNotEmpty property="PayAccount">
+        AND PA_PayAccount = #PayAccount#
+      </isNotEmpty>
+      <isNotEmpty property="PayName">
+        AND PA_PayName = #PayName#
+      </isNotEmpty>
+      <isNotEmpty property="ProjectCode">
+        AND PA_ProjectCode = #ProjectCode#
+      </isNotEmpty>
+      <isNotEmpty property="PaymentConfirmTime">
+        AND PA_PaymentConfirmTime = #PaymentConfirmTime#
+      </isNotEmpty>
+      <isNotEmpty property="PaymentID">
+        AND PA_PaymentID = #PaymentID#
+      </isNotEmpty>
+      <isNotEmpty property="PayState">
+        AND PA_PayState = #PayState#
+      </isNotEmpty>
+      <isNotEmpty property="BusinessCode">
+        AND PA_PA_BusinessCode = #PA_BusinessCode#
+      </isNotEmpty>
+      <isNotEmpty property="FirmName">
+       AND PA_FirmName = #FirmName#
+      </isNotEmpty>
+    </select>
+    <insert id="AddJG_Payment" parameterClass="FundPayment">
+      INSERT INTO JG_Payment (
+      PA_ID,
+      PA_PaymentAmount,
+      PA_FirmOperatorName,
+      PA_FirmOperatorID,
+      PA_PaymentBank,
+      PA_BankSiteID,
+      PA_BankTellerID,
+      PA_SerialNumber,
+      PA_PaymentInstr,
+      PA_PaymentTime,
+      PA_BankCode,
+      PA_ReceiverAccount,
+      PA_ReceiverName,
+      PA_ReceiveBank,
+      PA_PayAccount,
+      PA_PayName,
+      PA_ProjectCode,
+      PA_PaymentConfirmTime,
+      PA_PaymentID,
+      PA_PayState,
+      PA_BusinessCode,
+      PA_FirmName,
+      PA_BankSerialNumber
+      )
+      VALUES (#PayID#,#PaymentAmount#,#FirmOperatorName#,#FirmOperatorID#,#PaymentBank#,#BankSiteID#,#BankTellerID#,#SerialNumber#,#PaymentInstr#,#PaymentTime#,#BankCode#,#ReceiverAccount#,#ReceiverName#,#ReceiveBank#,#PayAccount#,#PayName#,#ProjectCode#,#PaymentConfirmTime#,#PaymentID#,#PayState#,#BusinessCode#,#FirmName#,#BankSerialNumber#)
+    </insert>
+    <update id ="UpdateJG_Payment" parameterClass="FundPayment">
+      
+      UPDATE JG_Payment
+      SET
+      PA_ID = #PayID#
+      <isNotEmpty prepend="," property="PaymentAmount">
+        PA_PaymentAmount = #PaymentAmount#
+      </isNotEmpty>
+    <!--<isNotEmpty property="PA_zflb">
+        AND PA_zqlb = #PA_zflb#
+      </isNotEmpty>-->
+      
+      <isNotEmpty prepend="," property="BusinessCode">
+        PA_BusinessCode = #BusinessCode#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="FirmOperatorID">
+        PA_FirmOperatorID = #FirmOperatorID#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="FirmOperatorName">
+       PA_FirmOperatorName = #FirmOperatorName#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="PaymentBank">
+      PA_PaymentBank = #PaymentBank#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="BankSiteID">
+       PA_BankSiteID = #BankSiteID#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="BankTellerID">
+       PA_BankTellerID = #BankTellerID#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="SerialNumber">
+       PA_SerialNumber = #SerialNumber#
+    </isNotEmpty>
+      <isNotEmpty prepend="," property="BankSerialNumber">
+        PA_BankSerialNumber = #BankSerialNumber#
+      </isNotEmpty>
+    <isNotEmpty prepend="," property="PaymentInstr">
+       PA_PaymentInstr = #PaymentInstr#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="PaymentTime">
+       PA_PaymentTime = #PaymentTime#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="BankCode">
+       PA_BankCode = #BankCode#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="ReceiverAccount">
+       PA_ReceiverAccount = #ReceiverAccount#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="ReceiverName">
+       PA_ReceiverName = #ReceiverName#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="ReceiveBank">
+       PA_ReceiveBank = #ReceiveBank#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="PayAccount">
+       PA_PayAccount = #PayAccount#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="PayName">
+       PA_PayName = #PayName#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="ProjectCode">
+       PA_ProjectCode = #ProjectCode#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="PaymentConfirmTime">
+       PA_PaymentConfirmTime = #PaymentConfirmTime#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="PaymentID">
+       PA_PaymentID = #PaymentID#
+    </isNotEmpty>
+      <isNotEmpty prepend="," property="PayState">
+         PA_PayState = #PayState#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="ReverseTime">
+         PA_ReverseTime = #ReverseTime#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="ReverseInstr">
+         PA_ReverseInstr = #ReverseInstr#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="FirmName">
+        PA_FirmName = #FirmName#
+      </isNotEmpty>  
+      WHERE PA_ID = #PayID#
+    </update>
+    
+    
+  
+      
+    <!--<update id ="UpPayMentInfoById" parameterClass="JG_PaymentInfoX">
+      UPDATE JG_Payment
+      SET
+      PA_fkBank = #PA_fkBank# ,
+      PA_fkfye = #PA_zhye# ,
+      PA_zfqrlsh = #PA_zfqrlsh# ,
+      PA_yhzfrq = #PA_yhzfrq# ,
+      PA_Person=#PA_Person#,
+      PA_lc = #PA_lc#
+      WHERE PA_ID = #PA_ID#;
+
+      update JG_Interest set IT_Amount=IT_Amount-#PA_zfje# where convert(varchar(10),IT_Date,23)=convert(varchar(10),getdate(),23) and IT_ProtocolNo=#PA_xybh#
+    </update>-->
+
+   
+
+    <!--<update id="UpJG_Interest" parameterClass="JG_PaymentInfoX">
+      update JG_Interest set IT_Amount=IT_Amount-#PA_zqje# where convert(varchar(10),IT_Date,23)=convert(varchar(10),getdate(),23) and IT_ProtocolNo=#PA_xybh#
+    </update>-->
+
+    <delete id="DeleteJG_Payment" parameterClass="FundPayment">
+      DELETE JG_Payment WHERE PA_ID = #PayID#
+    </delete>
+
+
+    <!--<select id="selectYEByXybh" resultClass="Decimal" parameterClass="string">
+      select
+      (isnull(ckzje,0)-isnull(zfzje,0))fkfye
+      from dbo.JG_AccountManage ja
+      left join
+      dbo.JG_SpvProtocol js on ja.AM_JgAccount=js.SP_qyzh
+      left join
+      (select DE_xybh,sum(DE_ckje) ckzje from dbo.JG_Deposit where DE_cklb <![CDATA[<>]]> 9 group by DE_xybh) jd on js.SP_xybh=jd.DE_xybh
+      left join
+      (select PA_xybh,sum(PA_zqje) zfzje from dbo.JG_Payment where PA_lc='1' group by PA_xybh) jp on jd.DE_xybh=jp.PA_xybh where js.SP_xybh=#SP_xybh#
+    </select>
+
+    --><!--账户管理支付明细--><!--
+    <select id="SelectThePaymentInfoByInterval" resultMap="SelectAllJG_Payment" parameterClass="Hashtable">
+      select
+      PA_ID,
+      PA_xybh,
+      --><!--PA_zqlb,--><!--
+      PA_fkfye,
+      PA_zqlb,
+      --><!--case PA_zqlb when '0' then '重点监管资金' when '1' then '非重点监管资金' when '2' then '利息支付' end as PA_zqlb,--><!--
+      PA_zqje,
+      PA_zqjd,
+      case PA_zqjd when '01' then '取得预售许可' when '02' then '单位结构封顶' when '03' then '单位工程主体验收' when '04' then '工程竣工验收备案' when '05' then '完成房屋初始登记' end as PA_zfjdName,
+      PA_fkfzh,
+      PA_fkfmc,
+      PA_fkBank,
+      PA_skfzh,
+      PA_skfmc,
+      PA_skBank,
+      PA_zfqqlsh,
+      PA_zfqrlsh,
+      PA_zfrq,
+      PA_yhzfrq,
+      PA_sqr,
+      PA_sqrq,
+      PA_shr,
+      PA_shrq,
+      --><!--PA_lc,--><!--
+      case PA_lc when '0' then '申请' when '1' then '审核' when '2' then '资金支付' when '3' then '支付完成' end as PA_lc,
+      PA_Person,
+      PA_BankCode
+      from JG_Payment where PA_zqlb<![CDATA[<>]]>'4'
+      --><!--<dynamic prepend="WHERE">--><!--
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="xybh">PA_xybh=#xybh#</isNotEmpty>
+          <isNotEmpty prepend="and" property="StartDate">PA_zfrq <![CDATA[>=]]> #StartDate#</isNotEmpty>
+          <isNotEmpty prepend="and" property="EndDate">PA_zfrq <![CDATA[<=]]> #EndDate#</isNotEmpty>
+        </isParameterPresent>
+      --><!--</dynamic>--><!--
+      order by PA_sqrq DESC
+    </select>-->
+  </statements>
+</sqlMap>
+

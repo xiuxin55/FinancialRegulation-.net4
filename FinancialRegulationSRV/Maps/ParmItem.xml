@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="ParmItem" xmlns="http://ibatis.apache.org/mapping" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="ParmItem" type="MODEL.ParmItem,MODEL" />
+  </alias>
+  
+  <resultMaps>
+    <resultMap id="ParmItemMap" class="ParmItem">
+      <result property="PI_SETCODE" column="PI_SETCODE"/>
+      <result property="PI_ITEMCODE" column="PI_ITEMCODE"/>
+      <result property="PI_ITEMNAME" column="PI_ITEMNAME"/>
+      <result property="PI_COLORVALUE" column="PI_COLORVALUE"/>
+      <result property="PI_ITEMVALUE" column="PI_ITEMVALUE"/>
+      <result property="PI_PARENTSETCODE" column="PI_PARENTSETCODE"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <sql id="ColumnListParmItem">
+      PI_SETCODE,
+      PI_ITEMCODE,
+      PI_ITEMNAME,
+      PI_COLORVALUE,
+      PI_ITEMVALUE,
+      PI_PARENTSETCODE
+    </sql>
+
+      <select id="SelectTheParmItem" resultMap="ParmItemMap" parameterClass="ParmItem">
+      select
+      <include refid="ColumnListParmItem" />
+        from ParmItem 
+        <dynamic prepend="Where">
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="PI_SETCODE">PI_SETCODE=#PI_SETCODE#</isNotEmpty>
+          <isNotEmpty prepend="and" property="PI_ITEMCODE">PI_ITEMCODE=#PI_ITEMCODE#</isNotEmpty>
+          <isNotEmpty prepend="and" property="PI_ITEMNAME">PI_ITEMNAME=#PI_ITEMNAME#</isNotEmpty>
+          <isNotEmpty prepend="and" property="PI_COLORVALUE">PI_COLORVALUE=#PI_COLORVALUE#</isNotEmpty>
+          <isNotEmpty prepend="and" property="PI_ITEMVALUE">PI_ITEMVALUE=#PI_ITEMVALUE#</isNotEmpty>
+          <isNotEmpty prepend="and" property="PI_ITEMVALUE">PI_PARENTSETCODE=#PI_PARENTSETCODE#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+        order by PI_ITEMCODE
+    </select>
+
+   
+    
+  </statements>
+</sqlMap>

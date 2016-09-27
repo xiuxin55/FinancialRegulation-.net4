@@ -1,0 +1,49 @@
+<Controls:MetroWindow  x:Class="FinancialRegulation.Page.FundInfoAddToEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:FinancialRegulation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:my="clr-namespace:FinancialRegulation.Page"
+             xmlns:tools="clr-namespace:FinancialRegulation.Tools"
+                         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      ShowIconOnTitleBar="True"
+                      ShowTitleBar="True"
+                      WindowStartupLocation="CenterScreen"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveGlowBrush="#CDFF0000"
+             mc:Ignorable="d"
+             Height="330" Width="420" Tag="资金缴存" d:DesignWidth="420" d:DesignHeight="317">
+    <Controls:MetroWindow.Resources>
+
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+    <Grid Name="MainLayout" Style="{StaticResource GridLayout}" Width="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="52" />
+ 
+            <RowDefinition Height="151" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="24*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90" />
+            <ColumnDefinition Width="320*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <tools:String2BoolConverter x:Key="String2BoolConverter"/>
+        </Grid.Resources>
+            <Label Content="资金缴存"  Style="{StaticResource LabelTitle}" Grid.ColumnSpan="2" />
+        <TextBlock Text="流水号" Grid.Row="1" Margin="0,12,320,18" Grid.ColumnSpan="2" KeyDown="TextBoxOnlyNUM_KeyDown"/>
+        <TextBox Name="txt_SerialNumber" IsEnabled="True" Text="{Binding BankSerialNumber}"  Grid.Row="1" InputMethod.IsInputMethodEnabled="False" />
+        <TextBlock Text="缴款说明" Grid.Row="2" Margin="0,69,0,62" />
+        <TextBox Name="txt_Instruction" IsEnabled="True" Text="{Binding CurrentObj.DepositInstr}"  Grid.Row="2"   Grid.Column="1" Height="120" Margin="20,11,20,20" TextWrapping="Wrap" />
+        <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Margin="15,0,105,0">
+            <Button   Content="资金缴存" Command="{Binding OKCommand}" />
+            <Button Margin="5,0,0,0"   Content="取消" Command="{Binding CancelCommand}" />
+            </StackPanel>
+    </Grid>
+</Controls:MetroWindow>

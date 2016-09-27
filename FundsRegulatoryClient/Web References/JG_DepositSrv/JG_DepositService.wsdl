@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:DepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DepositFund">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PackageLength" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepositAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSiteID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTellerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepositTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeSerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CheckTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReverseInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReverseTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:DepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:DepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Selects">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectsResult" type="tns:ArrayOfDepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDepositFund">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DepositFund" nillable="true" type="tns:DepositFund" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Select">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:DepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectResult" type="tns:ArrayOfDepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountMoney">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xybh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountMoneyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAccountMoneyResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Selectn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="info" type="tns:DepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectnResult" type="tns:ArrayOfDepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectDepositInfoList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfDictionaryEntry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDictionaryEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DictionaryEntry" type="tns:DictionaryEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DictionaryEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectDepositInfoListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectDepositInfoListResult" type="tns:ArrayOfDepositFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUnKownJG_Deposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jdInfo" type="tns:UnknowBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UnknowBill">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PackageLength" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_FirmName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_ManageAccount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UB_Money" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UB_Time" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_PayerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_PayerAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_BankSerialNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_SerialNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_BankSiteID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_BankTellerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UB_LinkStr" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUnKownJG_DepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddUnKownJG_DepositResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUnKownJG_Deposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jdInfo" type="tns:UnknowBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUnKownJG_DepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateUnKownJG_DepositResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectUnKownJG_Deposit">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ArrayOfUnknowBill">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UnknowBill" nillable="true" type="tns:UnknowBill" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectUnKownJG_DepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectUnKownJG_DepositResult" type="tns:ArrayOfUnknowBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUnKownJG_Deposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jdInfo" type="tns:UnknowBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUnKownJG_DepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteUnKownJG_DepositResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="AddSoapOut">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectsSoapIn">
+    <wsdl:part name="parameters" element="tns:Selects" />
+  </wsdl:message>
+  <wsdl:message name="SelectsSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectSoapIn">
+    <wsdl:part name="parameters" element="tns:Select" />
+  </wsdl:message>
+  <wsdl:message name="SelectSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountMoneySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccountMoney" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountMoneySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccountMoneyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectnSoapIn">
+    <wsdl:part name="parameters" element="tns:Selectn" />
+  </wsdl:message>
+  <wsdl:message name="SelectnSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectnResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectDepositInfoListSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectDepositInfoList" />
+  </wsdl:message>
+  <wsdl:message name="SelectDepositInfoListSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectDepositInfoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUnKownJG_DepositSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUnKownJG_Deposit" />
+  </wsdl:message>
+  <wsdl:message name="AddUnKownJG_DepositSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUnKownJG_DepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUnKownJG_DepositSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUnKownJG_Deposit" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUnKownJG_DepositSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUnKownJG_DepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectUnKownJG_DepositSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectUnKownJG_Deposit" />
+  </wsdl:message>
+  <wsdl:message name="SelectUnKownJG_DepositSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectUnKownJG_DepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUnKownJG_DepositSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUnKownJG_Deposit" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUnKownJG_DepositSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUnKownJG_DepositResponse" />
+  </wsdl:message>
+  <wsdl:portType name="JG_DepositServiceSoap">
+    <wsdl:operation name="Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加存款</wsdl:documentation>
+      <wsdl:input message="tns:AddSoapIn" />
+      <wsdl:output message="tns:AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新存款</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSoapIn" />
+      <wsdl:output message="tns:UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除存款</wsdl:documentation>
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看所有存款</wsdl:documentation>
+      <wsdl:input message="tns:SelectsSoapIn" />
+      <wsdl:output message="tns:SelectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看特定存款</wsdl:documentation>
+      <wsdl:input message="tns:SelectSoapIn" />
+      <wsdl:output message="tns:SelectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountMoney">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据协议获取账户剩余金额</wsdl:documentation>
+      <wsdl:input message="tns:GetAccountMoneySoapIn" />
+      <wsdl:output message="tns:GetAccountMoneySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Selectn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询特定存款不关联任何表的</wsdl:documentation>
+      <wsdl:input message="tns:SelectnSoapIn" />
+      <wsdl:output message="tns:SelectnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectDepositInfoList">
+      <wsdl:input message="tns:SelectDepositInfoListSoapIn" />
+      <wsdl:output message="tns:SelectDepositInfoListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUnKownJG_Deposit">
+      <wsdl:input message="tns:AddUnKownJG_DepositSoapIn" />
+      <wsdl:output message="tns:AddUnKownJG_DepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnKownJG_Deposit">
+      <wsdl:input message="tns:UpdateUnKownJG_DepositSoapIn" />
+      <wsdl:output message="tns:UpdateUnKownJG_DepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUnKownJG_Deposit">
+      <wsdl:input message="tns:SelectUnKownJG_DepositSoapIn" />
+      <wsdl:output message="tns:SelectUnKownJG_DepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUnKownJG_Deposit">
+      <wsdl:input message="tns:DeleteUnKownJG_DepositSoapIn" />
+      <wsdl:output message="tns:DeleteUnKownJG_DepositSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JG_DepositServiceSoap" type="tns:JG_DepositServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <soap:operation soapAction="http://tempuri.org/Selects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap:operation soapAction="http://tempuri.org/Select" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountMoney">
+      <soap:operation soapAction="http://tempuri.org/GetAccountMoney" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Selectn">
+      <soap:operation soapAction="http://tempuri.org/Selectn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectDepositInfoList">
+      <soap:operation soapAction="http://tempuri.org/SelectDepositInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUnKownJG_Deposit">
+      <soap:operation soapAction="http://tempuri.org/AddUnKownJG_Deposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnKownJG_Deposit">
+      <soap:operation soapAction="http://tempuri.org/UpdateUnKownJG_Deposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectUnKownJG_Deposit">
+      <soap:operation soapAction="http://tempuri.org/SelectUnKownJG_Deposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUnKownJG_Deposit">
+      <soap:operation soapAction="http://tempuri.org/DeleteUnKownJG_Deposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JG_DepositServiceSoap12" type="tns:JG_DepositServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://tempuri.org/Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <soap12:operation soapAction="http://tempuri.org/Selects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap12:operation soapAction="http://tempuri.org/Select" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountMoney">
+      <soap12:operation soapAction="http://tempuri.org/GetAccountMoney" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Selectn">
+      <soap12:operation soapAction="http://tempuri.org/Selectn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectDepositInfoList">
+      <soap12:operation soapAction="http://tempuri.org/SelectDepositInfoList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUnKownJG_Deposit">
+      <soap12:operation soapAction="http://tempuri.org/AddUnKownJG_Deposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnKownJG_Deposit">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUnKownJG_Deposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectUnKownJG_Deposit">
+      <soap12:operation soapAction="http://tempuri.org/SelectUnKownJG_Deposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUnKownJG_Deposit">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUnKownJG_Deposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JG_DepositService">
+    <wsdl:port name="JG_DepositServiceSoap" binding="tns:JG_DepositServiceSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/JG_DepositService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JG_DepositServiceSoap12" binding="tns:JG_DepositServiceSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/JG_DepositService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

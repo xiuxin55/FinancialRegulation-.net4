@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ui" type="tns:UserInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPwd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sex" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkTel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Describe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ssq" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="menuitem" type="tns:ArrayOfMenuItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMenuItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MenuItem" nillable="true" type="tns:MenuItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MenuItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Icon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Layer" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Parent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsDetail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvokingConfig" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssemblyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindowName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ordinal" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Children" type="tns:ArrayOfMenuItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteUserByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ui" type="tns:UserInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdataStateByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdataStateByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdataStateByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJG_Branches">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetJG_BranchesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetJG_BranchesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertUserSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertUser" />
+  </wsdl:message>
+  <wsdl:message name="InsertUserSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUserByID" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserByID" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdataStateByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdataStateByID" />
+  </wsdl:message>
+  <wsdl:message name="UpdataStateByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdataStateByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJG_BranchesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJG_Branches" />
+  </wsdl:message>
+  <wsdl:message name="GetJG_BranchesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJG_BranchesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserManageSrvSoap">
+    <wsdl:operation name="InsertUser">
+      <wsdl:input message="tns:InsertUserSoapIn" />
+      <wsdl:output message="tns:InsertUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <wsdl:input message="tns:GetAllUserSoapIn" />
+      <wsdl:output message="tns:GetAllUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserByID">
+      <wsdl:input message="tns:DeleteUserByIDSoapIn" />
+      <wsdl:output message="tns:DeleteUserByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserByID">
+      <wsdl:input message="tns:UpdateUserByIDSoapIn" />
+      <wsdl:output message="tns:UpdateUserByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdataStateByID">
+      <wsdl:input message="tns:UpdataStateByIDSoapIn" />
+      <wsdl:output message="tns:UpdataStateByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJG_Branches">
+      <wsdl:input message="tns:GetJG_BranchesSoapIn" />
+      <wsdl:output message="tns:GetJG_BranchesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserManageSrvSoap" type="tns:UserManageSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertUser">
+      <soap:operation soapAction="http://tempuri.org/InsertUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserByID">
+      <soap:operation soapAction="http://tempuri.org/DeleteUserByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserByID">
+      <soap:operation soapAction="http://tempuri.org/UpdateUserByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdataStateByID">
+      <soap:operation soapAction="http://tempuri.org/UpdataStateByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJG_Branches">
+      <soap:operation soapAction="http://tempuri.org/GetJG_Branches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserManageSrvSoap12" type="tns:UserManageSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertUser">
+      <soap12:operation soapAction="http://tempuri.org/InsertUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserByID">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUserByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserByID">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUserByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdataStateByID">
+      <soap12:operation soapAction="http://tempuri.org/UpdataStateByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJG_Branches">
+      <soap12:operation soapAction="http://tempuri.org/GetJG_Branches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserManageSrv">
+    <wsdl:port name="UserManageSrvSoap" binding="tns:UserManageSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/UserManageSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserManageSrvSoap12" binding="tns:UserManageSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/UserManageSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

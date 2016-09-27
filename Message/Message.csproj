@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F754D6A1-1FBF-42F5-9F70-B0291275F407}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Message</RootNamespace>
+    <AssemblyName>BankMessage</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Common\bin\Debug\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseMessage.cs" />
+    <Compile Include="BaseMessageRequest.cs" />
+    <Compile Include="BaseMessageResponse.cs" />
+    <Compile Include="Message001.cs" />
+    <Compile Include="Message002.cs" />
+    <Compile Include="Message003.cs" />
+    <Compile Include="Message004.cs" />
+    <Compile Include="Message005.cs" />
+    <Compile Include="Message006.cs" />
+    <Compile Include="Message007.cs" />
+    <Compile Include="Message008.cs" />
+    <Compile Include="Message009.cs" />
+    <Compile Include="Message010.cs" />
+    <Compile Include="Message011.cs" />
+    <Compile Include="Message012.cs" />
+    <Compile Include="Message013.cs" />
+    <Compile Include="Message014.cs" />
+    <Compile Include="Message015.cs" />
+    <Compile Include="Message016.cs" />
+    <Compile Include="Message017.cs" />
+    <Compile Include="Message018.cs" />
+    <Compile Include="Message019.cs" />
+    <Compile Include="Message020.cs" />
+    <Compile Include="Message021.cs" />
+    <Compile Include="Message030.cs" />
+    <Compile Include="Message099.cs" />
+    <Compile Include="Message101.cs" />
+    <Compile Include="Message102.cs" />
+    <Compile Include="Message103.cs" />
+    <Compile Include="Message104.cs" />
+    <Compile Include="Message105.cs" />
+    <Compile Include="Message106.cs" />
+    <Compile Include="Message107.cs" />
+    <Compile Include="Message108.cs" />
+    <Compile Include="Message109.cs" />
+    <Compile Include="Message110.cs" />
+    <Compile Include="Message111.cs" />
+    <Compile Include="Message112.cs" />
+    <Compile Include="Message113.cs" />
+    <Compile Include="Message114.cs" />
+    <Compile Include="Message115.cs" />
+    <Compile Include="Message116.cs" />
+    <Compile Include="Message117.cs" />
+    <Compile Include="Message118.cs" />
+    <Compile Include="Message119.cs" />
+    <Compile Include="Message120.cs" />
+    <Compile Include="Message121.cs" />
+    <Compile Include="Message130.cs" />
+    <Compile Include="Message199.cs" />
+    <Compile Include="MessageFactory\BankMessageFactory.cs" />
+    <Compile Include="MessageFactory\BankResponseFactory..cs" />
+    <Compile Include="MessageFactory\SpvMessageFactory.cs" />
+    <Compile Include="MessageFactory\SpvResponseFactory.cs" />
+    <Compile Include="MessageSender.cs" />
+    <Compile Include="MessageSqlReturn098.cs" />
+    <Compile Include="MessageSqlReturn198.cs" />
+    <Compile Include="NewMessage\MessageFactory\ResponeMesssage.cs" />
+    <Compile Include="NewMessage\Request\BaseRequest.cs" />
+    <Compile Include="NewMessage\Message.cs" />
+    <Compile Include="NewMessage\Request\Request01.cs" />
+    <Compile Include="NewMessage\Request\Request02.cs" />
+    <Compile Include="NewMessage\Request\Request03.cs" />
+    <Compile Include="NewMessage\Request\Request04.cs" />
+    <Compile Include="NewMessage\Request\Request05.cs" />
+    <Compile Include="NewMessage\Request\Request06.cs" />
+    <Compile Include="NewMessage\Request\Request07.cs" />
+    <Compile Include="NewMessage\Request\Request08.cs" />
+    <Compile Include="NewMessage\Request\Request09.cs" />
+    <Compile Include="NewMessage\Response\BaseResponse.cs" />
+    <Compile Include="NewMessage\Response\Response01.cs" />
+    <Compile Include="NewMessage\Response\Response02.cs" />
+    <Compile Include="NewMessage\Response\Response03.cs" />
+    <Compile Include="NewMessage\Response\Response04.cs" />
+    <Compile Include="NewMessage\Response\Response05.cs" />
+    <Compile Include="NewMessage\Response\Response06.cs" />
+    <Compile Include="NewMessage\Response\Response07.cs" />
+    <Compile Include="NewMessage\Response\Response08.cs" />
+    <Compile Include="NewMessage\Response\Response09.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlSerializerTools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FundsRegulatoryClient\FundsRegulatoryClient.csproj">
+      <Project>{602f963a-276d-43a4-80dd-71f0b5a172ce}</Project>
+      <Name>FundsRegulatoryClient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

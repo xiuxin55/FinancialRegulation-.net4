@@ -1,0 +1,107 @@
+﻿<Controls:MetroContentControl x:Class="FinancialRegulation.Page.Fund.UnKnownInfoCheck"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:FinancialRegulation"
+        xmlns:localVM ="clr-namespace:FinancialRegulation.Page.Fund"
+                  xmlns:tool="clr-namespace:FinancialRegulation.Tools"
+            
+                  xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+         mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
+    <Controls:MetroContentControl.Resources>
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+        
+    </Controls:MetroContentControl.Resources>
+    <Grid Style="{StaticResource GridLayout}">
+        <Grid.Resources>
+            <tool:DateTimeConvert x:Key="DateTimeConvert"/>
+            <tool:LinkSateConvert x:Key="LinkSateConvert"/>
+        </Grid.Resources>
+            <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="6" Grid.Row="0"  
+                             >
+            <DockPanel>
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Height="40" Margin="0,20,20,0" Width="auto" >不明账款缴存</TextBlock>
+            </DockPanel>
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.Column="1">
+            <ToolBar  Grid.Row="1">
+            <!--<DockPanel VerticalAlignment="Center" Margin="4,12,0,12" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="230">
+                <Label Content="银行流水号" />
+                <TextBox Text="{Binding CurrentServerNo,UpdateSourceTrigger=PropertyChanged}" />
+            </DockPanel>-->
+
+                <Button  Margin="-10.5,0,0,0"  BorderBrush="#FFB1B1B1" Command="{Binding UnknownCommand}" Content="不明账款录入"    Width="Auto" HorizontalContentAlignment="Center" HorizontalAlignment="Left" />
+                <Button  Width="60" Margin="6,0,0,0" BorderBrush="#FFB1B1B1" Command="{Binding ModifyCommand}" Content="修改"   HorizontalContentAlignment="Center" HorizontalAlignment="Left" />
+                <Button  Width="60"  Margin="6,0,0,0" BorderBrush="#FFB1B1B1" Command="{Binding DeleteCommand}" Content="删除"     HorizontalContentAlignment="Center" HorizontalAlignment="Left" />
+               
+              
+                <Label Content="开发商名称" VerticalAlignment="Center" />
+                <TextBox  Width="100"  Text="{Binding CurrentCorp,UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Content="监管账号"  VerticalAlignment="Center" />
+                <TextBox  Width="100"  Text="{Binding ManageAccount,UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Content="关联状态"  VerticalAlignment="Center" />
+
+                    <ComboBox  Width="60" SelectedIndex="0" SelectedItem="{Binding GLZH,UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" >
+                        <ComboBoxItem Content="全部" />
+                        <ComboBoxItem Content="未关联" />
+                        <ComboBoxItem Content="已关联" />
+                    </ComboBox>
+
+                <Button  Margin="6,0,0,0"  Width="60" Content="查询" Command="{Binding SearchCommand}"   BorderBrush="#FFB1B1B1" />
+                <Button  Margin="6,0,0,0"  Width="60" Content="刷新" Command="{Binding FlushCommand }"   BorderBrush="#FFB1B1B1" />
+                <Button  Margin="6,0,0,0"  BorderBrush="#FFB1B1B1" Command="{Binding ProduceFileCommand}" Content="生成对账单"   Width="Auto" />
+                <Button  Margin="6,0,0,0"  BorderBrush="#FFB1B1B1" Command="{Binding UpLoadFileCommand}" Content="上传文件"   Width="Auto" />
+                <Button  Margin="6,0,0,0"  BorderBrush="#FFB1B1B1" Command="{Binding SendBillCommand}" Content="发起对账"   Width="Auto" />
+                
+          
+            
+            </ToolBar>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2">
+
+            <DataGrid Background="White" SelectedItem="{Binding CurModel}" ItemsSource="{Binding Models}" Style="{StaticResource DataGridStyle}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="银行流水号" Binding ="{Binding UB_BankSerialNum}"/>
+                    <DataGridTextColumn Header="开发商名称" Binding ="{Binding UB_FirmName}" />
+                    <DataGridTextColumn Header="监管账号" Binding ="{Binding UB_ManageAccount}"/>
+                    <DataGridTextColumn Header="金额" Binding ="{Binding UB_Money}" />
+                    <DataGridTextColumn Header="付款人名称" Binding ="{Binding UB_PayerName}" />
+                    <DataGridTextColumn Header="付款人账号" Binding ="{Binding UB_PayerAccount}" />
+                    <DataGridTextColumn Header="到账日期" Binding ="{Binding UB_Time,Converter={StaticResource DateTimeConvert}}" />
+                    <DataGridTextColumn Header="是否关联" Binding ="{Binding UB_State,Converter={StaticResource LinkSateConvert}}" />
+                    <DataGridTemplateColumn Header="关联" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="LinkDepositCommand"    BorderBrush="#FFB1B1B1" Click="LinkDepositCommand_Click">关联缴存</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+            </DataGrid>
+
+            <!--<ListView SelectedItem="{Binding CurrentProtocl}" ItemsSource="{Binding ProtocolLst}" Margin="-1,-8,1,8">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="协议编号" DisplayMemberBinding ="{Binding SP_XYBH}" Width="120"/>
+                        <GridViewColumn Header="公司名称" DisplayMemberBinding ="{Binding SP_CorpName}" Width="200"/>
+                        <GridViewColumn Header="项目名称" DisplayMemberBinding ="{Binding SP_ItemName}" Width="300"/>
+                        <GridViewColumn Header="开发公司账号" DisplayMemberBinding ="{Binding SP_QYZH}" Width="120"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>-->
+        </Grid>
+        
+    </Grid>
+</Controls:MetroContentControl>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectDay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selectDB" type="tns:DayBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DayBalance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DB_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DB_AccountNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_Interest" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_Balance" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_Time" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_InterestRate" nillable="true" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectDayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectDayResult" type="tns:ArrayOfDayBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDayBalance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DayBalance" nillable="true" type="tns:DayBalance" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectSeason">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selectDB" type="tns:SeasonInterest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SeasonInterest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_AccountNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SI_Money" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SI_Time" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_Memo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_CertificateNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_BankTellerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SI_BankSerialNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectSeasonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectSeasonResult" type="tns:ArrayOfSeasonInterest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSeasonInterest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SeasonInterest" nillable="true" type="tns:SeasonInterest" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddSeasonInterestInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="add" type="tns:SeasonInterest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSeasonInterestInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddSeasonInterestInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSeasonInterestInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="update" type="tns:SeasonInterest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSeasonInterestInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateSeasonInterestInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSeasonInterestInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="del" type="tns:SeasonInterest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSeasonInterestInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteSeasonInterestInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDayBalanceInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="add" type="tns:DayBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDayBalanceInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddDayBalanceInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDayBalanceInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="upadte" type="tns:DayBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDayBalanceInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateDayBalanceInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDayBalanceInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="del" type="tns:DayBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDayBalanceInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteDayBalanceInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectDaySoapIn">
+    <wsdl:part name="parameters" element="tns:SelectDay" />
+  </wsdl:message>
+  <wsdl:message name="SelectDaySoapOut">
+    <wsdl:part name="parameters" element="tns:SelectDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectSeasonSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectSeason" />
+  </wsdl:message>
+  <wsdl:message name="SelectSeasonSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectSeasonResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSeasonInterestInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSeasonInterestInfo" />
+  </wsdl:message>
+  <wsdl:message name="AddSeasonInterestInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSeasonInterestInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSeasonInterestInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSeasonInterestInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSeasonInterestInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSeasonInterestInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSeasonInterestInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSeasonInterestInfo" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSeasonInterestInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteSeasonInterestInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddDayBalanceInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDayBalanceInfo" />
+  </wsdl:message>
+  <wsdl:message name="AddDayBalanceInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDayBalanceInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDayBalanceInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDayBalanceInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDayBalanceInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDayBalanceInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDayBalanceInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDayBalanceInfo" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDayBalanceInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDayBalanceInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="InterestServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">一天余额精确查询</wsdl:documentation>
+      <wsdl:input name="SelectDay" message="tns:SelectDaySoapIn" />
+      <wsdl:output name="SelectDay" message="tns:SelectDaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">季度精确查询</wsdl:documentation>
+      <wsdl:input name="SelectSeason" message="tns:SelectSeasonSoapIn" />
+      <wsdl:output name="SelectSeason" message="tns:SelectSeasonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSeasonInterestInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">增加当前账户每个季度结息信息</wsdl:documentation>
+      <wsdl:input message="tns:AddSeasonInterestInfoSoapIn" />
+      <wsdl:output message="tns:AddSeasonInterestInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSeasonInterestInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改增加当前账户每个季度结息信息</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSeasonInterestInfoSoapIn" />
+      <wsdl:output message="tns:UpdateSeasonInterestInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeasonInterestInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除增加当前账户每个季度结息信息</wsdl:documentation>
+      <wsdl:input message="tns:DeleteSeasonInterestInfoSoapIn" />
+      <wsdl:output message="tns:DeleteSeasonInterestInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDayBalanceInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加本季度每天余额信息</wsdl:documentation>
+      <wsdl:input message="tns:AddDayBalanceInfoSoapIn" />
+      <wsdl:output message="tns:AddDayBalanceInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDayBalanceInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改本季度每天余额信息</wsdl:documentation>
+      <wsdl:input message="tns:UpdateDayBalanceInfoSoapIn" />
+      <wsdl:output message="tns:UpdateDayBalanceInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDayBalanceInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除本季度每天余额信息</wsdl:documentation>
+      <wsdl:input message="tns:DeleteDayBalanceInfoSoapIn" />
+      <wsdl:output message="tns:DeleteDayBalanceInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InterestServiceSoap" type="tns:InterestServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap:operation soapAction="http://tempuri.org/SelectDay" style="document" />
+      <wsdl:input name="SelectDay">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SelectDay">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap:operation soapAction="http://tempuri.org/SelectSeason" style="document" />
+      <wsdl:input name="SelectSeason">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SelectSeason">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeasonInterestInfo">
+      <soap:operation soapAction="http://tempuri.org/AddSeasonInterestInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSeasonInterestInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdateSeasonInterestInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeasonInterestInfo">
+      <soap:operation soapAction="http://tempuri.org/DeleteSeasonInterestInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDayBalanceInfo">
+      <soap:operation soapAction="http://tempuri.org/AddDayBalanceInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDayBalanceInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdateDayBalanceInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDayBalanceInfo">
+      <soap:operation soapAction="http://tempuri.org/DeleteDayBalanceInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InterestServiceSoap12" type="tns:InterestServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap12:operation soapAction="http://tempuri.org/SelectDay" style="document" />
+      <wsdl:input name="SelectDay">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SelectDay">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap12:operation soapAction="http://tempuri.org/SelectSeason" style="document" />
+      <wsdl:input name="SelectSeason">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SelectSeason">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeasonInterestInfo">
+      <soap12:operation soapAction="http://tempuri.org/AddSeasonInterestInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSeasonInterestInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateSeasonInterestInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeasonInterestInfo">
+      <soap12:operation soapAction="http://tempuri.org/DeleteSeasonInterestInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDayBalanceInfo">
+      <soap12:operation soapAction="http://tempuri.org/AddDayBalanceInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDayBalanceInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDayBalanceInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDayBalanceInfo">
+      <soap12:operation soapAction="http://tempuri.org/DeleteDayBalanceInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterestService">
+    <wsdl:port name="InterestServiceSoap" binding="tns:InterestServiceSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/InterestService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InterestServiceSoap12" binding="tns:InterestServiceSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/InterestService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

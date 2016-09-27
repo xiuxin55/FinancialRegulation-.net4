@@ -1,0 +1,167 @@
+﻿<Controls:MetroContentControl x:Class="BaseManage.MenuManageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                              mc:Ignorable="d"
+        xmlns:local ="clr-namespace:BaseManage"
+                        
+                   xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                              d:DesignHeight="600" d:DesignWidth="815"
+          >
+    <Controls:MetroContentControl.Resources>
+        <!--<local:MenuManageVM  x:Key="MenuVM"/>-->
+        <ResourceDictionary>
+            <!--<ObjectDataProvider x:Key="MenuVM" ObjectType="{x:Type local:MenuManageVM}" MethodName="MenuManageVM" />-->
+        <ResourceDictionary.MergedDictionaries>
+            
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.Toolbar.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+        <local:StringBoolConvert x:Key="BSconvert" />
+        <Style x:Key="TreeViewItemStyle" TargetType="{x:Type TreeViewItem}">
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}" />
+            <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=TwoWay}" />
+        </Style>
+        <Style x:Key="SeachFileTextBoxTemplate" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border BorderBrush="Black" BorderThickness="0.2" Height="36">
+                            <Grid Background="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding CurrentNode.Item.AssemblyName}" Height="35" IsEnabled="False" VerticalContentAlignment="Center" />
+                                <Button Grid.Column="1" Content="查找" Command="{Binding SerchAssemblyCommand}" IsEnabled="{Binding Text, ElementName=txtisdetail, Converter={StaticResource BSconvert}}"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <HierarchicalDataTemplate x:Key="MenuTreeViewItemTemplate" ItemsSource="{Binding Children}">
+            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                <!--<CheckBox Focusable="False" IsChecked="{Binding IsChecked,Mode=TwoWay}" VerticalAlignment="Center" />-->
+                <ContentPresenter Content="{Binding Item.Name,Mode=OneWay}" Margin="2,0" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        
+        <!--<local:MenuManageVM x:Key="MMVM"/> DataContext="{StaticResource MMVM}"-->
+            </ResourceDictionary>
+    </Controls:MetroContentControl.Resources>
+    <!--<ad:DockableContent.DataContext>
+            <local:MenuManageVM/>
+        </ad:DockableContent.DataContext>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+        <!--菜单树-->
+        <TreeView BorderBrush="CadetBlue" BorderThickness="1" x:Name="menutree"  ItemTemplate="{StaticResource MenuTreeViewItemTemplate}" ItemsSource="{Binding TreeNodes}" SelectedValuePath="Item.ID" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectedItemChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand, Mode=OneWay}" CommandParameter="{ Binding SelectedItem, ElementName=menutree}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TreeView>
+        <!--菜单编辑区域-->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions >
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="80*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--<TextBlock Text="菜单编号" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="0" />-->
+                <Label Content="菜单编号"  VerticalContentAlignment="Center" Grid.Row="0"/>
+                <Label Content="菜单名称"  VerticalContentAlignment="Center" Grid.Row="1"/>
+                <Label Content="图标" VerticalContentAlignment="Center" Grid.Row="2"/>
+                <Label Content="菜单级别" VerticalContentAlignment="Center" Grid.Row="3"/>
+                <Label Content="是否详细"  VerticalContentAlignment="Center" Grid.Row="4"/>
+                <Label Content="程序集"  VerticalContentAlignment="Center" Grid.Row="5"/>
+                <Label Content="窗体" VerticalContentAlignment="Center" Grid.Row="6"/>
+                <Label Content="构造器" VerticalContentAlignment="Center" Grid.Row="7"/>
+
+                <TextBox Margin="0,3" Text="{Binding CurrentNode.Item.Code}" IsEnabled="{Binding EditState}"  Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center"/>
+                <TextBox Margin="0,3" Text="{Binding CurrentNode.Item.Name}" IsEnabled="{Binding EditState}"  Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center"/>
+                <TextBox Margin="0,3" Text="{Binding CurrentNode.Item.Icon}" IsEnabled="{Binding EditState}"  Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center"/>
+                <TextBox Margin="0,3" Text="{Binding CurrentNode.Item.Layer}" IsEnabled="{Binding EditState}"  Grid.Column="1" Grid.Row="3" VerticalContentAlignment="Center"/>
+                <TextBox Margin="0,3" x:Name="txtisdetail" Text="{Binding CurrentNode.Item.IsDetail}" IsEnabled="{Binding EditState}"  Grid.Column="1" Grid.Row="4" VerticalContentAlignment="Center"/>
+                <TextBox Margin="0,3" Style="{StaticResource SeachFileTextBoxTemplate}" Grid.Column="1" Grid.Row="5" VerticalContentAlignment="Center"/>
+                <TextBox Margin="0,3" Text="{Binding CurrentNode.Item.WindowName}" IsEnabled="False" Grid.Column="1" Grid.Row="6" VerticalContentAlignment="Center"/>
+                <!--<TextBox Grid.Column="1" Grid.Row="7" VerticalContentAlignment="Center"/>-->
+                <ComboBox Margin="0,3" Grid.Column="1" Grid.Row="7" ItemsSource="{Binding Constructors}" SelectedItem="{Binding SelectedConstructor}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedConstructorCommand, Mode=OneWay}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </Grid>
+            <ListView Grid.Row="1" ItemsSource="{Binding ParameterItems}" BorderBrush="CadetBlue"  BorderThickness="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="参数名"  Width="auto" DisplayMemberBinding="{Binding DataName}"/>
+                        <GridViewColumn Header="参数类型" Width="auto" DisplayMemberBinding="{Binding DataType}"/>
+                        <GridViewColumn Header="参数值" Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <HierarchicalDataTemplate>
+                                    <TextBox Text="{Binding DataValue}"/>
+                                </HierarchicalDataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <!--菜单树的操作按钮-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button  Content="添加下级" Command="{Binding AddSubCommand}" Margin="5" Grid.Column="0"/>
+            <Button  Content="添加同级" Command="{Binding AddCommand}" Margin="5"  Grid.Column="1"/>
+            <Button  Content="删除" Command="{Binding DelCommand}" Margin="5" Grid.Column="2"/>
+        </Grid>
+        <!--菜单编辑区域的操作按钮-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="保存" Command="{Binding SaveCommand}" Grid.Column="1" Margin="5"/>
+            <Button Content="取消" Command="{Binding CancleCommand}" Grid.Column="3" Margin="5"/>
+            <Button Content="关闭" Grid.Column="5" Margin="5"/>
+        </Grid>
+    </Grid>
+</Controls:MetroContentControl>

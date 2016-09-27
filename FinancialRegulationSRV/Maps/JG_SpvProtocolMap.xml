@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="JG_SpvProtocol" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="JG_SpvProtocol" type="MODEL.JG_SpvProtocol,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllJG_SpvProtocol" class="JG_SpvProtocol">
+      <result property="SP_ID" column="SP_ID"/>
+      <result property="SP_XYBH" column="SP_xybh"/>
+      <result property="SP_JGJG" column="SP_jgjg"/>
+      <result property="SP_CorpName" column="SP_CorpName"/>
+      <result property="SP_CorpCode" column="SP_CorpCode"/>
+      <result property="SP_ItemSite" column="SP_ItemSite"/>
+      <result property="SP_ItemName" column="SP_ItemName"/>
+      <result property="SP_JZMJ" column="SP_jzmj"/>
+      <result property="SP_BuildingNo" column="SP_BuildingNo"/>
+      <result property="SP_GCJSF" column="SP_gcjsf"/>
+      <result property="SP_BKYJF" column="SP_BKYJF"/>
+      <result property="SP_ZDJGYSK" column="SP_zdjgysk"/>
+      <result property="SP_QYZHMC" column="SP_qyzhmc"/>
+      <result property="SP_QYKHYHBH" column="SP_qykhyh"/>
+      <result property="SP_QYZH" column="SP_qyzh"/>
+      <result property="SP_JGJGZHMC" column="SP_jgjgzhmc"/>
+      <result property="SP_JGJGKHYHBH" column="SP_jgjgkhyh"/>
+      <result property="SP_JGJGZH" column="SP_jgjgzh"/>
+      <result property="SP_XYLC" column="SP_xylc"/>
+      <result property="SP_XYZT" column="SP_xyzt"/>
+      <result property="SP_QYLXDH" column="SP_QYLXDH"/>
+      <result property="SP_CreateDate" column="SP_CreateDate"/>
+    </resultMap>
+
+    <resultMap id="ProtocolMap" class="JG_SpvProtocol">
+      <result property="SP_ID" column="SP_ID"/>
+      <result property="SP_XYBH" column="SP_xybh"/>
+      <result property="SP_JGJG" column="SP_jgjg"/>
+      <result property="SP_CorpName" column="SP_CorpName"/>
+      <result property="SP_CorpCode" column="SP_CorpCode"/>
+      <result property="SP_ItemSite" column="SP_ItemSite"/>
+      <result property="SP_ItemName" column="SP_ItemName"/>
+      <result property="SP_GCJSF" column="SP_gcjsf"/>
+      <result property="SP_ZDJGYSK" column="SP_zdjgysk"/>
+      <result property="SP_QYZH" column="SP_qyzh"/>
+      <result property="SP_JGJGZH" column="SP_jgjgzh"/>
+    </resultMap>
+  </resultMaps>
+  <!--操作-->
+  <statements>
+    <select id="SelectProtocolByCondition" resultMap="ProtocolMap" parameterClass="JG_SpvProtocol">
+      SELECT SP_ID ,SP_XYBH ,SP_JGJG ,SP_CorpName ,SP_CorpCode ,SP_ItemSite ,SP_ItemName ,SP_GCJSF ,SP_ZDJGYSK ,SP_QYZH ,SP_JGJGZH
+      FROM JG_SpvProtocol where SP_IsReject=0
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty property="SP_XYBH" prepend="AND">SP_xybh = #SP_XYBH#</isNotEmpty>
+          <isNotEmpty property="SP_CorpName" prepend="AND">SP_CorpName like '%'+#SP_CorpName# +'%'</isNotEmpty>
+          <isNotEmpty property="SP_ItemName" prepend="AND">SP_ItemName like '%'+#SP_ItemName# +'%'</isNotEmpty>
+          <isNotEmpty property="SP_QYZH" prepend="AND">SP_QYZH = #SP_QYZH#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+
+
+    <select id="SelectJG_SpvProtocol" resultMap="SelectAllJG_SpvProtocol">
+      SELECT
+      SP_ID,
+      SP_XYBH,
+      SP_JGJG,
+      SP_CorpCode,
+      SP_CorpName,
+      SP_ItemSite,
+      SP_ItemName,
+      SP_jzmj,
+      SP_BuildingNo,
+      SP_gcjsf,
+      SP_bkyjf,
+      SP_zdjgysk,
+      SP_qyzhmc,
+      SP_qykhyh,
+      SP_qyzh,
+      SP_jgjgzhmc,
+      SP_jgjgkhyh,
+      SP_jgjgzh,
+      SP_xylc,
+      SP_xyzt,
+      SP_QYLXDH,
+      SP_CreateDate
+      FROM JG_SpvProtocol
+      WHERE  SP_IsReject=0
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="And" property="SP_ID">
+            SP_ID = #SP_ID#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_XYBH">
+            SP_xybh = #SP_XYBH#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_JGJG">
+            SP_jgjg = #SP_JGJG#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_CorpName">
+            SP_CorpName = #SP_CorpName#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_ItemSite">
+            SP_ItemSite = #SP_ItemSite#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_ItemName">
+            SP_ItemName = #SP_ItemName#
+          </isNotEmpty>
+          <!--<isNotEmpty prepend="And" property="SP_JZMJ">
+        SP_jzmj = #SP_JZMJ#
+      </isNotEmpty>-->
+          <isNotEmpty prepend="And" property="SP_BuildingNo">
+            SP_BuildingNo = #SP_BuildingNo#
+          </isNotEmpty>
+          <!--<isNotEmpty prepend="And" property="SP_GCJSF">
+        SP_gcjsf = #SP_GCJSF#
+      </isNotEmpty>
+			<isNotEmpty prepend="And" property="SP_BKYJF">
+        SP_bkyjf = #SP_BKYJF#
+      </isNotEmpty>-->
+          <!--<isNotEmpty prepend="And" property="SP_ZDJGYSK">
+				 SP_zdjgysk = #SP_ZDJGYSK# 
+			</isNotEmpty>-->
+          <isNotEmpty prepend="And" property="SP_QYZHMC">
+            SP_qyzhmc = #SP_QYZHMC#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_QYKHYH">
+            SP_qykhyh = #SP_QYKHYH#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_QYZH">
+            SP_qyzh = #SP_QYZH#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_JGJGZHMC">
+            SP_jgjgzhmc = #SP_JGJGZHMC#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_JGJGKHYHBH">
+            SP_jgjgkhyh = #SP_JGJGKHYHBH#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_JGJGZH">
+            SP_jgjgzh = #SP_JGJGZH#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_XYLC">
+            SP_xylc = #SP_XYLC#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_XYZT">
+            SP_xyzt = #SP_XYZT#
+          </isNotEmpty>
+          <isNotEmpty prepend="And" property="SP_QYLXDH">
+            SP_QYLXDH = #SP_QYLXDH#
+          </isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+      <!--<isNotEmpty property="SP_CreateDate">
+				 AND SP_CreateDate = #SP_CreateDate# 
+			</isNotEmpty>-->
+    </select>
+    <insert id="AddJG_SpvProtocol" parameterClass="JG_SpvProtocol">
+      INSERT INTO JG_SpvProtocol (SP_ID,
+      SP_xybh,
+      SP_jgjg,
+      SP_CorpName,
+      SP_ItemSite,
+      SP_ItemName,
+      SP_jzmj,
+      SP_BuildingNo,
+      SP_gcjsf,
+      SP_bkyjf,
+      SP_zdjgysk,
+      SP_qyzhmc,
+      SP_qykhyh,
+      SP_qyzh,
+      SP_jgjgzhmc,
+      SP_jgjgkhyh,
+      SP_jgjgzh,
+      SP_xylc,
+      SP_xyzt,
+      SP_QYLXDH,
+      SP_CreateDate)
+      VALUES (#SP_ID#,#SP_XYBH#,#SP_JGJG#,#SP_CorpName#,#SP_ItemSite#,#SP_ItemName#,#SP_JZMJ#,#SP_BuildingNo#,#SP_GCJSF#,#SP_BKYJF#,#SP_ZDJGYSK#,#SP_QYZHMC#,#SP_QYKHYH#,#SP_QYZH#,#SP_JGJGZHMC#,#SP_JGJGKHYHBH#,#SP_JGJGZH#,#SP_XYLC#,#SP_XYZT#,#SP_QYLXDH#,#SP_CreateDate#)
+    </insert>
+    <update id ="UpdateJG_SpvProtocol" parameterClass="JG_SpvProtocol">
+      UPDATE JG_SpvProtocol
+      SET
+      SP_xybh = #SP_XYBH# ,
+      SP_jgjg = #SP_JGJG# ,
+      SP_CorpName = #SP_CorpName# ,
+      SP_ItemSite = #SP_ItemSite# ,
+      SP_ItemName = #SP_ItemName# ,
+      SP_jzmj = #SP_JZMJ# ,
+      SP_BuildingNo = #SP_BuildingNo# ,
+      SP_gcjsf = #SP_GCJSF# ,
+      SP_bkyjf = #SP_BKYJF# ,
+      SP_zdjgysk = #SP_ZDJGYSK# ,
+      SP_qyzhmc = #SP_QYZHMC# ,
+      SP_qykhyh = #SP_QYKHYH# ,
+      SP_qyzh = #SP_QYZH# ,
+      SP_jgjgzhmc = #SP_JGJGZHMC# ,
+      SP_jgjgkhyh = #SP_JGJGKHYHBH# ,
+      SP_jgjgzh = #SP_JGJGZH# ,
+      SP_xylc = #SP_XYLC# ,
+      SP_xyzt = #SP_XYZT# ,
+      SP_QYLXDH = #SP_QYLXDH# ,
+      SP_CreateDate = #SP_CreateDate#
+      WHERE SP_ID = #SP_ID#
+    </update>
+    <delete id="DeleteJG_SpvProtocol" parameterClass="string">
+      DELETE JG_SpvProtocol WHERE SP_ID = #value#
+    </delete>
+  </statements>
+</sqlMap>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SysConfigInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="SysConfigInfo" type="MODEL.SysConfigInfo,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllSysConfig" class="SysConfigInfo">
+      <result property="BankCode" column="BankCode"/>
+      <result property="BankName" column="BankName"/>
+      <result property="JGAccount" column="JGAccount"/>
+      <result property="IP" column="IP"/>
+      <result property="Port" column="Port"/>
+      <result property="PayAccuralDate" column="PayAccuralDate"/>
+      <result property="FtpIP" column="FtpIP"/>
+      <result property="FtpPwd" column="FtpPwd"/>
+      <result property="FtpUser" column="FtpUser"/>
+      <result property="BillFolder" column="BillFolder"/>
+      <result property="MainWebSite" column="MainWebSite"/>
+    </resultMap>
+  </resultMaps>
+  <!--操作-->
+  <statements>
+    <select id="SelectSysConfig" resultMap="SelectAllSysConfig">
+      SELECT
+      BankCode,
+      BankName,
+      JGAccount,
+      IP,
+      Port,
+      PayAccuralDate,
+      FtpIP,
+      FtpUser,
+      FtpPwd,
+      BillFolder,
+      MainWebSite 
+      FROM SysConfig
+    </select>
+    <update id ="UpdateSysConfig" parameterClass="SysConfigInfo">
+      UPDATE SysConfig
+      SET
+      BankCode = #BankCode# ,
+      BankName = #BankName# ,
+      JGAccount = #JGAccount# ,
+      IP = #IP# ,
+      Port = #Port# ,
+      PayAccuralDate = #PayAccuralDate#,
+      FtpIP=#FtpIP#,
+      FtpUser=#FtpUser#,
+      FtpPwd=#FtpPwd#,
+      BillFolder=#BillFolder#,
+      MainWebSite=#MainWebSite#
+    </update>
+  </statements>
+</sqlMap>

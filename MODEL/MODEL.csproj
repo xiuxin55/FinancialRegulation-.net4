@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41D516E9-EF29-4CB6-8214-20771F756210}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MODEL</RootNamespace>
+    <AssemblyName>MODEL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bill.cs" />
+    <Compile Include="BillFile.cs" />
+    <Compile Include="Duty.cs" />
+    <Compile Include="JG_AccountManageInfo.cs" />
+    <Compile Include="JG_AdjustInfo.cs" />
+    <Compile Include="JG_AmountCollectInfo.cs" />
+    <Compile Include="JG_ApplyInfo.cs" />
+    <Compile Include="JG_BranchesInfo.cs" />
+    <Compile Include="JG_DepositInfo.cs" />
+    <Compile Include="JG_Interest.cs" />
+    <Compile Include="JG_InterestRateInfo.cs" />
+    <Compile Include="JG_MessageInfo.cs" />
+    <Compile Include="JG_PaymentInfo.cs" />
+    <Compile Include="JG_SpvProtocol.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="NewModel\AccountCheckInfo.cs" />
+    <Compile Include="NewModel\BalanceAndInterest\SeasonInterest.cs" />
+    <Compile Include="NewModel\BalanceAndInterest\DayBalance.cs" />
+    <Compile Include="NewModel\BillFile.cs" />
+    <Compile Include="NewModel\BillFileCheck.cs" />
+    <Compile Include="NewModel\FundPayment.cs" />
+    <Compile Include="NewModel\InterestBillCheck.cs" />
+    <Compile Include="NewModel\InterestRecord.cs" />
+    <Compile Include="NewModel\MessageInfo.cs" />
+    <Compile Include="NewModel\QueryDeposit.cs" />
+    <Compile Include="NewModel\QueryPayment.cs" />
+    <Compile Include="NewModel\RefundTrade.cs" />
+    <Compile Include="NewModel\DepositFund.cs" />
+    <Compile Include="NewModel\TradeReverse.cs" />
+    <Compile Include="NewModel\UnknowBill.cs" />
+    <Compile Include="ParmItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolCollect.cs" />
+    <Compile Include="SysConfigInfo.cs" />
+    <Compile Include="UserDuty.cs" />
+    <Compile Include="UserInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

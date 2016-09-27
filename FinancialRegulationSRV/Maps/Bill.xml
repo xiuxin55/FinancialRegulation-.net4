@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="Bill" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="Bill" type="MODEL.NewModel.BillFileCheck,MODEL" />
+    <typeAlias alias="InterestBill" type="MODEL.NewModel.InterestBillCheck,MODEL" />
+    <!--<typeAlias alias="" type="MODEL.ProtocolCollect,MODEL" />-->
+  </alias>
+  <resultMaps>
+    <resultMap id="BillMap" class="Bill">
+      <result property="BussinessCode" column="BussinessCode"/>
+      <result property="CertificateNum" column="CertificateNum"/>
+      <result property="RegulatoryAccount" column="RegulatoryAccount"/>
+      <result property="FirmName" column="FirmName"/>
+      <result property="TradeType" column="TradeType"/>
+      <result property="TradeFundAmount" column="TradeFundAmount"/>
+      <result property="TradeObject" column="TradeObject"/>
+      <result property="TradeMark" column="TradeMark"/>
+      <result property="ProjectCode" column="ProjectCode"/>
+    </resultMap>
+    <resultMap id="InterestBillMap" class="InterestBill">
+     
+      <result property="RegulatoryAccount" column="RegulatoryAccount"/>
+      <result property="Time" column="Time"/>
+      <result property="BankSerialNumber" column="BankSerialNumber"/>
+      <result property="Instruction" column="Instruction"/>
+      <result property="TradeFundAmount" column="TradeFundAmount"/>
+      <result property="TradeObject" column="TradeObject"/>
+      <result property="TradeMark" column="TradeMark"/>
+      <result property="ProjectCode" column="ProjectCode"/>
+    </resultMap>
+    
+    <!--<resultMap id="ProtocolCollectMap" class="ProtocolCollect">
+      <result property="ProtocolNo" column="ProtocolNo"/>
+      <result property="IsCollect" column="IsCollect"/>
+    </resultMap>-->
+  </resultMaps>
+  <statements>
+    <select id="SelectsTodayBill" resultMap ="BillMap" parameterClass="Bill">
+      SELECT * FROM (
+      SELECT
+      BussinessCode='01'
+      ,DE_DepositNum as CertificateNum
+      ,DE_DepositAccount as RegulatoryAccount
+      ,DE_FirmName as FirmName
+      ,DE_DepositType as TradeType
+      ,DE_DepositAmount as TradeFundAmount
+      , DE_PurchaserName   as TradeObject
+      , DE_PurchaserID  as TradeMark
+      ,DE_ProjectCode as ProjectCode
+      FROM JG_Deposit j left join UserInfo u on j.DE_BankTellerID=u.UserCode
+      WHERE (DE_BusinessCode='03' OR DE_DepositState='已冲正') and (datediff(day,DE_DepositTime  ,#Time#)=0 OR datediff(day,DE_ReverseTime  ,#Time#)=0)
+      union
+      select 
+      BussinessCode='03'
+      ,DE_DepositNum as CertificateNum
+      ,DE_DepositAccount as RegulatoryAccount
+      ,DE_FirmName as FirmName
+      ,DE_DepositType as TradeType
+      ,DE_DepositAmount as TradeFundAmount
+      ,u.UserName as TradeObject
+      ,DE_BankTellerID as TradeMark
+      ,DE_ProjectCode as ProjectCode
+      FROM JG_Deposit j left join UserInfo u on j.DE_BankTellerID=u.UserCode
+      WHERE DE_BusinessCode='06' and (datediff(day,DE_DepositTime  ,#Time#)=0 OR datediff(day,DE_ReverseTime  ,#Time#)=0)
+      union
+
+      SELECT
+      BussinessCode='02'
+      ,PA_PaymentID as CertificateNum
+      ,PA_PayAccount as RegulatoryAccount
+      ,PA_FirmName as FirmName
+      ,TradeType='00'
+      ,PA_PaymentAmount as TradeFundAmount
+      , PA_ReceiverName  as TradeObject
+      , PA_ReceiverAccount  as TradeMark
+      ,PA_ProjectCode as ProjectCode
+      FROM JG_Payment j left join UserInfo u on j.PA_BankTellerID=u.UserCode
+      WHERE (PA_BusinessCode='05' or PA_PayState='已冲正') and (datediff(day,PA_PaymentTime ,#Time#)=0 OR datediff(day,PA_ReverseTime ,#Time#)=0 )
+
+      union
+
+      SELECT
+      BussinessCode='03'
+      ,PA_PaymentID as CertificateNum
+      ,PA_PayAccount as RegulatoryAccount
+      ,PA_PayName as FirmName
+      ,TradeType='00'
+      ,PA_PaymentAmount as TradeFundAmount
+      ,u.UserName  as TradeObject
+      ,PA_BankTellerID as TradeMark
+      ,PA_ProjectCode as ProjectCode
+      FROM JG_Payment j left join UserInfo u on j.PA_BankTellerID=u.UserCode
+      WHERE PA_BusinessCode='06' and (datediff(day,PA_PaymentTime ,#Time#)=0 OR datediff(day,PA_ReverseTime ,#Time#)=0 )
+
+      union
+
+      SELECT
+      BussinessCode='04'
+      ,s.SI_CertificateNum as CertificateNum
+      ,s.SI_AccountNum as RegulatoryAccount
+      ,j.AM_CorpName as FirmName
+      ,TradeType='60'
+      ,s.SI_Money as TradeFundAmount
+      ,u.UserName as TradeObject
+      ,s.SI_BankTellerID as TradeMark
+      ,j.AM_ProjectCode as ProjectCode
+      FROM (JG_AccountManage j left join SeasonInterest s  on j.AM_ID=s.SI_ID) left join  UserInfo u on s.SI_BankTellerID=u.UserCode
+      WHERE datediff(day,SI_Time ,#Time#)=0
+
+      union
+
+      SELECT
+      BussinessCode='05'
+      ,RT_PaymentID as CertificateNum
+      ,RT_AccountName as RegulatoryAccount
+      ,j.AM_CorpName as FirmName
+      ,TradeType='70'
+      ,RT_RefundAmount as TradeFundAmount
+      ,u.UserName as TradeObject
+      ,RT_AccountTeller as TradeMark
+      ,j.AM_ProjectCode as ProjectCode
+      from (RefundTrade r left join UserInfo u on r.RT_AccountTeller=u.UserCode) left join JG_AccountManage j on j.AM_ID=r.RT_AccountID
+      where datediff(day,RT_RefundTime ,#Time#)=0
+      ) a
+      order by FirmName ,RegulatoryAccount
+    </select>
+
+    <select id="SelectsInterestBill" resultMap="InterestBillMap" parameterClass ="InterestBill">
+      select s.SI_AccountNum as RegulatoryAccount,SI_Time as Time,SI_Memo as Instruction,
+      SI_BankSerialNumber as BankSerialNumber,SI_Money as TradeFundAmount,s.SI_BankTellerID as TradeMark,
+      u.UserName as TradeObject,a.AM_ProjectCode as ProjectCode
+      from SeasonInterest s left join JG_AccountManage a on s.SI_ID=a.AM_ID left join UserInfo u on s.SI_BankTellerID=u.UserCode
+      where SI_State='Y'
+    </select>
+  </statements>
+</sqlMap>

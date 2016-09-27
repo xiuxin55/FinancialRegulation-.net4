@@ -1,0 +1,61 @@
+﻿<local:BaseWindow x:Class="FinancialRegulation.Page.FundCollectManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:FinancialRegulation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" x:Name="thisWindow"
+             d:DesignHeight="600" d:DesignWidth="600" Title="资金归集" Tag="资金归集">
+    <local:BaseWindow.Resources>
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </local:BaseWindow.Resources>
+    <Grid Name="MainLayout" Style="{StaticResource GridLayout}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+            <Label Content="资金归集"  Style="{StaticResource LabelTitle}" />
+            <ToolBar Grid.Row="1" Style="{StaticResource ToolBarStyle}">
+            <Button Content="全部对账" Style="{StaticResource ButtonCommand}" BorderBrush="#FFB1B1B1" Command="{Binding MoreBillCreateCommand}" CommandParameter="{Binding}" />
+            <Button Content="担保账号对账" Style="{StaticResource ButtonCommand}" BorderBrush="#FFB1B1B1" Command="{Binding GuaranteeBillCreateCommand}" CommandParameter="{Binding}" />
+            <Button Content="刷新" Style="{StaticResource ButtonCommand}" BorderBrush="#FFB1B1B1" Command="{Binding FlushCommand}" />
+            </ToolBar>
+        <DataGrid Name="dataGrid1" ItemsSource="{Binding Path=Models}" SelectedItem="{Binding CurModel}" Style="{StaticResource DataGridStyle}" ForceCursor="True" Grid.Row="2" Background="#8DFFFFFF">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="开户网点" Width="10*" Binding="{Binding KHWD}" IsReadOnly="False" />
+                    <DataGridTextColumn Header="开发企业" Width="20*" Binding="{Binding QYMC}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="项目名称" Width="20*" Binding="{Binding XMMC}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="账户" Width="20*" Binding="{Binding FKZH}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="账户余额" Width="10*" Binding="{Binding FKZHYE}" IsReadOnly="True" />
+                    <DataGridTemplateColumn Header="操作" Width="10*" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                            <Button Content="资金归集" Margin="10,0" Click="Button_Click" />
+                            <!--<Button Content="资金归集" Margin="10,0" Command="{Binding ElementName=MainLayout,Path=DataContext.OKCommand}"/>-->
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="" Width="10*" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="对账文件" Margin="10,0" Click="BtnBill_Click"/>
+                            <!--<Button Content="资金归集" Margin="10,0" Command="{Binding ElementName=MainLayout,Path=DataContext.OKCommand}"/>-->
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            </DataGrid>
+            <Grid  Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="105*" />
+                <ColumnDefinition Width="196*" />
+                <ColumnDefinition Width="299*" />
+            </Grid.ColumnDefinitions>
+                <Label Content="监管账户余额" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Label Content="{Binding JGZHYE}"  VerticalAlignment="Center"  Grid.Column="1" />
+            </Grid>
+    </Grid>
+</local:BaseWindow>

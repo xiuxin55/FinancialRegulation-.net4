@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="PaymentRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JG_PaymentInfo" type="tns:JG_PaymentInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JG_PaymentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PA_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_xybh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_zflb" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PA_zfje" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_zfjd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_fkfzh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_fkfmc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_fkBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_skfzh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_skfmc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_skBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_zfqqlsh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_zfqrlsh" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PA_zfrq" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PA_yhzfrq" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_sqr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PA_sqrq" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_shr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PA_shrq" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_lc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PA_zhye" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_zflbName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_zfjdName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_lcName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_Person" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PA_Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_CorpCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PaymentRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PaymentRequestResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProtocolSave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jG_SpvProtocol" type="tns:JG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JG_SpvProtocol">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SP_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_SaleItemID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYBH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_CorpCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_CorpName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_ItemSite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_ItemName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_JZMJ" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_BuildingNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_GCJSF" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_BKYJF" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_ZDJGYSK" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYZHMC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYKHYHBH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYKHYH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYZH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJGZHMC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJGKHYHBH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJGKHYH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJGZH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYLC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYLCName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYZT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYZTName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_IsReject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_IsRejectName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYLXDH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_LXR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_LXRDH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JZX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_BZ" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_CreateDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_ZYJJFS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_PrtlSaveDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProtocolSaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProtocolSaveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddJG_MessageInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mi" type="tns:JG_MessageInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JG_MessageInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="_MI_Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="_MI_xybh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_MI_Bwlsh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_MI_Jydm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_MI_DzTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_MI_Bwnr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_MI_Bwfx" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddJG_MessageInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddJG_MessageInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeProtocol">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JG_SpvProtocol" type="tns:JG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeProtocolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeProtocolResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoSqlRetrun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sqlStr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoSqlRetrunResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoSqlRetrunResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PaymentRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:PaymentRequest" />
+  </wsdl:message>
+  <wsdl:message name="PaymentRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:PaymentRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProtocolSaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ProtocolSave" />
+  </wsdl:message>
+  <wsdl:message name="ProtocolSaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ProtocolSaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddJG_MessageInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddJG_MessageInfo" />
+  </wsdl:message>
+  <wsdl:message name="AddJG_MessageInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddJG_MessageInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeProtocolSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeProtocol" />
+  </wsdl:message>
+  <wsdl:message name="ChangeProtocolSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeProtocolResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoSqlRetrunSoapIn">
+    <wsdl:part name="parameters" element="tns:DoSqlRetrun" />
+  </wsdl:message>
+  <wsdl:message name="DoSqlRetrunSoapOut">
+    <wsdl:part name="parameters" element="tns:DoSqlRetrunResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RegulatorySrvSoap">
+    <wsdl:operation name="PaymentRequest">
+      <wsdl:input message="tns:PaymentRequestSoapIn" />
+      <wsdl:output message="tns:PaymentRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProtocolSave">
+      <wsdl:input message="tns:ProtocolSaveSoapIn" />
+      <wsdl:output message="tns:ProtocolSaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddJG_MessageInfo">
+      <wsdl:input message="tns:AddJG_MessageInfoSoapIn" />
+      <wsdl:output message="tns:AddJG_MessageInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProtocol">
+      <wsdl:input message="tns:ChangeProtocolSoapIn" />
+      <wsdl:output message="tns:ChangeProtocolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSqlRetrun">
+      <wsdl:input message="tns:DoSqlRetrunSoapIn" />
+      <wsdl:output message="tns:DoSqlRetrunSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RegulatorySrvSoap" type="tns:RegulatorySrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PaymentRequest">
+      <soap:operation soapAction="http://tempuri.org/PaymentRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProtocolSave">
+      <soap:operation soapAction="http://tempuri.org/ProtocolSave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddJG_MessageInfo">
+      <soap:operation soapAction="http://tempuri.org/AddJG_MessageInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProtocol">
+      <soap:operation soapAction="http://tempuri.org/ChangeProtocol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSqlRetrun">
+      <soap:operation soapAction="http://tempuri.org/DoSqlRetrun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RegulatorySrvSoap12" type="tns:RegulatorySrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PaymentRequest">
+      <soap12:operation soapAction="http://tempuri.org/PaymentRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProtocolSave">
+      <soap12:operation soapAction="http://tempuri.org/ProtocolSave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddJG_MessageInfo">
+      <soap12:operation soapAction="http://tempuri.org/AddJG_MessageInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProtocol">
+      <soap12:operation soapAction="http://tempuri.org/ChangeProtocol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSqlRetrun">
+      <soap12:operation soapAction="http://tempuri.org/DoSqlRetrun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RegulatorySrv">
+    <wsdl:port name="RegulatorySrvSoap" binding="tns:RegulatorySrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/RegulatorySrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RegulatorySrvSoap12" binding="tns:RegulatorySrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/RegulatorySrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

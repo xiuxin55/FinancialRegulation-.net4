@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SelectTheParmItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="tns:ParmItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParmItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PI_SETCODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PI_ITEMCODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PI_ITEMNAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PI_COLORVALUE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PI_ITEMVALUE" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PI_PARENTSETCODE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsChecked" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectTheParmItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectTheParmItemResult" type="tns:ArrayOfParmItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfParmItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ParmItem" nillable="true" type="tns:ParmItem" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SelectTheParmItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectTheParmItem" />
+  </wsdl:message>
+  <wsdl:message name="SelectTheParmItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectTheParmItemResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ParmItemSrvSoap">
+    <wsdl:operation name="SelectTheParmItem">
+      <wsdl:input message="tns:SelectTheParmItemSoapIn" />
+      <wsdl:output message="tns:SelectTheParmItemSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ParmItemSrvSoap" type="tns:ParmItemSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectTheParmItem">
+      <soap:operation soapAction="http://tempuri.org/SelectTheParmItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ParmItemSrvSoap12" type="tns:ParmItemSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectTheParmItem">
+      <soap12:operation soapAction="http://tempuri.org/SelectTheParmItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ParmItemSrv">
+    <wsdl:port name="ParmItemSrvSoap" binding="tns:ParmItemSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/ParmItemSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ParmItemSrvSoap12" binding="tns:ParmItemSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/ParmItemSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="JG_AdjustInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="JG_AdjustInfo" type="MODEL.JG_AdjustInfo,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllJG_Adjust" class="JG_AdjustInfo">
+      <result property="JA_ID" column="JA_ID"/>
+      <result property="JA_FmID" column="JA_FmID"/>
+      <result property="JA_Xybh" column="JA_Xybh"/>
+      <result property="JA_FmXybh" column="JA_FmXybh"/>
+      <result property="JA_SqTime" column="JA_SqTime"/>
+      <result property="JA_QrTime" column="JA_QrTime"/>
+      <result property="JA_Qrr" column="JA_Qrr"/>
+      <result property="JA_LC" column="JA_LC"/>
+      <result property="JA_Tzzflsh" column="JA_Tzzflsh"/>
+      <result property="JA_FmCklsh" column="JA_FmCklsh"/>
+    </resultMap>
+  </resultMaps>
+  <!--操作-->
+  <statements>
+    <select id="SelectJG_Adjust" resultMap="SelectAllJG_Adjust">
+      SELECT
+      JA_ID,
+      JA_FmID,
+      JA_Xybh,
+      JA_FmXybh,
+      JA_SqTime,
+      JA_QrTime,
+      JA_Qrr,JA_LC,
+      JA_Tzzflsh,
+      JA_FmCklsh
+      FROM JG_Adjust
+      WHERE  1=1
+      <isNotEmpty property="JA_ID">
+        AND JA_ID = #JA_ID#
+      </isNotEmpty>
+      <isNotEmpty property="JA_FmID">
+        AND JA_FmID = #JA_FmID#
+      </isNotEmpty>
+      <isNotEmpty property="JA_Xybh">
+        AND JA_Xybh = #JA_Xybh#
+      </isNotEmpty>
+      <isNotEmpty property="JA_FmXybh">
+        AND JA_FmXybh = #JA_FmXybh#
+      </isNotEmpty>
+      <isNotEmpty property="JA_SqTime">
+        AND JA_SqTime = #JA_SqTime#
+      </isNotEmpty>
+      <isNotEmpty property="JA_QrTime">
+        AND JA_QrTime = #JA_QrTime#
+      </isNotEmpty>
+      <isNotEmpty property="JA_Qrr">
+        AND JA_Qrr = #JA_Qrr#
+      </isNotEmpty>
+      <isNotEmpty property="JA_LC">
+        AND JA_LC = #JA_LC#
+      </isNotEmpty>
+    </select>
+    <insert id="AddJG_Adjust" parameterClass="JG_AdjustInfo">
+      INSERT INTO JG_Adjust (JA_ID,
+      JA_FmID,
+      JA_Xybh,
+      JA_FmXybh,
+      JA_SqTime,
+      JA_QrTime,
+      JA_Qrr,
+      JA_LC,
+      JA_Tzzflsh,
+      JA_FmCklsh)
+      VALUES (#JA_ID#,#JA_FmID#,#JA_Xybh#,#JA_FmXybh#,#JA_SqTime#,#JA_QrTime#,#JA_Qrr#,#JA_LC#,#JA_Tzzflsh#,#JA_FmCklsh#)
+    </insert>
+    <update id ="UpdateJG_Adjust" parameterClass="JG_AdjustInfo">
+      UPDATE JG_Adjust
+      SET
+      JA_ID = #JA_ID#
+      <isNotEmpty prepend="," property="JA_FmID">
+        JA_FmID = #JA_FmID#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="JA_Xybh">
+        JA_Xybh = #JA_Xybh#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="JA_FmXybh">
+        JA_FmXybh = #JA_FmXybh#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="JA_SqTime">
+        JA_SqTime = #JA_SqTime#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="JA_QrTime">
+        JA_QrTime = #JA_QrTime#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="JA_Qrr">
+        JA_Qrr = #JA_Qrr#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="JA_LC">
+        JA_LC = #JA_LC#
+      </isNotEmpty>
+      WHERE JA_ID = #JA_ID#
+    </update>
+
+    <!--根据原存款流水号更新调账表-->
+    <update id ="UpdateJG_AdjustByCklsh" parameterClass="JG_AdjustInfo">
+      UPDATE JG_Adjust
+      <dynamic prepend="SET">
+        <isNotEmpty prepend="," property="JA_FmID">
+          JA_FmID = #JA_FmID#
+        </isNotEmpty>
+        <isNotEmpty prepend="," property="JA_Xybh">
+          JA_Xybh = #JA_Xybh#
+        </isNotEmpty>
+        <isNotEmpty prepend="," property="JA_FmXybh">
+          JA_FmXybh = #JA_FmXybh#
+        </isNotEmpty>
+        <isNotEmpty prepend="," property="JA_SqTime">
+          JA_SqTime = #JA_SqTime#
+        </isNotEmpty>
+        <isNotEmpty prepend="," property="JA_LC">
+          JA_LC = #JA_LC#
+        </isNotEmpty>
+        <isNotEmpty prepend="," property="JA_Tzzflsh">
+          JA_Tzzflsh = #JA_Tzzflsh#
+        </isNotEmpty>
+      </dynamic>
+      WHERE JA_FmCklsh = #JA_FmCklsh#
+    </update>
+
+
+    <delete id="DeleteJG_Adjust" parameterClass="string">
+      DELETE JG_Adjust WHERE JA_ID = #value#
+    </delete>
+    <!--查询调账-->
+    <select id="GetJG_Adjust"  resultClass="System.Data.DataTable" parameterClass="int">
+      SELECT *
+      FROM
+      dbo.AdjustAccountTable
+      where 1=1
+      <isNotEqual property="" compareValue="8">
+        and lc = #value#
+      </isNotEqual>
+    </select>
+
+  </statements>
+</sqlMap>

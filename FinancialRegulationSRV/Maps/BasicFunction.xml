@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="BasicFunction" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+  </alias>
+
+  <resultMaps>
+  </resultMaps>
+
+  <statements>
+    <select id="GetSerialNo" resultClass ="int">
+      JG_GetSerialNo
+    </select>
+
+    <select id="JG_GetErrorSerialNo" resultClass ="string">
+      SP_JG_GetErrorSerialNo
+    </select>
+  </statements>
+</sqlMap>

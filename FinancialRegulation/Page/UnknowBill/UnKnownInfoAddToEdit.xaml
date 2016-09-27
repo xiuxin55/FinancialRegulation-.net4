@@ -1,0 +1,78 @@
+<Controls:MetroWindow x:Class="FinancialRegulation.Page.UnKnownInfoAddToEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:FinancialRegulation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"      
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:tools="clr-namespace:FinancialRegulation.Tools"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      
+             mc:Ignorable="d" 
+                       ShowIconOnTitleBar="True"
+                      ShowTitleBar="True"
+                      WindowStartupLocation="CenterScreen"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveGlowBrush="#CDFF0000"
+             Height="520" Width="620"
+             Tag="不明账款信息补录" d:DesignHeight="520" d:DesignWidth="716">
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+    <Grid Name="MainLayout" Style="{StaticResource GridLayout}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <tools:String2BoolConverter x:Key="String2BoolConverter"/>
+        </Grid.Resources>
+        <Label Content="不明账款信息补录"  Style="{StaticResource LabelTitle}" Grid.ColumnSpan="2" />
+        
+        <TextBlock Text="开发企业名称"  Grid.Row="1" />
+        <TextBox Name="txt_Crop" Text="{Binding CurrentObj.UB_FirmName}"  Grid.Row="1" IsEnabled="True"  />
+        <TextBlock Text="银行流水号"  Grid.Row="2"  />
+        <TextBox Name="txt_BankserialNum" Text="{Binding CurrentObj.UB_BankSerialNum}"  Grid.Row="2"  IsEnabled="True"  />
+        <TextBlock Text="监管账号"  Grid.Row="3"  />
+        <TextBox Name="txt_ManageAccouno" Text="{Binding CurrentObj.UB_ManageAccount}"  Grid.Row="3" KeyDown="TextBoxOnlyNUM_KeyDown" InputMethod.IsInputMethodEnabled="False"/>
+        <TextBlock Text="付款人名称"  Grid.Row="4"  />
+        <TextBox Name="txt_PayerNamer" Text="{Binding CurrentObj.UB_PayerName}"  Grid.Row="4"/>
+        <TextBlock Text="付款人账号"  Grid.Row="5" />
+        <TextBox Name="txt_PayerAccount" Text="{Binding CurrentObj.UB_PayerAccount}"  Grid.Row="5" IsEnabled="True"  />
+        <TextBlock Text="金额"  Grid.Row="6" />
+        <TextBox Name="txt_Money" Text="{Binding CurrentObj.UB_Money}"  Grid.Row="6" KeyDown="TextBoxNUMPeriod_KeyDown" InputMethod.IsInputMethodEnabled="False" IsEnabled="True" />
+        <!--<TextBlock Text="缴款类型"  Grid.Row="7" />-->
+        <!--<TextBlock Text="账户余额"  Grid.Row="8" />
+        <TextBox Name="txt_Balances" Text="{Binding Model._DE_zhye}"  Grid.Row="8" />-->
+       
+        <!--<StackPanel Margin="20,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="7">
+            <RadioButton Content="首付款" IsChecked="{Binding CurrentObj.UB_Type, Converter={StaticResource String2BoolConverter}, ConverterParameter=10}" IsEnabled="True" Width="Auto" />
+            <RadioButton Content="分期款" IsChecked="{Binding CurrentObj.UB_Type, Converter={StaticResource String2BoolConverter}, ConverterParameter=20}" IsEnabled="True" Width="Auto" />
+            <RadioButton Content="一次性付款" IsChecked="{Binding CurrentObj.UB_Type, Converter={StaticResource String2BoolConverter}, ConverterParameter=30}" IsEnabled="True" Width="Auto" />
+            <RadioButton Content="商业贷款" IsChecked="{Binding CurrentObj.UB_Type, Converter={StaticResource String2BoolConverter}, ConverterParameter=40}" IsEnabled="True" Width="Auto" />
+            <RadioButton Content="公积金贷款" IsChecked="{Binding CurrentObj.UB_Type, Converter={StaticResource String2BoolConverter}, ConverterParameter=50}" IsEnabled="True" Width="Auto" />
+            <RadioButton IsEnabled="True" Content="尾款" IsChecked="{Binding CurrentObj.DepositType,Converter={StaticResource String2BoolConverter},ConverterParameter=80}" Width="Auto" />
+            <RadioButton IsEnabled="True" Content="其他或未知" IsChecked="{Binding CurrentObj.DepositType,Converter={StaticResource String2BoolConverter},ConverterParameter=90}" Width="Auto" />
+        </StackPanel>-->
+        <TextBlock Margin="0,13,20,17" Text="到账日期" Grid.Row="7" />
+        <DatePicker Margin="20,13" SelectedDate="{Binding CurrentObj.UB_Time}" Name="dtBegin" Grid.Column="1" Grid.Row="7" />
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="8"  HorizontalAlignment="Center">
+            <Button Command="{Binding OKCommand}" Content="确认补录"   />
+            <Button Margin="6,0,0,0"  Command="{Binding CancelCommand}" Content="取消"   />
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>
+

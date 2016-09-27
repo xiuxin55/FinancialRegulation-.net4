@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml.Serialization;
+
+namespace Message
+{
+    /// <summary>
+    /// 调账完成 银行到担保
+    /// </summary>
+    [XmlRoot("Message120")]
+    public class Message120:BaseMessageRequest
+    {
+        //public string BusinessCode { get; set; }
+        //public string BusinessTime { get; set; }
+        //public string SerialNo { get; set; }
+        /// <summary>
+        /// 银行代码
+        /// </summary>
+        public string BankCode { get; set; }
+        /// <summary>
+        /// 合同备案号
+        /// </summary>
+        public string ContractRecordNo { get; set; }
+        /// <summary>
+        /// 存款流水号
+        /// </summary>
+        public string DepositNo { get; set; }
+        /// <summary>
+        /// 存款金额
+        /// </summary>
+        public decimal Money { get; set; }
+        /// <summary>
+        /// 资金性质
+        /// </summary>
+        public string NatureOfFunding { get; set; }
+        /// <summary>
+        /// 存款银行
+        /// </summary>
+        public string FromBbank { get; set; }
+        /// <summary>
+        /// 存款人
+        /// </summary>
+        public string Depositor { get; set; }
+        /// <summary>
+        /// 退款账号
+        /// </summary>
+        public string ReceiveAccount { get; set; }
+        /// <summary>
+        /// 付款账户
+        /// </summary>
+        public string PaymentAccount { get; set; }
+        /// <summary>
+        /// 退款账户余额
+        /// </summary>
+        public decimal RABalances { get; set; }
+        /// <summary>
+        /// 付款账户余额
+        /// </summary>
+        public decimal PABalances { get; set; }
+
+        public override BaseMessageResponse GetReponseMessage()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override BaseMessageResponse MeaasgeOperate()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

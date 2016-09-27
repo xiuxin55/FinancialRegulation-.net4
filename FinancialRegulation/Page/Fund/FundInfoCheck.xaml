@@ -1,0 +1,88 @@
+<Controls:MetroWindow x:Class="FinancialRegulation.Page.FundInfoCheck"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:FinancialRegulation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:my="clr-namespace:FinancialRegulation.Page"
+             xmlns:tools="clr-namespace:FinancialRegulation.Tools"
+             mc:Ignorable="d"
+                        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      ShowIconOnTitleBar="True"
+                      ShowTitleBar="True"
+                      WindowStartupLocation="CenterScreen"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveGlowBrush="#CDFF0000"
+             ShowMaxRestoreButton="False" ResizeMode="NoResize"
+             Height="530" Width="644" Tag="资金缴存" d:DesignHeight="520" d:DesignWidth="831">
+    <Controls:MetroWindow.Resources>
+
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+    <Grid Name="MainLayout" Style="{StaticResource GridLayout}" Width="Auto" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <tools:String2BoolConverter x:Key="String2BoolConverter"/>
+        </Grid.Resources>
+        <Label Content="资金缴存信息确认"  Style="{StaticResource LabelTitle}" Grid.ColumnSpan="2" />
+        <TextBlock Text="缴款凭证编号"  Grid.Row="1"/>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="111" />
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txt_DepositID"  Text="{Binding SearchInfo.DepositID}" Grid.Column="0" Margin="20,12,84,12" KeyDown="TextBoxOnlyNUM_KeyDown" InputMethod.IsInputMethodEnabled="False" Grid.ColumnSpan="2" Height="26"/>
+            <Button Command="{Binding SearchCommand}" Content="查询"   VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="42,10,10,8" />
+        </Grid>
+
+        <TextBlock Text="缴款账号" Grid.Row="2"   />
+        <TextBox Name="txt_PactNo" Text="{Binding CurrentObj.DepositAccount}" IsEnabled="True" Grid.Row="2" IsReadOnly="True" />
+
+        <TextBlock Text="开发企业名称"  Grid.Row="3"  />
+        <TextBox Name="txt_ContractRecordNo" Text="{Binding CurrentObj.FirmName}" IsEnabled="True" Grid.Row="3" IsReadOnly="True" />
+        <TextBlock Text="购房人名称"  Grid.Row="5"  />
+        <TextBox Name="txt_Depositor"  Text="{Binding CurrentObj.PurchaserName}" IsEnabled="True" Grid.Row="5" IsReadOnly="True" />
+
+        <TextBlock Text="购房人证件"  Grid.Row="6"  />
+        <TextBox Name="txt_CropCode" Text="{Binding CurrentObj.PurchaserID}" IsEnabled="True" Grid.Row="6" IsReadOnly="True" />
+
+        <TextBlock Text="缴款金额"  Grid.Row="7"  />
+        <TextBox Name="txt_Money" IsEnabled="True" Text="{Binding CurrentObj.DepositAmount}" Grid.Row="7" KeyUp="TextBoxNUMPeriod_KeyDown" InputMethod.IsInputMethodEnabled="False" IsReadOnly="True" />
+
+        <TextBlock Text="缴款类型"  Grid.Row="4"  />
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Margin="20,0">
+            <RadioButton IsEnabled="False" Content="首付款" IsChecked="{Binding CurrentObj.DepositType,Converter={StaticResource String2BoolConverter},ConverterParameter=10}" Margin="0,15,0,15" Width="60"  />
+            <RadioButton IsEnabled="False"  Content="分期款" IsChecked="{Binding CurrentObj.DepositType,Converter={StaticResource String2BoolConverter},ConverterParameter=20}" Margin="0,15,0,15" Width="58"/>
+            <RadioButton IsEnabled="False"  Content="一次性付款" IsChecked="{Binding CurrentObj.DepositType,Converter={StaticResource String2BoolConverter},ConverterParameter=30}" Margin="0,15,0,15" Width="85"/>
+            <RadioButton IsEnabled="False" Content="商业贷款" IsChecked="{Binding CurrentObj.DepositType,Converter={StaticResource String2BoolConverter},ConverterParameter=40}" Margin="0,15,0,15" Width="72"/>
+            <RadioButton IsEnabled="False" Content="公积金贷款" IsChecked="{Binding CurrentObj.DepositType,Converter={StaticResource String2BoolConverter},ConverterParameter=50}" Width="Auto" Margin="0,15,0,15"/>
+            <RadioButton IsEnabled="False" Content="尾款" IsChecked="{Binding CurrentObj.DepositType, ConverterParameter=80, Converter={StaticResource String2BoolConverter}}" Width="Auto" Margin="0,15,0,15" />
+            <RadioButton IsEnabled="False" Content="其他或未知" IsChecked="{Binding CurrentObj.DepositType,Converter={StaticResource String2BoolConverter},ConverterParameter=90}" Width="84" Margin="0,15,20,15" />
+        </StackPanel>
+        <TextBlock Text="项目标识码" Grid.Row="8" />
+        <TextBox Name="txt_Balances" IsEnabled="True" Text="{Binding CurrentObj.ProjectCode}"  Grid.Row="8" KeyUp="TextBoxNUMPeriod_KeyDown" InputMethod.IsInputMethodEnabled="False" IsReadOnly="True" />
+
+        <StackPanel  Grid.Row="9" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button   Content="确认" Command="{Binding OKCommand}"  />
+            <Button Margin="6,0,0,0"   Content="缴存" Command="{Binding DepositCommand}" />
+            <Button  Margin="6,0,0,0"   Content="取消" Command="{Binding CancelCommand}" />
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>

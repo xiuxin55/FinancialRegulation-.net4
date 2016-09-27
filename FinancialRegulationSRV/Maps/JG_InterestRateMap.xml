@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="JG_InterestRate" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="JG_InterestRate" type="MODEL.JG_InterestRateInfo,MODEL" />
+    <typeAlias alias="JG_Interest" type="MODEL.JG_Interest,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectJG_InterestRateInfo" class="JG_InterestRate">
+      <result property="ID" column="ID" />
+      <result property="InterestRate" column="InterestRate" />
+      <result property="SetDate" column="SetDate" />
+      <result property="Remark" column="Remark" />
+      <result property="Flag" column="Flag" />
+    </resultMap>
+
+    <resultMap id="JG_InterestMap" class="JG_Interest">
+      <result property="IT_ID" column="IT_ID" />
+      <result property="IT_Date" column="IT_Date" />
+      <result property="IT_ProtocolNo" column="IT_ProtocolNo" />
+      <result property="IT_Amount" column="IT_Amount" />
+      <result property="IT_InterestRate" column="IT_InterestRate" />
+      <result property="IT_Interest" column="IT_Interest" />
+      <result property="IT_SettleFlag" column="IT_SettleFlag" />
+    </resultMap>
+  </resultMaps>
+
+  <!--操作-->
+  <statements>
+    <select id="SelectJG_InterestRate" resultMap="SelectJG_InterestRateInfo">
+      SELECT
+      ID,
+      InterestRate,
+      SetDate,
+      Remark,
+      Flag
+      FROM JG_InterestRate
+      WHERE  1=1
+      ORDER BY SetDate DESC
+    </select>
+    <!--Note:2013年11月15日9:46:04 除当前添加利息其他利息为禁用-->
+    <insert id="AddJG_InterestRate" parameterClass="JG_InterestRate">
+      UPDATE JG_InterestRate SET [Flag]='0';
+      
+      INSERT INTO JG_InterestRate (ID,
+      InterestRate,
+      SetDate,
+      Remark,
+      Flag)
+      VALUES (#ID#,#InterestRate#,#SetDate#,#Remark#,1)
+    </insert>
+    <update id ="UpdateJG_InterestRate" parameterClass="JG_InterestRate">
+      UPDATE JG_InterestRate
+      SET
+      InterestRate = #InterestRate# ,
+      Flag = #Flag#
+      WHERE  ID = #ID#
+    </update>
+
+    <select id="SelectInterestSum" resultClass="decimal" parameterClass="String">
+      SELECT IsNull(SUM(IT_Amount),0) as Interest FROM JG_Interest WHERE IT_ProtocolNo = #IT_ProtocolNo#
+    </select>
+  </statements>
+</sqlMap>

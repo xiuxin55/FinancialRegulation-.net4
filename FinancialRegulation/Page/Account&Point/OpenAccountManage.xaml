@@ -1,0 +1,49 @@
+﻿<Controls:MetroContentControl x:Class="FinancialRegulation.Page.OpenAccountManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:FinancialRegulation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                     
+                              TransitionsEnabled="True" 
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600" Tag="" >
+    <Controls:MetroContentControl.Resources>
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </Controls:MetroContentControl.Resources>
+    <Grid Name="MainLayout" Style="{StaticResource GridLayout}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="40" />   
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0" 
+                            >
+            <DockPanel>
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Height="40" Margin="0,20,20,0" >账户管理</TextBlock>
+            </DockPanel>
+        </Grid>
+       
+        <ToolBar  Grid.Row="1" >
+            <Button  Margin="-11,0,0,0"   Content="新增"  Width="60"   BorderBrush="#FFB1B1B1" Command="{Binding AddCommand}"  />
+            <Button Margin="6,0,0,0"  Content="删除"  Width="60"   BorderBrush="#FFB1B1B1" Command="{Binding DeleteCommand}"  />
+            <Button Margin="6,0,0,0"  Content="启用"  Width="60"   BorderBrush="#FFB1B1B1" Command="{Binding ModifyCommand}"  />
+            <Button Margin="6,0,0,0"  Content="销户"  Width="60"   BorderBrush="#FFB1B1B1" Command="{Binding DestroyAccountCommand}"  />
+            <Button Margin="6,0,0,0"  Content="查找"  Width="60"   BorderBrush="#FFB1B1B1" Command="{Binding SearchCommand}"  />
+            <Button Margin="6,0,0,0"  Content="刷新"  Width="60" Command="{Binding FlushCommand }"   BorderBrush="#FFB1B1B1"  />
+        </ToolBar>
+        <DataGrid Background="White" Name="dataGrid1" ItemsSource="{Binding Models}" SelectedItem="{Binding CurModel}" Style="{StaticResource DataGridStyle}" Grid.Row="3" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="开户企业名称"  Binding="{Binding AM_CorpName}"  />
+                <DataGridTextColumn Header="账号名称" Binding="{Binding AM_zhmc}"  />
+                <DataGridTextColumn Header="账号"  Binding="{Binding AM_JgAccount}" />
+                <DataGridTextColumn Header="经办人" Binding="{Binding AM_Person}"  />
+                <DataGridTextColumn Header="项目名称"  Binding="{Binding AM_ItemName}"  />
+                <DataGridTextColumn Header="开户时间"  Binding="{Binding AM_CreateDate}"  />
+                <DataGridTextColumn Header="账户状态"  Binding="{Binding AM_UseFlag}"  />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Controls:MetroContentControl>

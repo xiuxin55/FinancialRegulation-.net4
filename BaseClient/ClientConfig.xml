@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+  <ClientPara FunctionName="客户端参数">
+    <WebReference FunctionName="Web引用参数">
+      <Url>http://localhost/FinancialRegulationSRV</Url>
+    </WebReference>
+    <UpdateWebReference FunctionName="Web引用参数">
+      <Url>http://21.144.73.9/UpdateSRV/</Url>
+    </UpdateWebReference>
+    <ServerIP FunctionName="服务器IP">
+      <IP>21.144.73.9</IP>
+    </ServerIP>
+    <FilePath FunctionName="账单文件存储路径">
+      <Path></Path>
+    </FilePath>
+    <ServerPort FunctionName="服务器IP">
+      <port>12351</port>
+    </ServerPort>
+    <!---->
+    <IsPrompt FunctionName="窗口是否显示">
+      <string>True</string>
+    </IsPrompt>
+    <IsExit FunctionName="是否退出">
+      <string>False</string>
+    </IsExit>
+    <ClientMachine FunctionName="客户端机器设置">   
+      <FormCount FunctionName="显示窗体数">10</FormCount>
+    </ClientMachine>
+  </ClientPara>
+</Config>	

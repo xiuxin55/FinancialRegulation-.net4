@@ -1,0 +1,65 @@
+<Controls:MetroContentControl x:Class="FinancialRegulation.Page.SysConfigEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:FinancialRegulation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                  Background="White"
+                  xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d"
+              d:DesignHeight="735" d:DesignWidth="594">
+    <Controls:MetroContentControl.Resources>
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </Controls:MetroContentControl.Resources>
+    <Grid Name="MainLayout" Style="{StaticResource GridLayout}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Content="系统配置"  Style="{StaticResource LabelTitle}" Grid.ColumnSpan="2" />
+        <TextBlock Text="银行编号"  Grid.Row="1" />
+        <TextBox Name="txt_PointID" Text="{Binding CurrentObj.BankCode}" Grid.Row="1" />
+        <TextBlock Text="银行名称"  Grid.Row="2" />
+        <TextBox Name="txt_bankname" Text="{Binding CurrentObj.BankName}" Grid.Row="2" />
+        <TextBlock Text="总行网点号"  Grid.Row="3" />
+        <TextBox Name="txt_mainPointName" Text="{Binding CurrentObj.MainWebSite}" Grid.Row="3" />
+        <TextBlock Text="转发IP" Grid.Row="4" />
+        <TextBox Name="txt_IP" Text="{Binding CurrentObj.IP}"  Grid.Row="4" />
+        <TextBlock Text="转发端口" Grid.Row="5" />
+        <TextBox Name="txt_Port" Text="{Binding CurrentObj.Port}"  Grid.Row="5" />
+        <TextBlock Text="监管账户" Grid.Row="6" />
+        <TextBox Name="txt_Account" Text="{Binding CurrentObj.JGAccount}"  Grid.Row="6" />
+        
+        <TextBlock Text="结息日期" Grid.Row="7" />
+        <DatePicker Name="dptxt" Margin="20,10" SelectedDate="{Binding CurrentObj.PayAccuralDate}" Grid.Row="7" Grid.Column="1" ></DatePicker>
+        <TextBlock Text="Ftp地址" Grid.Row="8" />
+        <TextBox Name="txt_Ftp" Text="{Binding CurrentObj.FtpIP}"  Grid.Row="8" />
+        <TextBlock Text="Ftp用户名" Grid.Row="9" />
+        <TextBox Name="txt_Ftpuser" Text="{Binding CurrentObj.FtpUser}"  Grid.Row="9" />
+        <TextBlock Text="Ftp密码" Grid.Row="10" />
+        <TextBox Name="txt_Ftppwd" Text="{Binding CurrentObj.FtpPwd}"  Grid.Row="10" />
+        <TextBlock Text="对账文件生成位置" Grid.Row="11" Margin="0,0,4,0" Width="Auto" />
+        <TextBox Name="txt_BillFolder" Text="{Binding CurrentObj.BillFolder}"  Grid.Row="11" />
+        <StackPanel Grid.Row="12" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button   Content="修改" Command="{Binding OKCommand}" />
+            <!--<Button   Content="取消" Command="{Binding CancelCommand}" />-->
+        </StackPanel>
+    </Grid>
+</Controls:MetroContentControl>

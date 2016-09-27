@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:JG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JG_SpvProtocol">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SP_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_SaleItemID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYBH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_CorpCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_CorpName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_ItemSite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_ItemName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_JZMJ" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_BuildingNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_GCJSF" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_BKYJF" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_ZDJGYSK" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYZHMC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYKHYHBH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYKHYH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYZH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJGZHMC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJGKHYHBH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJGKHYH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JGJGZH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYLC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYLCName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYZT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_XYZTName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_IsReject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_IsRejectName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_QYLXDH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_LXR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_LXRDH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_JZX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_BZ" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_CreateDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SP_ZYJJFS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SP_PrtlSaveDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:JG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:JG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Selects">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectsResult" type="tns:ArrayOfJG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfJG_SpvProtocol">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JG_SpvProtocol" nillable="true" type="tns:JG_SpvProtocol" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Select">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:JG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectResult" type="tns:ArrayOfJG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProtocolByCondition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jG_SpvProtocol" type="tns:JG_SpvProtocol" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProtocolByConditionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProtocolByConditionResult" type="tns:ArrayOfJG_SpvProtocol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="AddSoapOut">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectsSoapIn">
+    <wsdl:part name="parameters" element="tns:Selects" />
+  </wsdl:message>
+  <wsdl:message name="SelectsSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectSoapIn">
+    <wsdl:part name="parameters" element="tns:Select" />
+  </wsdl:message>
+  <wsdl:message name="SelectSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProtocolByConditionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProtocolByCondition" />
+  </wsdl:message>
+  <wsdl:message name="GetProtocolByConditionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProtocolByConditionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="JG_SpvProtocolServiceSoap">
+    <wsdl:operation name="Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加监管协议</wsdl:documentation>
+      <wsdl:input message="tns:AddSoapIn" />
+      <wsdl:output message="tns:AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新监管协议</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSoapIn" />
+      <wsdl:output message="tns:UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除监管协议</wsdl:documentation>
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看所有监管协议</wsdl:documentation>
+      <wsdl:input message="tns:SelectsSoapIn" />
+      <wsdl:output message="tns:SelectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看特定监管协议</wsdl:documentation>
+      <wsdl:input message="tns:SelectSoapIn" />
+      <wsdl:output message="tns:SelectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProtocolByCondition">
+      <wsdl:input message="tns:GetProtocolByConditionSoapIn" />
+      <wsdl:output message="tns:GetProtocolByConditionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JG_SpvProtocolServiceSoap" type="tns:JG_SpvProtocolServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <soap:operation soapAction="http://tempuri.org/Selects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap:operation soapAction="http://tempuri.org/Select" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProtocolByCondition">
+      <soap:operation soapAction="http://tempuri.org/GetProtocolByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JG_SpvProtocolServiceSoap12" type="tns:JG_SpvProtocolServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://tempuri.org/Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <soap12:operation soapAction="http://tempuri.org/Selects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap12:operation soapAction="http://tempuri.org/Select" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProtocolByCondition">
+      <soap12:operation soapAction="http://tempuri.org/GetProtocolByCondition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JG_SpvProtocolService">
+    <wsdl:port name="JG_SpvProtocolServiceSoap" binding="tns:JG_SpvProtocolServiceSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/JG_SpvProtocolService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JG_SpvProtocolServiceSoap12" binding="tns:JG_SpvProtocolServiceSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/JG_SpvProtocolService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

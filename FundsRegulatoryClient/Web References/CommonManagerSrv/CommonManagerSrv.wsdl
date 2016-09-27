@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetItemsBySetCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetCode" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetItemsBySetCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemsBySetCodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSerialNo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSerialNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSerialNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListNumber">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetListNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusiCode">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBusiCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBusiCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ViewBusiCode">
+        <s:complexType />
+      </s:element>
+      <s:element name="ViewBusiCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ViewBusiCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSysParaValue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParmCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSysParaValueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSysParaValueResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetItemsBySetCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemsBySetCode" />
+  </wsdl:message>
+  <wsdl:message name="GetItemsBySetCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemsBySetCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSerialNo" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSerialNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetListNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBusiCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBusiCode" />
+  </wsdl:message>
+  <wsdl:message name="GetBusiCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBusiCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewBusiCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ViewBusiCode" />
+  </wsdl:message>
+  <wsdl:message name="ViewBusiCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ViewBusiCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSysParaValueSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSysParaValue" />
+  </wsdl:message>
+  <wsdl:message name="GetSysParaValueSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSysParaValueResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CommonManagerSrvSoap">
+    <wsdl:operation name="GetItemsBySetCode">
+      <wsdl:input message="tns:GetItemsBySetCodeSoapIn" />
+      <wsdl:output message="tns:GetItemsBySetCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialNo">
+      <wsdl:input message="tns:GetSerialNoSoapIn" />
+      <wsdl:output message="tns:GetSerialNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListNumber">
+      <wsdl:input message="tns:GetListNumberSoapIn" />
+      <wsdl:output message="tns:GetListNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiCode">
+      <wsdl:input message="tns:GetBusiCodeSoapIn" />
+      <wsdl:output message="tns:GetBusiCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewBusiCode">
+      <wsdl:input message="tns:ViewBusiCodeSoapIn" />
+      <wsdl:output message="tns:ViewBusiCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSysParaValue">
+      <wsdl:input message="tns:GetSysParaValueSoapIn" />
+      <wsdl:output message="tns:GetSysParaValueSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CommonManagerSrvSoap" type="tns:CommonManagerSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetItemsBySetCode">
+      <soap:operation soapAction="http://tempuri.org/GetItemsBySetCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialNo">
+      <soap:operation soapAction="http://tempuri.org/GetSerialNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListNumber">
+      <soap:operation soapAction="http://tempuri.org/GetListNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiCode">
+      <soap:operation soapAction="http://tempuri.org/GetBusiCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewBusiCode">
+      <soap:operation soapAction="http://tempuri.org/ViewBusiCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSysParaValue">
+      <soap:operation soapAction="http://tempuri.org/GetSysParaValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CommonManagerSrvSoap12" type="tns:CommonManagerSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetItemsBySetCode">
+      <soap12:operation soapAction="http://tempuri.org/GetItemsBySetCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerialNo">
+      <soap12:operation soapAction="http://tempuri.org/GetSerialNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListNumber">
+      <soap12:operation soapAction="http://tempuri.org/GetListNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiCode">
+      <soap12:operation soapAction="http://tempuri.org/GetBusiCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewBusiCode">
+      <soap12:operation soapAction="http://tempuri.org/ViewBusiCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSysParaValue">
+      <soap12:operation soapAction="http://tempuri.org/GetSysParaValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CommonManagerSrv">
+    <wsdl:port name="CommonManagerSrvSoap" binding="tns:CommonManagerSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/CommonManagerSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CommonManagerSrvSoap12" binding="tns:CommonManagerSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/CommonManagerSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

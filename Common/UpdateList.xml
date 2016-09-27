@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="gb2312"?>
+<AutoUpdater>
+  <description>Application autoUpdate</description>
+  <Updater>
+    <Url>http://21.144.73.9/FinancialRegulationSRV/UpdateFile</Url>
+    <LastUpdateTime>2009-8-20</LastUpdateTime>
+  </Updater>
+  <Application applicationId="Start">
+    <EntryPoint>Start.exe</EntryPoint>
+    <Location>.</Location>
+    <Version>1.0.0.0</Version>
+  </Application>
+  <Files>
+    <File Ver="1.0.0.0" Name="FinancialRegulation.dll"/>
+    <File Ver="1.0.0.0" Name="BankMessage.dll"/>
+  </Files>
+</AutoUpdater>

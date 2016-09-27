@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DepositFund" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="DepositFund" type="MODEL.NewModel.DepositFund,MODEL" />
+    <typeAlias alias="UnknowBill" type="MODEL.NewModel.UnknowBill,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAll" class="DepositFund">
+      
+      <result property="ID"    column="DE_ID" />
+      <result property="DeSerialNumber"    column="DE_DeSerialNumber" />
+      <result property="DepositNum"    column="DE_DepositNum" />
+      <result property="BankCode"      column="DE_BankCode" />
+      <result property="BusinessCode"  column="DE_BusinessCode" />
+      <result property="DepositAmount" column="DE_DepositAmount" />
+      <result property="DepositType"   column="DE_DepositType" />
+      <result property="PurchaserName" column="DE_PurchaserName" />
+      <result property="PurchaserID"   column="DE_PurchaserID" />
+      <result property="BankName"      column="DE_BankName" />
+      <result property="BankSiteID"    column="DE_BankSiteID" />
+      <result property="DepositTime"   column="DE_DepositTime" />
+      <result property="DepositInstr"  column="DE_DepositInstr" />
+      <result property="BankTellerID"  column="DE_BankTellerID" />
+      <result property="SerialNumber"  column="DE_SerialNumber" />
+      <!--缴款状态-->
+      <result property="DepositState"  column="DE_DepositState" />
+      
+      <result property="FirmName"  column="DE_FirmName" />
+      <result property="DepositAccount"  column="DE_DepositAccount" />
+      <result property="ProjectCode"  column="DE_ProjectCode" />
+      <result property="CheckTime"  column="DE_CheckTime" />
+      
+      <!--存款账号-->
+    </resultMap>
+    <!--临时解决方案 结息查询-->
+    <!--<resultMap id="SelectnAllJG_Deposit" class="DepositFund">
+      <result property="_DE_ID"     column="DE_ID" />
+      <result property="_DE_xybh"   column="DE_xybh" />
+      <result property="_DE_qybh"   column="DE_qybh" />
+      <result property="_DE_ckr"    column="DE_ckr" />
+      <result property="_DE_dwbh"   column="DE_dwbh" />
+      <result property="_DE_ckxz"   column="DE_ckxz" />
+      <result property="_DE_cklb"   column="DE_cklb" />
+      <result property="_DE_ckje"   column="DE_ckje" />
+      <result property="_DE_ckrq"   column="DE_ckrq" />
+      <result property="_DE_cklsh"  column="DE_cklsh" />
+      <result property="_DE_Person" column="DE_Person" />
+      <result property="_DE_zhye"   column="DE_zhye" />
+    </resultMap>-->
+    <resultMap id="SelectAllJG_Deposit" class="DepositFund">
+      <result property="ID"    column="DE_ID" />
+      <result property="DepositNum"    column="DE_DepositNum" />
+      <result property="BankCode"      column="DE_BankCode" />
+      <result property="BusinessCode"  column="DE_BusinessCode" />
+      <result property="DepositAmount" column="DE_DepositAmount" />
+      <result property="DepositType"   column="DE_DepositType" />
+      <result property="PurchaserName" column="DE_PurchaserName" />
+      <result property="PurchaserID"   column="DE_PurchaserID" />
+      <result property="BankName"      column="DE_BankName" />
+      <result property="BankSiteID"    column="DE_BankSiteID" />
+      <result property="DepositTime"   column="DE_DepositTime" />
+      <result property="DepositInstr"  column="DE_DepositInstr" />
+      <result property="BankTellerID"  column="DE_BankTellerID" />
+      <result property="SerialNumber"  column="DE_SerialNumber" />
+      <result property="DeSerialNumber"  column="DE_DeSerialNumber" />
+      <result property="FirmName"  column="DE_FirmName" />
+      <result property="DepositAccount"  column="DE_DepositAccount" />
+      <result property="PurchaserName" column="DE_PurchaserName" />
+      <result property="PurchaserID"   column="DE_PurchaserID" />
+      <result property="ProjectCode"  column="DE_ProjectCode" />
+      <!--缴款状态-->
+      <result property="DepositState"  column="DE_DepositState" />
+      <!--存款账号-->
+    </resultMap>
+    <!--缴存信息查询返回集-->
+    <resultMap id="FundSelect" class="DepositFund">
+      <result property="BusinessCode"  column="DE_BusinessCode" />
+      <result property="DepositNum"    column="DE_DepositNum" />
+      <result property="DepositAccount"  column="DE_DepositAccount" />
+      <result property="FirmName"  column="DE_FirmName" />
+      <result property="DepositAccount"  column="DE_DepositAccount" />
+      <result property="DepositAmount" column="DE_DepositAmount" />
+      <result property="PurchaserName" column="DE_PurchaserName" />
+      <result property="PurchaserID"   column="DE_PurchaserID" />
+      <result property="ProjectCode"  column="DE_ProjectCode" />
+      <!--缴款状态-->
+      <result property="DepositState"  column="DE_DepositState" />
+      
+    </resultMap>
+     <!--不明账款返回集合-->
+    <resultMap id="UnknowBillSelect" class="UnknowBill">
+      <result property="UB_ID"  column="UB_ID" />
+      <result property="UB_FirmName"    column="UB_FirmName" />
+      <result property="UB_ManageAccount"  column="UB_ManageAccount" />
+      <result property="UB_Money"  column="UB_Money" />
+      <result property="UB_Time"  column="UB_Time" />
+      <result property="UB_PayerName" column="UB_PayerName" />
+      <result property="UB_PayerAccount" column="UB_PayerAccount" />
+      <result property="UB_BankCode"   column="UB_BankCode" />
+      <result property="UB_Type"   column="UB_Type" />
+      <result property="UB_BankSerialNum"   column="UB_BankSerialNum" />
+      <result property="UB_SerialNum"   column="UB_SerialNum" />
+      <result property="UB_BankSiteID"   column="UB_BankSiteID" />
+      <result property="UB_BankTellerID"   column="UB_BankTellerID" />
+      <result property="UB_Remark"   column="UB_Remark" />
+      <result property="UB_State"   column="UB_State" />
+      <result property="UB_LinkStr"   column="UB_LinkStr" />
+    </resultMap>                                                       
+  </resultMaps>                                                       
+  <!--操作-->
+  <statements>
+    <sql id="initDesport" >
+      DE_ID,
+      DE_DepositNum,
+      DE_BankCode,
+      DE_DepositAmount,
+      DE_DepositType,
+      DE_PurchaserName,
+      DE_PurchaserID,
+      DE_BankName,
+      DE_BankSiteID,
+      DE_DepositTime,
+      DE_DepositInstr,
+      DE_BankTellerID,
+      DE_SerialNumber,
+      DE_DepositState,
+      DE_BusinessCode
+    </sql>
+    <!--精确查询-->
+    <select id="SelectJG_Deposit" resultMap="SelectAll">
+      SELECT *
+      <!--<include refid="initDesport" />
+      DE_zhye,
+      JG_SpvProtocol.SP_QYZH as DE_ckzh-->
+      FROM
+      JG_Deposit
+      <!--INNER JOIN JG_SpvProtocol ON DE_xybh = JG_SpvProtocol.SP_XYBH-->
+      WHERE  1=1
+      
+      <isNotEmpty prepend="AND" property="DeSerialNumber">
+        DE_DeSerialNumber = #DeSerialNumber#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="SerialNumber">
+        DE_DepositNum = #DepositNum#
+      </isNotEmpty>
+      
+      <isNotEmpty prepend="AND" property="SerialNumber">
+        DE_SerialNumber = #SerialNumber#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="BankCode">
+        DE_BankCode = #BankCode#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="BankCode">
+        DE_BusinessCode = #BusinessCode#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="DepositAmount">
+        DE_DepositAmount = #DepositAmount#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="DepositType">
+        DE_DepositType = #DepositType#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="PurchaserName">
+        DE_PurchaserName = #PurchaserName#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="PurchaserID">
+        DE_PurchaserID = #PurchaserID#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="BankName">
+        DE_BankName = #BankName#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="BankSiteID">
+        DE_BankSiteID = #BankSiteID#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="DepositTime">
+        DE_DepositTime = #DepositTime#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="BankTellerID">
+        DE_BankTellerID = #BankTellerID#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="DepositInstr">
+        DE_DepositInstr = #DepositInstr#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="DepositInstr">
+        DE_DepositState = #DepositState#
+      </isNotEmpty>
+      
+    </select>
+    <update id="UpdateJG_Deposit" parameterClass="DepositFund">
+      UPDATE JG_Deposit
+      <!--<include refid="initDesport" />
+      DE_zhye,
+      JG_SpvProtocol.SP_QYZH as DE_ckzh-->
+      SET DE_ID=#ID# 
+
+      <!--INNER JOIN JG_SpvProtocol ON DE_xybh = JG_SpvProtocol.SP_XYBH-->
+
+    <isNotEmpty prepend="," property="DeSerialNumber">
+      DE_DeSerialNumber = #DeSerialNumber#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="SerialNumber">
+      DE_DepositNum = #DepositNum#
+    </isNotEmpty>
+
+    <isNotEmpty prepend="," property="SerialNumber">
+      DE_SerialNumber = #SerialNumber#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="BankCode">
+      DE_BankCode = #BankCode#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="BusinessCode">
+      DE_BusinessCode = #BusinessCode#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="DepositAmount">
+      DE_DepositAmount = #DepositAmount#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="DepositType">
+      DE_DepositType = #DepositType#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="PurchaserName">
+      DE_PurchaserName = #PurchaserName#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="PurchaserID">
+      DE_PurchaserID = #PurchaserID#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="BankName">
+      DE_BankName = #BankName#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="BankSiteID">
+      DE_BankSiteID = #BankSiteID#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="DepositTime">
+      DE_DepositTime = #DepositTime#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="BankTellerID">
+      DE_BankTellerID = #BankTellerID#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="DepositInstr">
+      DE_DepositInstr = #DepositInstr#
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="DepositState">
+      DE_DepositState = #DepositState#
+    </isNotEmpty>
+      <isNotEmpty prepend="," property="ReverseInstr">
+        DE_ReverseInstr = #ReverseInstr#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="ReverseTime">
+        DE_ReverseTime = #ReverseTime#
+      </isNotEmpty>
+      WHERE  DE_ID=#ID# 
+    </update>
+    <insert id="AddJG_Deposit" parameterClass="DepositFund">
+      INSERT INTO JG_Deposit (
+      DE_ID,
+      DE_DeSerialNumber,
+      DE_DepositNum,
+      DE_BankCode,
+      DE_DepositAmount,
+      DE_PurchaserName,
+      DE_PurchaserID,
+      DE_BankName,
+      DE_DepositType,
+      DE_BankSiteID,
+      DE_DepositTime,
+      DE_DepositInstr,
+      DE_BankTellerID,
+      DE_SerialNumber,
+      DE_DepositState,
+      DE_BusinessCode,
+      DE_CheckTime,
+      DE_FirmName,
+      DE_DepositAccount,
+      DE_ProjectCode
+      )
+      VALUES (#ID#,#DeSerialNumber#,#DepositNum#,#BankCode#,#DepositAmount#,#PurchaserName#,#PurchaserID#,#BankName#,#DepositType#,#BankSiteID#,#DepositTime#,#DepositInstr#,#BankTellerID#,#SerialNumber#,#DepositState#,#BusinessCode#,#CheckTime#,#FirmName#,#DepositAccount#,#ProjectCode#)
+    </insert>
+    <delete id="DeleteJG_Deposit" parameterClass="DepositFund">
+      DELETE JG_Deposit WHERE DE_DepositNum = #DepositNum#
+    </delete>
+    <!--不明账款操作-->
+    <insert id="AddUnKownJG_Deposit" parameterClass="UnknowBill">
+      INSERT INTO UnknownBill (
+      UB_ID,
+      UB_FirmName,
+      UB_ManageAccount,
+      UB_Money,
+      UB_Time,
+      UB_PayerName,
+      UB_PayerAccount,
+      UB_BankCode,UB_Type,UB_BankSerialNum,UB_SerialNum,UB_BankSiteID,UB_BankTellerID)
+      VALUES (#UB_ID#,#UB_FirmName#,#UB_ManageAccount#,#UB_Money#,#UB_Time#,#UB_PayerName#,#UB_PayerAccount#,#UB_BankCode#,#UB_Type#,#UB_BankSerialNum#,#UB_SerialNum#,#UB_BankSiteID#,#UB_BankTellerID#)
+    </insert>
+    
+    <select id="SelectUnKownJG_Deposit" resultMap="UnknowBillSelect">
+    SELECT *
+      FROM
+      UnknownBill
+    WHERE  1=1
+    <isNotEmpty prepend="AND" property="UB_ID">
+      UB_ID = #UB_ID#
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="UB_FirmName">
+      UB_FirmName = #UB_FirmName#
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="UB_ManageAccount">
+      UB_ManageAccount = #UB_ManageAccount#
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="UB_Money">
+      UB_Money = #UB_Money#
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="UB_Time">
+      UB_Time = #UB_Time#
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="UB_PayerName">
+      UB_PayerName = #UB_PayerName#
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="UB_PayerAccount">
+      UB_PayerAccount = #UB_PayerAccount#
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="UB_BankCode">
+      UB_BankCode = #UB_BankCode#
+    </isNotEmpty>
+      <isNotEmpty prepend="AND" property="UB_Type">
+        UB_Type = #UB_Type#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="UB_BankSerialNum">
+        UB_BankSerialNum = #UB_BankSerialNum#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="UB_SerialNum">
+        UB_SerialNum = #UB_SerialNum#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="UB_BankSiteID">
+        UB_BankSiteID = #UB_BankSiteID#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="UB_BankTellerID">
+        UB_BankTellerID = #UB_BankTellerID#
+      </isNotEmpty>
+      <isNotEmpty prepend="AND" property="UB_State">
+        UB_State = #UB_State#
+      </isNotEmpty>
+      order by UB_FirmName,UB_Time Asc
+    </select >
+    <update id="UpdateUnKownJG_Deposit" parameterClass="UnknowBill">
+      UPDATE
+      UnknownBill
+      SET  UB_ID = #UB_ID#
+      
+      <isNotEmpty prepend="," property="UB_LinkStr">
+        UB_LinkStr = #UB_LinkStr#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_State">
+        UB_State = #UB_State#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_Remark">
+        UB_Remark = #UB_Remark#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_FirmName">
+        UB_FirmName = #UB_FirmName#
+      </isNotEmpty>
+
+      <isNotEmpty prepend="," property="UB_ManageAccount">
+        UB_ManageAccount = #UB_ManageAccount#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_Money">
+        UB_Money = #UB_Money#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_Time">
+        UB_Time = #UB_Time#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_PayerName">
+        UB_PayerName = #UB_PayerName#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_PayerAccount">
+        UB_PayerAccount = #UB_PayerAccount#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_BankCode">
+        UB_BankCode = #UB_BankCode#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_Type">
+        UB_Type = #UB_Type#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_BankSerialNum">
+        UB_BankSerialNum = #UB_BankSerialNum#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_SerialNum">
+        UB_SerialNum = #UB_SerialNum# 
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_BankSiteID">
+        UB_BankSiteID = #UB_BankSiteID#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="UB_BankTellerID">
+        UB_BankTellerID = #UB_BankTellerID#
+      </isNotEmpty>
+      where UB_ID = #UB_ID#
+    </update >
+    <delete  id="DeleteUnKownJG_Deposit" parameterClass="UnknowBill">
+      Delete  UnknownBill WHERE UB_ID = #UB_ID#
+    </delete>
+    <!--<update id ="UpdateJG_Deposit" parameterClass="DepositFund">
+      UPDATE JG_Deposit
+      SET-->
+      --><!--DE_ID = #DE_ID#--><!--
+      --><!--<isNotEmpty prepend="," property="_DE_xybh">--><!--
+      --><!--</isNotEmpty>--><!--
+      <isNotEmpty prepend="," property="SerialNumber">
+        DE_SerialNumber = #SerialNumber#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="BankCode">
+        DE_BankCode = #BankCode#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="DepositAmount">
+        DE_DepositAmount = #DepositAmount#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="DepositType">
+        DE_DepositType = #DepositType#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="PurchaserName">
+        DE_PurchaserName = #PurchaserName#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="PurchaserID">
+        DE_PurchaserID = #PurchaserID#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="BankName">
+        DE_BankName = #BankName#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="BankSiteID">
+        DE_BankSiteID = #BankSiteID#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="DepositTime">
+        DE_DepositTime = #DepositTime#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="BankTellerID">
+        DE_BankTellerID = #BankTellerID#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="DepositInstr">
+        DE_DepositInstr = #DepositInstr#
+      </isNotEmpty>
+      WHERE DE_ID = #DepositNum#
+    </update>
+    <delete id="DeleteJG_Deposit" parameterClass="string">
+      DELETE JG_Deposit WHERE DE_ID = #value#
+    </delete>
+    --><!--根据协议查看账户的剩余金额   参数为协议编号   重点:缺少减去取出的金额--><!--
+    <select id="GetAccountMoney" resultClass="int" parameterClass="string">
+      select sum(DE_ckje) from JG_Deposit where DE_xybh = #value# and DE_cklb != '9'
+    </select>
+
+    --><!--存款明细 --><!--
+    --><!--变更记录:2013年11月18日15:07:43  变更人:徐金泽   变更说明:变更实体加入存款账户字段 ckzh 取到协议的企业账户 --><!--
+    <select id="SelectDepositInfoList" resultMap="SelectAllJG_Deposit" parameterClass="Hashtable">
+      select
+      DE_ID,
+      DE_xybh,
+      DE_qybh,
+      DE_ckr,
+      DE_dwbh,
+      DE_ckxz,
+      DE_cklb,
+      DE_ckje,
+      DE_ckrq,
+      DE_cklsh,
+      DE_Person,
+      DE_zhye
+
+      JG_SpvProtocol.SP_QYZH as DE_ckzh
+      FROM
+      JG_Deposit
+      INNER JOIN JG_SpvProtocol ON DE_xybh = JG_SpvProtocol.SP_XYBH
+
+      where DE_cklb<![CDATA[<>]]>'8' and DE_cklb<![CDATA[<>]]>'9'
+      --><!--<dynamic prepend="where">--><!--
+      <isParameterPresent>
+        <isNotEmpty prepend="and" property="xybh">DE_xybh=#xybh#</isNotEmpty>
+        <isNotEmpty prepend="and" property="Qybh">DE_qybh=#Qybh#</isNotEmpty>
+        <isNotEmpty prepend="and" property="Ckr">DE_ckr like '%'+#Ckr#+ '%'</isNotEmpty>
+        <isNotEmpty prepend="and" property="StartDate">DE_ckrq <![CDATA[>=]]> #StartDate#</isNotEmpty>
+        <isNotEmpty prepend="and" property="EndDate">DE_ckrq <![CDATA[<=]]> #EndDate#</isNotEmpty>
+      </isParameterPresent>
+      --><!--</dynamic>--><!--
+    </select>-->
+    <!--一个普通的存款  避免上面的存款关联数据  用于结息等活其他不管理协议表的查询 起因因为结息没有协议所以关联不到数据-->
+    <!--<select id="SelectJG_Deposits" resultClass="DepositFund" resultMap="SelectnAllJG_Deposit">
+      SELECT
+      DE_ID,
+      DE_xybh,
+      DE_qybh,
+      DE_ckr,
+      DE_dwbh,
+      DE_ckxz,
+      DE_cklb,
+      DE_ckje,
+      DE_ckrq,
+      DE_cklsh,
+      DE_Person,
+      DE_zhye
+      FROM
+      JG_Deposit
+      WHERE  1=1
+      <isNotEmpty property="_DE_ID">
+        AND DE_ID = #_DE_ID#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_xybh">
+        AND DE_xybh = #_DE_xybh#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_qybh">
+        AND DE_qybh = #_DE_qybh#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_ckr">
+        AND DE_ckr = #_DE_ckr#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_dwbh">
+        AND DE_dwbh = #_DE_dwbh#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_ckxz">
+        AND DE_ckxz = #_DE_ckxz#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_cklb">
+        AND DE_cklb = #_DE_cklb#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_ckje">
+        AND DE_ckje = #_DE_ckje#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_ckrq">
+        AND DE_ckrq = #_DE_ckrq#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_cklsh">
+        AND DE_cklsh = #_DE_cklsh#
+      </isNotEmpty>
+      <isNotEmpty property="_DE_Person">
+        AND DE_Person = #_DE_Person#
+      </isNotEmpty>
+    </select>-->
+  </statements>
+</sqlMap>

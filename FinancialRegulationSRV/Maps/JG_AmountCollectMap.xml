@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="JG_AmountCollectInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<!--导入程序集-->
+	<alias>
+		<typeAlias alias="JG_AmountCollectInfo" type="MODEL.JG_AmountCollectInfo,MODEL" />
+	</alias>
+	<!--返回集-->
+	<resultMaps>
+		<resultMap id="SelectAllJG_AmountCollect" class="JG_AmountCollectInfo">
+			<result property="AC_ID" column="AC_ID"/>
+			<result property="AC_cklsh" column="AC_cklsh"/>
+			<result property="AC_skfzh" column="AC_skfzh"/>
+			<result property="AC_fkfzh" column="AC_fkfzh"/>
+			<result property="AC_yhmc" column="AC_yhmc"/>
+			<result property="AC_ckje" column="AC_ckje"/>
+			<result property="AC_cksj" column="AC_cksj"/>
+			<result property="AC_fkfye" column="AC_fkfye"/>
+			<result property="AC_skfye" column="AC_skfye"/>
+			<result property="AC_xybh" column="AC_xybh"/>
+			<result property="AC_BankCode" column="AC_BankCode"/>
+		</resultMap>
+	</resultMaps>
+	<!--操作-->
+	<statements>
+		<!--这个返回数据表-->
+		<select id="SelectFundInfos" resultClass="System.Data.DataTable">
+			SELECT [XYBM]
+			,[QYMC]
+			,[QYBH]
+			,[FKZH]
+			,[KHWD]
+			,[XMMC]
+			,[SKZH]
+			,[SKFMC]
+			,[JYJE]
+			,[FKZHYE]
+			,[SKZHYE]
+			FROM [FinancialRegulation].[dbo].[FundCollectInfo]
+		</select>
+		<select id="SelectJG_AmountCollect" resultMap="SelectAllJG_AmountCollect">
+			SELECT
+			AC_ID,
+			AC_cklsh,
+			AC_skfzh,
+			AC_fkfzh,
+			AC_yhmc,
+			AC_ckje,
+			AC_cksj,
+			AC_fkfye,
+			AC_skfye,
+			AC_xybh,
+			AC_BankCode
+			FROM JG_AmountCollect
+			WHERE  1=1
+			<isNotEmpty property="AC_ID">
+				AND AC_ID = #AC_ID#
+			</isNotEmpty>
+			<isNotEmpty property="AC_cklsh">
+				AND AC_cklsh = #AC_cklsh#
+			</isNotEmpty>
+			<isNotEmpty property="AC_skfzh">
+				AND AC_skfzh = #AC_skfzh#
+			</isNotEmpty>
+			<isNotEmpty property="AC_fkfzh">
+				AND AC_fkfzh = #AC_fkfzh#
+			</isNotEmpty>
+			<isNotEmpty property="AC_yhmc">
+				AND AC_yhmc = #AC_yhmc#
+			</isNotEmpty>
+			<isNotEmpty property="AC_ckje">
+				AND AC_ckje = #AC_ckje#
+			</isNotEmpty>
+			<isNotEmpty property="AC_cksj">
+				AND AC_cksj = #AC_cksj#
+			</isNotEmpty>
+			<isNotEmpty property="AC_fkfye">
+				AND AC_fkfye = #AC_fkfye#
+			</isNotEmpty>
+			<isNotEmpty property="AC_skfye">
+				AND AC_skfye = #AC_skfye#
+			</isNotEmpty>
+		</select>
+		<insert id="AddJG_AmountCollect" parameterClass="JG_AmountCollectInfo">
+			EXEC JG_InterestCreate @xybh = #AC_xybh#,@curck = #AC_ckje#;
+			INSERT INTO JG_AmountCollect (AC_ID,
+			AC_cklsh,
+			AC_skfzh,
+			AC_fkfzh,
+			AC_yhmc,
+			AC_ckje,
+			AC_cksj,
+			AC_fkfye,
+			AC_skfye,
+			AC_xybh,
+			AC_BankCode)
+			VALUES (#AC_ID#,#AC_cklsh#,#AC_skfzh#,#AC_fkfzh#,#AC_yhmc#,#AC_ckje#,#AC_cksj#,#AC_fkfye#,#AC_skfye#,#AC_xybh#,#AC_BankCode#)
+		</insert>
+		<update id ="UpdateJG_AmountCollect" parameterClass="JG_AmountCollectInfo">
+			UPDATE JG_AmountCollect
+			SET
+			AC_cklsh = #AC_cklsh# ,
+			AC_skfzh = #AC_skfzh# ,
+			AC_fkfzh = #AC_fkfzh# ,
+			AC_yhmc = #AC_yhmc# ,
+			AC_ckje = #AC_ckje# ,
+			AC_cksj = #AC_cksj# ,
+			AC_fkfye = #AC_fkfye# ,
+			AC_skfye = #AC_skfye#
+			WHERE AC_ID = #AC_ID#
+		</update>
+		<delete id="DeleteJG_AmountCollect" parameterClass="string">
+			DELETE JG_AmountCollect WHERE AC_ID = #value#
+		</delete>
+	</statements>
+</sqlMap>
+

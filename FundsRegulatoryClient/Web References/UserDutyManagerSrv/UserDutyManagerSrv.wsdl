@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUserDutyByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDutyByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserDutyByIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LicendToUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userdutys" type="tns:ArrayOfUserDuty" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserDuty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserDuty" nillable="true" type="tns:UserDuty" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserDuty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserDutyID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DutyID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LicendToUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicendToUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveDuty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserDutyIDs" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RemoveDutyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveDutyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserDutyByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserDutyByID" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDutyByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserDutyByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="LicendToUserSoapIn">
+    <wsdl:part name="parameters" element="tns:LicendToUser" />
+  </wsdl:message>
+  <wsdl:message name="LicendToUserSoapOut">
+    <wsdl:part name="parameters" element="tns:LicendToUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveDutySoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveDuty" />
+  </wsdl:message>
+  <wsdl:message name="RemoveDutySoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveDutyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserDutyManagerSrvSoap">
+    <wsdl:operation name="GetUserDutyByID">
+      <wsdl:input message="tns:GetUserDutyByIDSoapIn" />
+      <wsdl:output message="tns:GetUserDutyByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LicendToUser">
+      <wsdl:input message="tns:LicendToUserSoapIn" />
+      <wsdl:output message="tns:LicendToUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDuty">
+      <wsdl:input message="tns:RemoveDutySoapIn" />
+      <wsdl:output message="tns:RemoveDutySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserDutyManagerSrvSoap" type="tns:UserDutyManagerSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserDutyByID">
+      <soap:operation soapAction="http://tempuri.org/GetUserDutyByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LicendToUser">
+      <soap:operation soapAction="http://tempuri.org/LicendToUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDuty">
+      <soap:operation soapAction="http://tempuri.org/RemoveDuty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserDutyManagerSrvSoap12" type="tns:UserDutyManagerSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserDutyByID">
+      <soap12:operation soapAction="http://tempuri.org/GetUserDutyByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LicendToUser">
+      <soap12:operation soapAction="http://tempuri.org/LicendToUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDuty">
+      <soap12:operation soapAction="http://tempuri.org/RemoveDuty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserDutyManagerSrv">
+    <wsdl:port name="UserDutyManagerSrvSoap" binding="tns:UserDutyManagerSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/UserDutyManagerSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserDutyManagerSrvSoap12" binding="tns:UserDutyManagerSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/UserDutyManagerSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:FundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FundPayment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PackageLength" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmOperatorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirmOperatorID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSiteID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTellerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankSerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiverAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiverName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiveBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentConfirmTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReverseInstr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReverseTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:FundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:FundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Selects">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectsResult" type="tns:ArrayOfFundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFundPayment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FundPayment" nillable="true" type="tns:FundPayment" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Select">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:FundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectResult" type="tns:ArrayOfFundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpPayMentInfoById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:FundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpPayMentInfoByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpPayMentInfoByIdResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpPayMentInfoInterestById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:FundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpPayMentInfoInterestByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpPayMentInfoInterestByIdResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="selectYEByXybh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xybh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="selectYEByXybhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="selectYEByXybhResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectJG_PaymentInterest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:FundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectJG_PaymentInterestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectJG_PaymentInterestResult" type="tns:ArrayOfFundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectThePaymentInfoByInterval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfDictionaryEntry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDictionaryEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DictionaryEntry" type="tns:DictionaryEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DictionaryEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectThePaymentInfoByIntervalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectThePaymentInfoByIntervalResult" type="tns:ArrayOfFundPayment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="AddSoapOut">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectsSoapIn">
+    <wsdl:part name="parameters" element="tns:Selects" />
+  </wsdl:message>
+  <wsdl:message name="SelectsSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectSoapIn">
+    <wsdl:part name="parameters" element="tns:Select" />
+  </wsdl:message>
+  <wsdl:message name="SelectSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpPayMentInfoByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpPayMentInfoById" />
+  </wsdl:message>
+  <wsdl:message name="UpPayMentInfoByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpPayMentInfoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpPayMentInfoInterestByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpPayMentInfoInterestById" />
+  </wsdl:message>
+  <wsdl:message name="UpPayMentInfoInterestByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpPayMentInfoInterestByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="selectYEByXybhSoapIn">
+    <wsdl:part name="parameters" element="tns:selectYEByXybh" />
+  </wsdl:message>
+  <wsdl:message name="selectYEByXybhSoapOut">
+    <wsdl:part name="parameters" element="tns:selectYEByXybhResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectJG_PaymentInterestSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectJG_PaymentInterest" />
+  </wsdl:message>
+  <wsdl:message name="SelectJG_PaymentInterestSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectJG_PaymentInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectThePaymentInfoByIntervalSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectThePaymentInfoByInterval" />
+  </wsdl:message>
+  <wsdl:message name="SelectThePaymentInfoByIntervalSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectThePaymentInfoByIntervalResponse" />
+  </wsdl:message>
+  <wsdl:portType name="JG_PaymentServiceSoap">
+    <wsdl:operation name="Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加支付</wsdl:documentation>
+      <wsdl:input message="tns:AddSoapIn" />
+      <wsdl:output message="tns:AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新支付</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSoapIn" />
+      <wsdl:output message="tns:UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除支付</wsdl:documentation>
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看所有支付</wsdl:documentation>
+      <wsdl:input message="tns:SelectsSoapIn" />
+      <wsdl:output message="tns:SelectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看特定支付</wsdl:documentation>
+      <wsdl:input message="tns:SelectSoapIn" />
+      <wsdl:output message="tns:SelectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpPayMentInfoById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新支付</wsdl:documentation>
+      <wsdl:input message="tns:UpPayMentInfoByIdSoapIn" />
+      <wsdl:output message="tns:UpPayMentInfoByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpPayMentInfoInterestById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新支付(利息支付)</wsdl:documentation>
+      <wsdl:input message="tns:UpPayMentInfoInterestByIdSoapIn" />
+      <wsdl:output message="tns:UpPayMentInfoInterestByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="selectYEByXybh">
+      <wsdl:input message="tns:selectYEByXybhSoapIn" />
+      <wsdl:output message="tns:selectYEByXybhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectJG_PaymentInterest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看特定支付(利息支付列表)</wsdl:documentation>
+      <wsdl:input message="tns:SelectJG_PaymentInterestSoapIn" />
+      <wsdl:output message="tns:SelectJG_PaymentInterestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectThePaymentInfoByInterval">
+      <wsdl:input message="tns:SelectThePaymentInfoByIntervalSoapIn" />
+      <wsdl:output message="tns:SelectThePaymentInfoByIntervalSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JG_PaymentServiceSoap" type="tns:JG_PaymentServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <soap:operation soapAction="http://tempuri.org/Selects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap:operation soapAction="http://tempuri.org/Select" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpPayMentInfoById">
+      <soap:operation soapAction="http://tempuri.org/UpPayMentInfoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpPayMentInfoInterestById">
+      <soap:operation soapAction="http://tempuri.org/UpPayMentInfoInterestById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectYEByXybh">
+      <soap:operation soapAction="http://tempuri.org/selectYEByXybh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectJG_PaymentInterest">
+      <soap:operation soapAction="http://tempuri.org/SelectJG_PaymentInterest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectThePaymentInfoByInterval">
+      <soap:operation soapAction="http://tempuri.org/SelectThePaymentInfoByInterval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JG_PaymentServiceSoap12" type="tns:JG_PaymentServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://tempuri.org/Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Selects">
+      <soap12:operation soapAction="http://tempuri.org/Selects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap12:operation soapAction="http://tempuri.org/Select" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpPayMentInfoById">
+      <soap12:operation soapAction="http://tempuri.org/UpPayMentInfoById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpPayMentInfoInterestById">
+      <soap12:operation soapAction="http://tempuri.org/UpPayMentInfoInterestById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectYEByXybh">
+      <soap12:operation soapAction="http://tempuri.org/selectYEByXybh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectJG_PaymentInterest">
+      <soap12:operation soapAction="http://tempuri.org/SelectJG_PaymentInterest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectThePaymentInfoByInterval">
+      <soap12:operation soapAction="http://tempuri.org/SelectThePaymentInfoByInterval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JG_PaymentService">
+    <wsdl:port name="JG_PaymentServiceSoap" binding="tns:JG_PaymentServiceSoap">
+      <soap:address location="http://localhost/FinancialRegulationSRV/JG_PaymentService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JG_PaymentServiceSoap12" binding="tns:JG_PaymentServiceSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSRV/JG_PaymentService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

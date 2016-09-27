@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetSerialNo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSerialNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSerialNoResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetErrorSerialNo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetErrorSerialNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetErrorSerialNoResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetServerTimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSerialNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSerialNo" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSerialNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetErrorSerialNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetErrorSerialNo" />
+  </wsdl:message>
+  <wsdl:message name="GetErrorSerialNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetErrorSerialNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerTime" />
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerTimeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BasicFunctionSrvSoap">
+    <wsdl:operation name="GetSerialNo">
+      <wsdl:input message="tns:GetSerialNoSoapIn" />
+      <wsdl:output message="tns:GetSerialNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorSerialNo">
+      <wsdl:input message="tns:GetErrorSerialNoSoapIn" />
+      <wsdl:output message="tns:GetErrorSerialNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <wsdl:input message="tns:GetServerTimeSoapIn" />
+      <wsdl:output message="tns:GetServerTimeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicFunctionSrvSoap" type="tns:BasicFunctionSrvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSerialNo">
+      <soap:operation soapAction="http://tempuri.org/GetSerialNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorSerialNo">
+      <soap:operation soapAction="http://tempuri.org/GetErrorSerialNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <soap:operation soapAction="http://tempuri.org/GetServerTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicFunctionSrvSoap12" type="tns:BasicFunctionSrvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSerialNo">
+      <soap12:operation soapAction="http://tempuri.org/GetSerialNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorSerialNo">
+      <soap12:operation soapAction="http://tempuri.org/GetErrorSerialNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <soap12:operation soapAction="http://tempuri.org/GetServerTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BasicFunctionSrv">
+    <wsdl:port name="BasicFunctionSrvSoap" binding="tns:BasicFunctionSrvSoap">
+      <soap:address location="http://localhost/FinancialRegulationSrv/BasicFunctionSrv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BasicFunctionSrvSoap12" binding="tns:BasicFunctionSrvSoap12">
+      <soap12:address location="http://localhost/FinancialRegulationSrv/BasicFunctionSrv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,55 @@
+﻿<Controls:MetroWindow x:Class="MainFrame.MainWindow"
+     
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      ShowIconOnTitleBar="True"
+                      ShowTitleBar="True"
+                      WindowStartupLocation="CenterScreen"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveGlowBrush="#CDFF0000"
+                      mc:Ignorable="d"
+        xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
+        xmlns:local="clr-namespace:MainFrame"
+        Title="商品房预售资金监管银行端管理系统" Height="630" Width="990" WindowState="Maximized" Loaded="Window_Loaded" Icon="/MainFrame;component/logo.png" Closed="Window_Closed">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="DescriptionHeaderStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="22" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="682*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <local:MenuWindow x:Name="menuWindow" Grid.Column="0"/>
+        <Separator   Width="5" Grid.Column="1"/>
+        <Grid Grid.Column="2">
+            <Controls:MetroTabControl Style="{DynamicResource MetroTabControl}" Name="tblMainRegion">
+
+            </Controls:MetroTabControl>
+        </Grid>
+      
+    </Grid>
+</Controls:MetroWindow>

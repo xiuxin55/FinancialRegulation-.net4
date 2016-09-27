@@ -1,0 +1,48 @@
+﻿<Controls:MetroContentControl x:Class="FinancialRegulation.Page.Other.InterestRateManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:FinancialRegulation"
+        xmlns:convert="clr-namespace:FinancialRegulation.Tools"
+         
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+     >
+    <Controls:MetroContentControl.Resources>
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </Controls:MetroContentControl.Resources>
+    <Grid Style="{StaticResource GridLayout}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <convert:DateConverter x:Key="DateConverter"/>
+            <convert:CommonConvert x:Key="ccc"/>
+        </Grid.Resources>
+        <Grid  Grid.Row="0" 
+                             >
+            <DockPanel>
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Height="40" Margin="0,20,20,0" >利率管理</TextBlock>
+            </DockPanel>
+        </Grid>
+    
+        <ToolBar Grid.Row="1" >
+            <Button  Margin="-10.5,0,0,0"  Content="添加"  Width="60"   BorderBrush="#FFB1B1B1" Command="{Binding AddCommand}"/>
+            <Button Content="启用"   Width="60"  BorderBrush="#FFB1B1B1" Command="{Binding ChangeStateCommond}" CommandParameter="0"/>
+            <Button Content="停用"   Width="60"  BorderBrush="#FFB1B1B1" Command="{Binding ChangeStateCommond}" CommandParameter="1"/>
+        </ToolBar>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <DataGrid Background="White" ItemsSource="{Binding Models}" SelectedItem="{Binding CurModel}" Style="{StaticResource DataGridStyle}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="利率" Binding="{Binding InterestRate}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="设定时间" Binding="{Binding SetDate,Converter={StaticResource DateConverter}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="备注" Binding="{Binding Remark}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="是否使用" Binding="{Binding Flag,Converter={StaticResource ccc},ConverterParameter=0|停用;1|启用;}" ></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Controls:MetroContentControl>

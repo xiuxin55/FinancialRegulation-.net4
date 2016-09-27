@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="JG_MessageInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--导入程序集-->
+  <alias>
+    <typeAlias alias="JG_MessageInfoX" type="MODEL.NewModel.MessageInfo,MODEL" />
+  </alias>
+  <!--返回集-->
+  <resultMaps>
+    <resultMap id="SelectAllJG_MessageInfo" class="JG_MessageInfoX">
+      <result property="ID" column="MI_ID" />
+      <result property="BankCode" column="MI_BankCode" />
+      <result property="Content" column="MI_Content" />
+      <result property="MessageDirect" column="MI_MessageDirect" />
+      <!--   新实体去掉了...<result property="_MI_DzDate" column="MI_DzDate" />-->
+      <result property="MessageTime" column="MI_MessageTime" />
+      <result property="TellerCode" column="MI_TellerCode" />
+      <result property="WebsiteCode" column="MI_WebsiteCode" />
+      
+      
+      <!--<result property="_MI_Bwnr" column="MI_Bwnr" />
+      <result property="_MI_Bwfx" column="MI_Bwfx" />-->
+    </resultMap>
+  </resultMaps>
+  <!--操作-->
+  <statements>
+    <select id="SelectJG_MessageInfo" resultMap="SelectAllJG_MessageInfo">
+      SELECT
+      MI_ID,
+      MI_BankCode,
+      MI_Content,
+      MI_MessageDirect,
+      MI_MessageTime,
+      MI_TellerCode,
+      MI_WebsiteCode
+      FROM JG_MessageInfo
+      WHERE  1=1
+      <isNotEmpty property="ID">
+        AND MI_ID = #ID#
+      </isNotEmpty>
+      <isNotEmpty property="BankCode">
+        AND MI_BankCode = #BankCode#
+      </isNotEmpty>
+      <isNotEmpty property="Content">
+        AND MI_Content = #Content#
+      </isNotEmpty>
+      <isNotEmpty property="MessageDirect">
+        AND MI_MessageDirect = #MessageDirect#
+      </isNotEmpty>
+      <isNotEmpty property="MessageTime">
+        AND MI_MessageTime = #MessageTime#
+      </isNotEmpty>
+      <isNotEmpty property="TellerCode">
+        AND MI_TellerCode = #TellerCode#
+      </isNotEmpty>
+      <isNotEmpty property="WebsiteCode">
+        AND MI_WebsiteCode = #WebsiteCode#
+      </isNotEmpty>
+  
+      
+    </select>
+    <insert id="AddMessageInfo" parameterClass="JG_MessageInfoX">
+      INSERT INTO JG_MessageInfo (
+
+      MI_ID,
+      MI_BankCode,
+      MI_Content,
+      MI_MessageDirect,
+      MI_MessageTime,
+      MI_WebsiteCode,
+      MI_TellerCode
+      )
+      VALUES (
+      #ID#,
+      #BankCode#,
+      #Content#,
+      #MessageDirect#,
+      #MessageTime#,
+      #WebsiteCode#,
+      #TellerCode#
+      )
+    </insert>
+    <update id ="UpdateJG_MessageInfo" parameterClass="JG_MessageInfoX">
+      UPDATE JG_MessageInfo
+      SET
+      MI_ID = #ID#
+    <isNotEmpty property="BankCode">
+      , MI_BankCode = #BankCode#
+    </isNotEmpty>
+    <isNotEmpty property="Content">
+      , MI_Content = #Content#
+    </isNotEmpty>
+    <isNotEmpty property="MessageDirect">
+      , MI_MessageDirect = #MessageDirect#
+    </isNotEmpty>
+    <isNotEmpty property="MessageTime">
+      , MI_MessageTime = #MessageTime#
+    </isNotEmpty>
+      <isNotEmpty property="WebsiteCode">
+        , MI_WebsiteCode = #WebsiteCode#
+      </isNotEmpty>
+      <isNotEmpty property="TellerCode">
+        , MI_TellerCode = #TellerCode#
+      </isNotEmpty>
+
+      
+      WHERE  MI_ID = #ID#
+    </update>
+    <delete id="DeleteJG_MessageInfo" parameterClass="string">
+      DELETE JG_MessageInfo WHERE MI_ID = #value#
+    </delete>
+  </statements>
+</sqlMap>

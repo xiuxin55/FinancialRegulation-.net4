@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C4F3B9A-CA47-4CCB-B017-1B76F51BD96A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FinancialRegulationSRV</RootNamespace>
+    <AssemblyName>FinancialRegulationSRV</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <DeployIisAppPath>FinancialRegulationSRV/</DeployIisAppPath>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IBatisNet.Common, Version=1.6.1.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HSIS.Utils\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common.Logging.Log4Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HSIS.Utils\IBatisNet.Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.1.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HSIS.Utils\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Users\root\Desktop\microsoft.office.interop.excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BaseManagerSrv.asmx" />
+    <Content Include="BaseManageSrv.asmx" />
+    <Content Include="BasicFunctionSrv.asmx" />
+    <Content Include="BillOperateSrv.asmx" />
+    <Content Include="CommonManagerSrv.asmx" />
+    <Content Include="DownLoadSoft.htm" />
+    <Content Include="DutyManageSrv.asmx" />
+    <Content Include="FunSrv.asmx" />
+    <Content Include="Global.asax" />
+    <Content Include="HelpService.asmx" />
+    <Content Include="InterestService.asmx" />
+    <Content Include="Maps\Image\psd8199.png" />
+    <Content Include="Maps\Image\商品房监管美白.png" />
+    <Content Include="JG_AccountManageService.asmx" />
+    <Content Include="JG_AdjustService.asmx" />
+    <Content Include="JG_AmountCollectService.asmx" />
+    <Content Include="JG_BranchesService.asmx" />
+    <Content Include="JG_DepositService.asmx" />
+    <Content Include="JG_InterestRateSrv.asmx" />
+    <Content Include="JG_MessageInfoService.asmx" />
+    <Content Include="JG_PaymentService.asmx" />
+    <Content Include="JG_SpvProtocolService.asmx" />
+    <Content Include="LoginSrv.asmx" />
+    <Content Include="Maps\BasicFunction.xml" />
+    <Content Include="Maps\Bill.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Maps\InterestMap.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Maps\JG_AccountManageMap.xml" />
+    <Content Include="Maps\JG_AdjustMap.xml" />
+    <Content Include="Maps\JG_AmountCollectMap.xml" />
+    <Content Include="Maps\JG_BranchesMap.xml" />
+    <Content Include="Maps\JG_DepositMap.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Maps\JG_InterestRateMap.xml" />
+    <Content Include="Maps\JG_MessageInfoMap.xml" />
+    <Content Include="Maps\JG_PaymentMap.xml" />
+    <Content Include="Maps\JG_SpvProtocolMap.xml" />
+    <Content Include="Maps\Login.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Maps\MenuItem.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Maps\ParmItem.xml" />
+    <Content Include="Maps\Regulatory.xml" />
+    <Content Include="Maps\SysConfigMap.xml" />
+    <Content Include="Maps\RefundTradeMap.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ParmItemSrv.asmx" />
+    <Content Include="RefunTradeService.asmx" />
+    <Content Include="RegulatorySrv.asmx" />
+    <Content Include="SqlTrans.asmx" />
+    <Content Include="SysConfigService.asmx" />
+    <Content Include="UserDutyManagerSrv.asmx" />
+    <Content Include="UserManageSrv.asmx" />
+    <None Include="Maps\SqlMap.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\BillMoveSrv\BillMoveSrv.disco" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="ReportTemplet\对账单.xlt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Web References\BillMoveSrv\BillMoveSrv.wsdl" />
+    <None Include="Web References\BillMoveSrv\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseManagerSrv.asmx.cs">
+      <DependentUpon>BaseManagerSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseManageSrv.asmx.cs">
+      <DependentUpon>BaseManageSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BasicFunctionSrv.asmx.cs">
+      <DependentUpon>BasicFunctionSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BillOperateSrv.asmx.cs">
+      <DependentUpon>BillOperateSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommonManagerSrv.asmx.cs">
+      <DependentUpon>CommonManagerSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DutyManageSrv.asmx.cs">
+      <DependentUpon>DutyManageSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FunSrv.asmx.cs">
+      <DependentUpon>FunSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HelpService.asmx.cs">
+      <DependentUpon>HelpService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InterestService.asmx.cs">
+      <DependentUpon>InterestService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_AccountManageService.asmx.cs">
+      <DependentUpon>JG_AccountManageService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_AdjustService.asmx.cs">
+      <DependentUpon>JG_AdjustService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_AmountCollectService.asmx.cs">
+      <DependentUpon>JG_AmountCollectService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_BranchesService.asmx.cs">
+      <DependentUpon>JG_BranchesService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_DepositService.asmx.cs">
+      <DependentUpon>JG_DepositService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_InterestRateSrv.asmx.cs">
+      <DependentUpon>JG_InterestRateSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_MessageInfoService.asmx.cs">
+      <DependentUpon>JG_MessageInfoService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_PaymentService.asmx.cs">
+      <DependentUpon>JG_PaymentService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JG_SpvProtocolService.asmx.cs">
+      <DependentUpon>JG_SpvProtocolService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LoginSrv.asmx.cs">
+      <DependentUpon>LoginSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ParmItemSrv.asmx.cs">
+      <DependentUpon>ParmItemSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefunTradeService.asmx.cs">
+      <DependentUpon>RefunTradeService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RegulatorySrv.asmx.cs">
+      <DependentUpon>RegulatorySrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SqlTrans.asmx.cs">
+      <DependentUpon>SqlTrans.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SysConfigService.asmx.cs">
+      <DependentUpon>SysConfigService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\BillOperate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\SqlTranction.cs" />
+    <Compile Include="UserDutyManagerSrv.asmx.cs">
+      <DependentUpon>UserDutyManagerSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserManageSrv.asmx.cs">
+      <DependentUpon>UserManageSrv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web References\BillMoveSrv\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="database.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="providers.config" />
+    <Content Include="sqlmap.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{1A52CA30-9975-46BD-A9F2-3680B44BCD4E}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\Dao.csproj">
+      <Project>{86D98514-80B5-490B-9344-6B6520A93CCC}</Project>
+      <Name>Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{41D516E9-EF29-4CB6-8214-20771F756210}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SqlMaps\SqlMaps.csproj">
+      <Project>{E19A6DC8-30F3-45D5-8B67-584C5A034212}</Project>
+      <Name>SqlMaps</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://192.168.134.245/BillOperateSrv/BillMoveSrv.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\BillMoveSrv\</RelPath>
+      <UpdateFromURL>http://192.168.134.245/BillOperateSrv/BillMoveSrv.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>FinancialRegulationSRV_BillMoveSrv_BillMoveSrv</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:12107/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
