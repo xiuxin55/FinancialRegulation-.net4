@@ -95,10 +95,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       SI_Time,
       SI_Memo,
       SI_CertificateNum,
-      SI_BankTellerID,
-      SI_State
+      SI_BankTellerID
       )
-      VALUES (#ID#,#SI_ID#,#SI_AccountNum#,#SI_Money#,#SI_Time#,#SI_Memo#,#SI_CertificateNum#,#SI_BankTellerID#,#SI_State#)
+      VALUES (#ID#,#SI_ID#,#SI_AccountNum#,#SI_Money#,#SI_Time#,#SI_Memo#,#SI_CertificateNum#,#SI_BankTellerID#)
     </insert>
     <insert id="AddDayBalanceInfo" parameterClass="DayBalance">
       INSERT INTO DayBalance (
