@@ -1,4 +1,4 @@
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using FundsRegulatoryClient.JG_PaymentSrv;
@@ -19,14 +19,14 @@ namespace FinancialRegulation.Page.Other
         }
         private void Cancel_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            this.CloseWindow();
+            this.DialogResult = false;
         }
        
         private void SendBill_Click(object sender, System.Windows.RoutedEventArgs e)
         {
            vm.BillInstruction= txt_Instruction.Text;
            //vm.AccountBalance =decimal.Parse(txt_AccountBalance.Text);
-           this.OpenNewWindow();
+           this.DialogResult = true;
         }
 
         #region TextBox的输入限制

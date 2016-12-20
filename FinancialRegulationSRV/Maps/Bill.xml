@@ -108,7 +108,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       ,s.SI_BankTellerID as TradeMark
       ,j.AM_ProjectCode as ProjectCode
       FROM (JG_AccountManage j left join SeasonInterest s  on j.AM_ID=s.SI_ID) left join  UserInfo u on s.SI_BankTellerID=u.UserCode
-      WHERE datediff(day,SI_Time ,#Time#)=0
+      WHERE datediff(day,SI_Time ,#Time#)=0 and s.SI_CertificateNum is not null
 
       union
 
