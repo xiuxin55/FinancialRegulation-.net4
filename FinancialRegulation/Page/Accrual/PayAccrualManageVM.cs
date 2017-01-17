@@ -463,7 +463,6 @@ namespace FinancialRegulation.ViewModel
                 }
                 else
                 {
-                    
                     FundsRegulatoryClient.SqlTransSvr.DayBalance tranbalance = new FundsRegulatoryClient.SqlTransSvr.DayBalance();
                     tranbalance.DB_Balance = item.DB_Balance;
                     tranbalance.DB_InterestRate = item.DB_InterestRate;
