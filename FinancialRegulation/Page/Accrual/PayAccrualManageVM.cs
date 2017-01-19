@@ -262,16 +262,16 @@ namespace FinancialRegulation.ViewModel
             {
                 //if (dt < DateTime.Parse(DateTime.Now.ToShortDateString()))
                 //{
-                    VMHelp.ShowMessage("请先设置结息日期", false);
+                    VMHelp.ShowMessage("请到系统设置里调整结息日期", false);
                     return;
                 //}
             }
-            else if (dt > DateTime.Parse(DateTime.Now.ToShortDateString()) || SelectedSeanson.SI_Time != dt.Value)
+            else if (dt > DateTime.Parse(DateTime.Now.ToShortDateString()) )
             {
-                VMHelp.AskMessage("结息日期为"+VMHelp.SYSCONFIG.PayAccuralDate.Value.ToShortDateString()+"，不能进行结息");
+                VMHelp.AskMessage("结息日期为"+VMHelp.SYSCONFIG.PayAccuralDate.Value.ToShortDateString()+"，不能进行结息,请到系统设置里调整结息日期");
                 return;
             }
-            else
+            else if(SelectedSeanson.SI_Time.Value.AddMonths(3) > dt.Value)
             {
                 FundsRegulatoryClient.SysConfigClient client = FundsRegulatoryClient.SysConfigClient.Instance;
                 VMHelp.SYSCONFIG.PayAccuralDate = VMHelp.SYSCONFIG.PayAccuralDate.Value.AddMonths(3);
