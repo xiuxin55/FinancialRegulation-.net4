@@ -113,6 +113,10 @@ namespace FinancialRegulation.ViewModel
                         //季度结息表增加一条
                         FundsRegulatoryClient.SqlTransSvr.SeasonInterest si = new FundsRegulatoryClient.SqlTransSvr.SeasonInterest();
                         DateTime? dt = FinancialRegulation.Tools.HelpClass.Current.SYSCONFIG.PayAccuralDate;
+                        while (dt!=null &&  dt.Value.AddMonths(3) < DateTime.Parse(DateTime.Now.ToShortDateString()))
+                        {
+                            dt = dt.Value.AddMonths(3);
+                        }
                         if (dt == null || dt.Value.AddMonths(3) < DateTime.Parse(DateTime.Now.ToShortDateString()))
                         {
                             VMHelp.ShowMessage("请先设置结息日期", false);
