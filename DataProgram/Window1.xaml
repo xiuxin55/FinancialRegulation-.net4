@@ -1,0 +1,45 @@
+﻿<Window x:Class="DataProgram.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataProgram"
+        mc:Ignorable="d"
+        Title="Window1" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="71*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="企业账户:" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+            <ComboBox   Margin="10,0,0,0" Width="150" ItemsSource="{Binding AccountList}" SelectedItem="{Binding SelectedAccount}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding AM_JgAccount}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock  Text="{Binding AM_zhmc}"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="重新统计每日余额" Command="{Binding ConfirmCommand}"   Margin="10,0,0,0"/>
+            <Button Content="查询" Command="{Binding SearchCommand}"   Margin="10,0,0,0"/>
+
+        </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Grid.Row="1">
+            <DataGrid Background="White" Name="dataGrid1" ItemsSource="{Binding Path=DayBalanceList}" CanUserDeleteRows="False" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="帐号" Width="*"  Binding="{Binding DB_AccountNum}"  />
+                    <DataGridTextColumn Header="余额" Width="*"  Binding="{Binding DB_Balance}" />
+                    <DataGridTextColumn Header="利率" Width="*"  Binding="{Binding DB_InterestRate}"  />
+                    <DataGridTextColumn Header="时间" Width="*"  Binding="{Binding DB_Time,StringFormat={}{0:yyyy-MM-dd} }"  />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Window>

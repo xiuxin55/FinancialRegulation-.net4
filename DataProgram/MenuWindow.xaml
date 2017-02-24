@@ -1,0 +1,40 @@
+﻿<Controls:MetroContentControl x:Class="DataProgram.MenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                                
+        Loaded="DockableContent_Loaded"  FontSize="16" FontFamily="Microsoft YaHei">
+
+    <Controls:MetroContentControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+
+            </ResourceDictionary.MergedDictionaries>
+            <HierarchicalDataTemplate x:Key="MenuTreeViewItemTemplate" ItemsSource="{Binding Children}">
+                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                    <!--<CheckBox Focusable="False" IsChecked="{Binding IsChecked,Mode=TwoWay}" VerticalAlignment="Center" />-->
+                    <ContentPresenter Content="{Binding Name,Mode=OneWay}" Margin="2,0" />
+                </StackPanel>
+            </HierarchicalDataTemplate>
+        </ResourceDictionary>
+
+    </Controls:MetroContentControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="1"     
+                             >
+        <DockPanel>
+                <Label   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"  >菜单栏</Label>
+        </DockPanel>
+        </Grid>
+        
+        <TreeView x:Name="menuTree"  Style="{StaticResource VirtualisedMetroTreeView}"  ItemTemplate="{StaticResource MenuTreeViewItemTemplate}" MouseDoubleClick="menuTree_MouseDoubleClick"  SelectedItemChanged="menuTree_SelectedItemChanged" Grid.Row="2" />
+    </Grid>
+</Controls:MetroContentControl>

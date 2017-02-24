@@ -143,7 +143,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <isNotEmpty prepend="AND" property="DeSerialNumber">
         DE_DeSerialNumber = #DeSerialNumber#
       </isNotEmpty>
-      <isNotEmpty prepend="AND" property="SerialNumber">
+      <isNotEmpty prepend="AND" property="DepositNum">
         DE_DepositNum = #DepositNum#
       </isNotEmpty>
       
@@ -165,6 +165,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <isNotEmpty prepend="AND" property="PurchaserName">
         DE_PurchaserName = #PurchaserName#
       </isNotEmpty>
+      <isNotEmpty prepend="AND" property="DepositAccount">
+        DE_DepositAccount = #DepositAccount#
+      </isNotEmpty>
+      
       <isNotEmpty prepend="AND" property="PurchaserID">
         DE_PurchaserID = #PurchaserID#
       </isNotEmpty>

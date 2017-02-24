@@ -176,8 +176,8 @@ namespace FinancialRegulation.ViewModel
                     }
                     if (dblist[0].DB_Balance < model.PaymentAmount)
                     {
-                        VMHelp.ShowMessage("账户余额不足，无法支付", false);
-                        return;
+                        //VMHelp.ShowMessage("账户余额不足，无法支付", false);
+                        //return;
                     }
                     response = SendMessage<Response05>(CurrentObj, VMHelp.PointCode, VMHelp.UserCode);//发送Messageresponse.ReturnCode =="00" 
                     if (response.ReturnCode == Tools.PublicData.ResponseSuccess || response.ReturnCode == Tools.PublicData.PaymentSuccess)
@@ -191,7 +191,7 @@ namespace FinancialRegulation.ViewModel
                             FundsRegulatoryClient.SqlTransSvr.DayBalance temp = new FundsRegulatoryClient.SqlTransSvr.DayBalance();
                             temp.DB_Balance = dblist[0].DB_Balance;
                             temp.DB_InterestRate = dblist[0].DB_InterestRate;
-                            temp.DB_Balance = temp.DB_Balance - model.PaymentAmount;
+                            temp.DB_Balance = temp.DB_Balance - model.PaymentAmount<0? 0: temp.DB_Balance - model.PaymentAmount;
                             temp.ID = dblist[0].ID;
                             temp.DB_ID = acc[0].AM_ID;
                             temp.DB_Time = DateTime.Parse(DateTime.Now.ToShortDateString());
@@ -216,7 +216,7 @@ namespace FinancialRegulation.ViewModel
                             FundsRegulatoryClient.SqlTransSvr.DayBalance temp = new FundsRegulatoryClient.SqlTransSvr.DayBalance();
                             temp.DB_Balance = dblist[0].DB_Balance;
                             temp.DB_InterestRate = dblist[0].DB_InterestRate;
-                            temp.DB_Balance = temp.DB_Balance - model.PaymentAmount;
+                            temp.DB_Balance = temp.DB_Balance - model.PaymentAmount < 0 ? 0 : temp.DB_Balance - model.PaymentAmount;
                             temp.ID = dblist[0].ID;
                             temp.DB_ID = acc[0].AM_ID;
                             temp.DB_Time = DateTime.Parse(DateTime.Now.ToShortDateString());

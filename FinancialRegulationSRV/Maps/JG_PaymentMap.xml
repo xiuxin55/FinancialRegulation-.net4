@@ -69,7 +69,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       PA_FirmName
       FROM JG_Payment
       WHERE  1=1
-      <isNotEmpty property="PA_ID">
+      <isNotEmpty property="PayID">
         AND PA_ID = #PayID#
       </isNotEmpty>
       <isNotEmpty property="PaymentAmount">
