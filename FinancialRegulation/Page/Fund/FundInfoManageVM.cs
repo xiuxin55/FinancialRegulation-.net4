@@ -227,14 +227,14 @@ namespace FinancialRegulation.ViewModel
         public  void FlushExecute(bool IsNull)
         {
             this.Models = new ObservableCollection<DepositFund>();
-            this.Models = client.Selects();
             //总行可以查看所有
             if (VMHelp.PointCode == Tools.HelpClass.Current.MainWebSite)
             {
                 this.Models = client.Selects();
                 return;
             }
-            foreach (DepositFund item in client.Selects())
+            ObservableCollection<DepositFund> temp = client.Selects();
+            foreach (DepositFund item in temp)
             {
                 if (item.BankSiteID==VMHelp.PointCode)
                 {
