@@ -35,6 +35,7 @@ namespace FinancialRegulation.UserCotrol
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = true;
             this.Close();
         }
     }

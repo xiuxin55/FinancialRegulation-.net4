@@ -172,12 +172,13 @@ namespace FinancialRegulation.ViewModel
                 this.DayBalanceList = null;
                 this.Memo = SelectedSeanson.SI_Memo;
                 this.InterestAmount = SelectedSeanson.SI_Money;
-                if (SelectedSeanson.SI_State == "N")
-                { ButtonEnable = true; }
-                else
-                {
-                    ButtonEnable = false;
-                }
+                ButtonEnable = true;
+                //if (SelectedSeanson.SI_State == "N")
+                //{ ButtonEnable = true; }
+                //else
+                //{
+                //    ButtonEnable = false;
+                //}
                 GetDaybalanceList(value);
                
             }
